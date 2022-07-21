@@ -1,5 +1,5 @@
 # Creando una Red Social
-INICIANDO
+INICIANDO PROYECTO 3
 ## Índice
 
 * [1. Preámbulo](#1-preámbulo)
