@@ -6,17 +6,15 @@ const rootDiv = document.getElementById('root');
 
 const Routes = {
   './': Home,
-  './ Register': Register,
+  './Register': Register,
 };
 
-// rootDiv.appendChild = Routes[window.location.pathname];
-let pathname = window.location.pathname;
-alert(pathname);
+export const Navigation = (pathname) => {
+  window.history.pushState({}, pathname, window.location.origin + pathname);
+  rootDiv.appendChild(Routes[pathname]());
+};
 
-
-
-
-
+rootDiv.appendChild(Routes[window.location.pathname]());
 
 // const changeView = () => {
 //   switch (Route) {
@@ -25,6 +23,6 @@ alert(pathname);
 //     default:
 //       break;
 //   }
-  
+
 //   return changeView;
 // };
