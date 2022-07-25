@@ -1,5 +1,3 @@
-import { Navigation } from '../main.js';
-
 export const Home = () => {
   const HomeDiv = document.createElement('div');
   const buttonLogin = document.createElement('button');
@@ -7,8 +5,6 @@ export const Home = () => {
 
   buttonLogin.textContent = 'Ingresar';
   buttonRegister.textContent = 'Crear una Cuenta';
-
-  buttonRegister.addEventListener('click', () => Navigation('./Register'));
 
   HomeDiv.appendChild(buttonLogin);
   HomeDiv.appendChild(buttonRegister);

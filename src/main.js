@@ -6,7 +6,7 @@ const rootDiv = document.getElementById('root');
 
 const Routes = {
   './': Home,
-  './ Register': Register,
+  './Register': Register,
 };
 
 rootDiv.appendChild = Routes[window.location.pathname];
