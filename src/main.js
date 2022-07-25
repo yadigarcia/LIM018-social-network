@@ -9,14 +9,8 @@ const Routes = {
   './ Register': Register,
 };
 
-// rootDiv.appendChild = Routes[window.location.pathname];
-let pathname = window.location.pathname;
-alert(pathname);
-
-
-
-
-
+rootDiv.appendChild = Routes[window.location.pathname];
+const pathname1 = window.location.pathname;
 
 // const changeView = () => {
 //   switch (Route) {
@@ -25,6 +19,6 @@ alert(pathname);
 //     default:
 //       break;
 //   }
-  
+
 //   return changeView;
 // };
