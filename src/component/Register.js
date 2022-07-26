@@ -1,15 +1,19 @@
-export const Register = () => {
-  const RegisterDiv = document.createElement('div');
+import { navigation } from '../main.js';
 
-  RegisterDiv.textContent = 'Bienvenidos Viajeros';
+export const register = () => {
+  const registerDiv = document.createElement('div');
+
+  registerDiv.textContent = 'Bienvenidos Viajeros';
   const buttonRegister = document.createElement('button');
   const buttonBackToHome = document.createElement('button');
 
   buttonRegister.textContent = 'Registarse';
-  buttonBackToHome.textContent = 'Regresar';
+  buttonBackToHome.textContent = 'Regresar a Login';
 
-  RegisterDiv.appendChild(buttonRegister);
-  RegisterDiv.appendChild(buttonBackToHome);
+  buttonBackToHome.addEventListener('click', () => navigation('/'));
 
-  return RegisterDiv;
+  registerDiv.appendChild(buttonRegister);
+  registerDiv.appendChild(buttonBackToHome);
+
+  return registerDiv;
 };

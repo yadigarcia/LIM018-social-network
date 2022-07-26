@@ -1,17 +1,17 @@
-import { Navigation } from '../main.js';
+import { navigation } from '../main.js';
 
-export const Home = () => {
-  const HomeDiv = document.createElement('div');
+export const home = () => {
+  const homeDiv = document.createElement('div');
   const buttonLogin = document.createElement('button');
   const buttonRegister = document.createElement('button');
 
   buttonLogin.textContent = 'Ingresar';
   buttonRegister.textContent = 'Crear una Cuenta';
 
-  buttonRegister.addEventListener('click', () => Navigation('./Register'));
+  buttonRegister.addEventListener('click', () => navigation('/register'));
 
-  HomeDiv.appendChild(buttonLogin);
-  HomeDiv.appendChild(buttonRegister);
+  homeDiv.appendChild(buttonLogin);
+  homeDiv.appendChild(buttonRegister);
 
-  return HomeDiv;
+  return homeDiv;
 };

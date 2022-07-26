@@ -1,24 +1,29 @@
 // Este es el punto de entrada de tu aplicacion
-import { Home } from './component/Home.js';
-import { Register } from './component/Register.js';
+import { home } from './component/Home.js';
+import { register } from './component/Register.js';
 
 const rootDiv = document.getElementById('root');
 
-const Routes = {
-  './': Home,
-  './Register': Register,
+const routes = {
+  '/': home,
+  '/register': register,
 };
 
-rootDiv.appendChild = Routes[window.location.pathname];
-const pathname1 = window.location.pathname;
+export const navigation = (pathname) => {
+  window.history.pushState(
+    {}, // 1er parametro es el estado, que en ese caso lo estamos enviando vacío
+    pathname, // 2do parametro Titulo, enviamos el mismo que recibimos
+    window.location.origin + pathname,
+  ); // 3ro parametro es la ruta que queremos asignar
 
-// const changeView = () => {
-//   switch (Route) {
-//     case './': return rootDiv.appendChild(Routes.Home());
-//     case './ Register': return rootDiv.appendChild(Routes.Register());
-//     default:
-//       break;
-//   }
+  while (rootDiv.firstChild) {
+    rootDiv.removeChild(rootDiv.firstChild);
+  }
+  rootDiv.appendChild(routes[pathname]());
+};
 
-//   return changeView;
-// };
+window.onpopstate = () => { // guarda la ultima navegacion
+  rootDiv.appendChild(routes[window.location.pathname]());
+};
+
+rootDiv.appendChild(routes[window.location.pathname]());
