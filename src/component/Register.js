@@ -1,6 +1,4 @@
-
 // eslint-disable-next-line import/no-cycle
-
 import { navigation } from '../main.js';
 
 export const register = () => {
@@ -24,9 +22,6 @@ export const register = () => {
   buttonBackToHome.textContent = 'Ir al Inicio';
 
   buttonRegister.addEventListener('click', () => navigation('/newUser'));
-
-  buttonBackToHome.textContent = 'Regresar a Login';
-
 
   buttonBackToHome.addEventListener('click', () => navigation('/'));
 
