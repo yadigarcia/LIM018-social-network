@@ -1,4 +1,4 @@
-// import { Navigation } from '../main.js';
+import { navigation } from '../main.js';
 
 export const home = () => {
   const homeDiv = document.createElement('div');

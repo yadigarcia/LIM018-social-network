@@ -1,3 +1,5 @@
+import { navigation } from '../main.js';
+
 export const register = () => {
   const registerDiv = document.createElement('div');
 
@@ -6,7 +8,9 @@ export const register = () => {
   const buttonBackToHome = document.createElement('button');
 
   buttonRegister.textContent = 'Registarse';
-  buttonBackToHome.textContent = 'Regresar';
+  buttonBackToHome.textContent = 'Regresar a Login';
+
+  buttonBackToHome.addEventListener('click', () => navigation('/'));
 
   registerDiv.appendChild(buttonRegister);
   registerDiv.appendChild(buttonBackToHome);
