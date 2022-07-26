@@ -12,7 +12,12 @@ const routes = {
 };
 
 export const navigation = (pathname) => {
-  window.history.pushState({}, pathname, window.location.origin + pathname);
+  window.history.pushState(
+    {}, // 1er parametro es el estado, que en ese caso lo estamos enviando vacío
+    pathname, // 2do parametro Titulo, enviamos el mismo que recibimos
+    window.location.origin + pathname,
+  ); // 3ro parametro es la ruta que queremos asignar
+
 
   while (rootDiv.firstChild) {
     rootDiv.removeChild(rootDiv.firstChild);
@@ -21,8 +26,10 @@ export const navigation = (pathname) => {
   rootDiv.appendChild(routes[pathname]());
 };
 
-rootDiv.appendChild(routes[window.location.pathname]());
-
-window.onpopstate = () => {
+window.onpopstate = () => { // guarda la ultima navegacion
   rootDiv.appendChild(routes[window.location.pathname]());
 };
+
+
+
+
