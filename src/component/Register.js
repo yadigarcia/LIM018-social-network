@@ -36,8 +36,6 @@ export const register = () => {
   buttonRegister.textContent = 'Registarse';
   buttonBackToHome.textContent = 'Iniciar Sesión';
 
-  buttonRegister.addEventListener('click', () => navigation('/newUser'));
-
   buttonBackToHome.addEventListener('click', () => navigation('/'));
 
   registerDiv.appendChild(containerRegisterDiv);
