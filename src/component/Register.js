@@ -10,7 +10,23 @@ export const register = () => {
 
   const welcomeRegister = document.createElement('div');
   welcomeRegister.classList.add('welcomeRegister');
-  welcomeRegister.textContent = 'Bienvenido Viajero!';
+  welcomeRegister.textContent = 'Regístrate';
+
+  const registerNombres = document.createElement('input');
+  registerNombres.classList.add('registerimputs');
+  registerNombres.setAttribute('placeholder', 'Escribe tu nombre');
+
+  const registerApellidos = document.createElement('input');
+  registerApellidos.classList.add('registerimputs');
+  registerApellidos.setAttribute('placeholder', 'Escribe tus apellidos');
+
+  const registerEmail = document.createElement('input');
+  registerEmail.classList.add('registerimputs');
+  registerEmail.setAttribute('placeholder', 'Escribe tu Email');
+
+  const registerPasword = document.createElement('input');
+  registerPasword.classList.add('registerimputs');
+  registerPasword.setAttribute('placeholder', 'Escribe tu contraseña');
 
   const buttonRegister = document.createElement('button');
   buttonRegister.classList.add('buttonStyle');
@@ -18,15 +34,19 @@ export const register = () => {
   buttonBackToHome.classList.add('buttonStyle');
 
   buttonRegister.textContent = 'Registarse';
-
-  buttonBackToHome.textContent = 'Ir al Inicio';
+  buttonBackToHome.textContent = 'Iniciar Sesión';
 
   buttonRegister.addEventListener('click', () => navigation('/newUser'));
 
   buttonBackToHome.addEventListener('click', () => navigation('/'));
 
   registerDiv.appendChild(containerRegisterDiv);
-  registerDiv.appendChild(welcomeRegister);
+  containerRegisterDiv.appendChild(welcomeRegister);
+  containerRegisterDiv.appendChild(registerNombres);
+  containerRegisterDiv.appendChild(registerApellidos);
+  containerRegisterDiv.appendChild(registerEmail);
+  containerRegisterDiv.appendChild(registerPasword);
+
   containerRegisterDiv.appendChild(buttonRegister);
   containerRegisterDiv.appendChild(buttonBackToHome);
 
