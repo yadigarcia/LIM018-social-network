@@ -30,13 +30,13 @@ export const register = () => {
 
   const buttonRegister = document.createElement('button');
   buttonRegister.classList.add('buttonStyle');
-  const buttonBackToHome = document.createElement('button');
-  buttonBackToHome.classList.add('buttonStyle');
+  const buttonBackToLogin = document.createElement('button');
+  buttonBackToLogin.classList.add('buttonStyle');
 
   buttonRegister.textContent = 'Registarse';
-  buttonBackToHome.textContent = 'Iniciar Sesión';
+  buttonBackToLogin.textContent = 'Iniciar Sesión';
 
-  buttonBackToHome.addEventListener('click', () => navigation('/'));
+  buttonBackToLogin.addEventListener('click', () => navigation('/'));
 
   registerDiv.appendChild(containerRegisterDiv);
   containerRegisterDiv.appendChild(welcomeRegister);
@@ -46,7 +46,7 @@ export const register = () => {
   containerRegisterDiv.appendChild(registerPasword);
 
   containerRegisterDiv.appendChild(buttonRegister);
-  containerRegisterDiv.appendChild(buttonBackToHome);
+  containerRegisterDiv.appendChild(buttonBackToLogin);
 
   return registerDiv;
 };
