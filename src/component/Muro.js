@@ -2,21 +2,21 @@
 import { navigation } from '../main.js';
 
 export const muro = () => {
-  const loginDiv = document.createElement('div');
-  loginDiv.classList.add('loginDiv');
+  const muroDiv = document.createElement('form');
+  muroDiv.classList.add('muroDiv');
 
-  const contentloginDiv = document.createElement('div');
-  contentloginDiv.classList.add('contentloginDiv');
+  const contentMuroDiv = document.createElement('div');
+  contentMuroDiv.classList.add('contentMuroDiv');
 
-  const buttonBackToHome = document.createElement('button');
-  buttonBackToHome.classList.add('buttonStyle');
+  const buttonBackToLogin = document.createElement('button');
+  buttonBackToLogin.classList.add('buttonStyle');
 
-  buttonBackToHome.textContent = 'Ir al Inicio';
+  buttonBackToLogin.textContent = 'Ir al Inicio';
 
-  buttonBackToHome.addEventListener('click', () => navigation('/'));
+  buttonBackToLogin.addEventListener('click', () => navigation('/'));
 
-  contentloginDiv.appendChild(buttonBackToHome);
-  loginDiv.appendChild(contentloginDiv);
+  contentMuroDiv.appendChild(buttonBackToLogin);
+  muroDiv.appendChild(contentMuroDiv);
 
-  return loginDiv;
+  return muroDiv;
 };

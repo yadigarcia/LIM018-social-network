@@ -2,10 +2,10 @@
 import { navigation } from '../main.js';
 
 export const login = () => {
-  const homeDiv = document.createElement('div');
-  homeDiv.classList.add('homeDiv');
-  const containerHomeDiv = document.createElement('div');
-  containerHomeDiv.classList.add('containerHomeDiv');
+  const loginDiv = document.createElement('div');
+  loginDiv.classList.add('loginDiv');
+  const containerLoginDiv = document.createElement('div');
+  containerLoginDiv.classList.add('containerLoginDiv');
 
   const inputEmail = document.createElement('input');
   inputEmail.classList.add('inputEmailPaword');
@@ -31,12 +31,12 @@ export const login = () => {
   buttonLogin.addEventListener('click', () => navigation('/muro'));
   buttonRegister.addEventListener('click', () => navigation('/register'));
 
-  homeDiv.appendChild(containerHomeDiv);
-  containerHomeDiv.appendChild(inputEmail);
-  containerHomeDiv.appendChild(inputPasword);
-  containerHomeDiv.appendChild(buttonLogin);
-  containerHomeDiv.appendChild(questionAboutCount);
-  containerHomeDiv.appendChild(buttonRegister);
+  loginDiv.appendChild(containerLoginDiv);
+  containerLoginDiv.appendChild(inputEmail);
+  containerLoginDiv.appendChild(inputPasword);
+  containerLoginDiv.appendChild(buttonLogin);
+  containerLoginDiv.appendChild(questionAboutCount);
+  containerLoginDiv.appendChild(buttonRegister);
 
-  return homeDiv;
+  return loginDiv;
 };
