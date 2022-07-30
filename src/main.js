@@ -1,29 +1,28 @@
-// Este es el punto de entrada de tu aplicacion
-import { home } from './component/Home.js';
+// eslint-disable-next-line import/no-cycle
+import { login } from './component/Login.js';
+import { muro } from './component/Muro.js';
 import { register } from './component/Register.js';
 
 const rootDiv = document.getElementById('root');
 
 const routes = {
-  '/': home,
+  '/': login,
   '/register': register,
+  '/muro': muro,
 };
 
 export const navigation = (pathname) => {
-  window.history.pushState(
-    {}, // 1er parametro es el estado, que en ese caso lo estamos enviando vacío
-    pathname, // 2do parametro Titulo, enviamos el mismo que recibimos
-    window.location.origin + pathname,
-  ); // 3ro parametro es la ruta que queremos asignar
+  window.history.pushState({}, pathname, window.location.origin + pathname);
 
   while (rootDiv.firstChild) {
     rootDiv.removeChild(rootDiv.firstChild);
   }
+
   rootDiv.appendChild(routes[pathname]());
 };
 
-window.onpopstate = () => { // guarda la ultima navegacion
+rootDiv.appendChild(routes[window.location.pathname]());
+
+window.onpopstate = () => {
   rootDiv.appendChild(routes[window.location.pathname]());
 };
-
-rootDiv.appendChild(routes[window.location.pathname]());
