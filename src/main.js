@@ -1,14 +1,14 @@
-// Este es el punto de entrada de tu aplicacion
-import { home } from './component/Home.js';
-import { login } from './component/login.js';
+// eslint-disable-next-line import/no-cycle
+import { login } from './component/Login.js';
+import { muro } from './component/Muro.js';
 import { register } from './component/Register.js';
 
 const rootDiv = document.getElementById('root');
 
 const routes = {
-  '/': home,
+  '/': login,
   '/register': register,
-  '/login': login,
+  '/muro': muro,
 };
 
 export const navigation = (pathname) => {

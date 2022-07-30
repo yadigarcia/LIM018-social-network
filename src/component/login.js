@@ -2,21 +2,41 @@
 import { navigation } from '../main.js';
 
 export const login = () => {
-  const loginDiv = document.createElement('div');
-  loginDiv.classList.add('loginDiv');
+  const homeDiv = document.createElement('div');
+  homeDiv.classList.add('homeDiv');
+  const containerHomeDiv = document.createElement('div');
+  containerHomeDiv.classList.add('containerHomeDiv');
 
-  const contentloginDiv = document.createElement('div');
-  contentloginDiv.classList.add('contentloginDiv');
+  const inputEmail = document.createElement('input');
+  inputEmail.classList.add('inputEmailPaword');
+  inputEmail.setAttribute('placeholder', 'Escribe tu Email');
 
-  const buttonBackToHome = document.createElement('button');
-  buttonBackToHome.classList.add('buttonStyle');
+  const inputPasword = document.createElement('input');
+  inputPasword.classList.add('inputEmailPaword');
+  inputPasword.setAttribute('placeholder', 'Escribe tu contraseña');
 
-  buttonBackToHome.textContent = 'Ir al Inicio';
+  const buttonLogin = document.createElement('button');
+  buttonLogin.classList.add('buttonStyle');
 
-  buttonBackToHome.addEventListener('click', () => navigation('/'));
+  const questionAboutCount = document.createElement('p');
+  questionAboutCount.classList.add('questionAboutCount');
+  questionAboutCount.textContent = '¿No tengo cuenta?';
 
-  contentloginDiv.appendChild(buttonBackToHome);
-  loginDiv.appendChild(contentloginDiv);
+  const buttonRegister = document.createElement('button');
+  buttonRegister.classList.add('buttonStyle');
 
-  return loginDiv;
+  buttonLogin.textContent = 'Ingresar';
+  buttonRegister.textContent = 'Crear Cuenta';
+
+  buttonLogin.addEventListener('click', () => navigation('/muro'));
+  buttonRegister.addEventListener('click', () => navigation('/register'));
+
+  homeDiv.appendChild(containerHomeDiv);
+  containerHomeDiv.appendChild(inputEmail);
+  containerHomeDiv.appendChild(inputPasword);
+  containerHomeDiv.appendChild(buttonLogin);
+  containerHomeDiv.appendChild(questionAboutCount);
+  containerHomeDiv.appendChild(buttonRegister);
+
+  return homeDiv;
 };
