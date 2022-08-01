@@ -37,11 +37,16 @@
 }
 
 .muroDiv{
-background-color: black;
-margin: 0;
+  background:url('https://www.lumen-colombia.com/blog/wp-content/uploads/2017/01/bavaria-1617529_1920-683x1024.jpg'); 
+
+  height: 100vh;
+  z-index: 1;
+/*argin: 0;
 padding: 0;
 height: 100vh;
 z-index: 1;
+  display: flex;
+  flex-flow: column wrap; */
 }
 
 /* ------style button-------- */
@@ -157,4 +162,18 @@ z-index: 1;
   padding: 1%;
   margin-top:10%;
  justify-content: center;
+}
+
+.contentMuroForm{
+   display: flex;
+  flex-flow: column wrap; 
+}
+
+.titleComment{
+  background: #1d5011;
+
+
+}
+.commentMuro{
+  color:black;
 }
