@@ -4,7 +4,7 @@ import { muro } from './component/Muro.js';
 import { register } from './component/Register.js';
 
 const rootDiv = document.getElementById('root');
-
+// whitch
 const routes = {
   '/': login,
   '/register': register,
@@ -26,3 +26,4 @@ rootDiv.appendChild(routes[window.location.pathname]());
 window.onpopstate = () => {
   rootDiv.appendChild(routes[window.location.pathname]());
 };
+// whitch
