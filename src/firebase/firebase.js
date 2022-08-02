@@ -3,7 +3,7 @@
 // Import the functions you need from the SDKs you need
 // eslint-disable-next-line import/no-cycle
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-app.js';
-import { } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-auth.js';
+import { getAuth, createUserWithEmailAndPassword} from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-auth.js';
 import {
   getFirestore, // getFirestore nos permite conectarnos con firestore
   collection, // collection nos permite creae una tabla o coleccion de datos en firestore
@@ -37,3 +37,19 @@ export const savetask = (title, description) => {
 
 // Funcion para obtener datos de Firestore
 export const getTask = () => getDocs(collection(db, 'asks'));
+
+// ------- funtion for Autenticaciones new Users - Register-----------//
+
+export const auth = getAuth();
+// createUserWithEmailAndPassword(auth, email, password)
+//   .then((userCredential) => {
+//     // Signed in
+//     const user = userCredential.user;
+//     // ...
+//   })
+//   .catch((error) => {
+//     const errorCode = error.code;
+//     const errorMessage = error.message;
+//     // ..
+//   });
+
