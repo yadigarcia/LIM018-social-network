@@ -2,41 +2,54 @@
 import { navigation } from '../main.js';
 
 export const login = () => {
-  const loginDiv = document.createElement('div');
-  loginDiv.classList.add('loginDiv');
-  const containerLoginDiv = document.createElement('div');
-  containerLoginDiv.classList.add('containerLoginDiv');
+  const windowlogin = document.createElement('div');
+  windowlogin.classList.add('windowlogin');
 
-  const inputEmail = document.createElement('input');
-  inputEmail.classList.add('inputEmailPaword');
-  inputEmail.setAttribute('placeholder', 'Escribe tu Email');
+  const formRegister = document.createElement('form');
+  formRegister.classList.add('formviewlogin');
 
-  const inputPasword = document.createElement('input');
-  inputPasword.classList.add('inputEmailPaword');
-  inputPasword.setAttribute('placeholder', 'Escribe tu contraseña');
+  const loginEmailDiv = document.createElement('div');
+  const loginEmail = document.createElement('input');
+  loginEmail.classList.add('inputslogin');
+  loginEmail.setAttribute('placeholder', 'Escribe tu Email');
 
+  const loginPaswordDiv = document.createElement('div');
+  const loginPasword = document.createElement('input');
+  loginPasword.classList.add('inputslogin');
+  loginPasword.setAttribute('placeholder', 'Escribe tu contraseña');
+
+  const btnLoginDiv = document.createElement('div');
   const buttonLogin = document.createElement('button');
   buttonLogin.classList.add('buttonStyle');
+  btnLoginDiv.classList.add('buttonStyleLogin');
 
-  const questionAboutCount = document.createElement('p');
-  questionAboutCount.classList.add('questionAboutCount');
-  questionAboutCount.textContent = '¿No tengo cuenta?';
+  const loginQuestionDiv = document.createElement('div');
+  const loginQuestionCount = document.createElement('p');
+  loginQuestionCount.classList.add('questionAboutCount');
+  loginQuestionDiv.classList.add('questionlogin');
+  loginQuestionCount.textContent = '¿No tengo cuenta?';
 
-  const buttonRegister = document.createElement('button');
-  buttonRegister.classList.add('buttonStyle');
+  const btnToRegister = document.createElement('button');
+  btnToRegister.classList.add('buttonStyle');
 
   buttonLogin.textContent = 'Ingresar';
-  buttonRegister.textContent = 'Crear Cuenta';
+  btnToRegister.textContent = 'Crear Cuenta';
 
   buttonLogin.addEventListener('click', () => navigation('/muro'));
-  buttonRegister.addEventListener('click', () => navigation('/register'));
+  btnToRegister.addEventListener('click', () => navigation('/register'));
 
-  loginDiv.appendChild(containerLoginDiv);
-  containerLoginDiv.appendChild(inputEmail);
-  containerLoginDiv.appendChild(inputPasword);
-  containerLoginDiv.appendChild(buttonLogin);
-  containerLoginDiv.appendChild(questionAboutCount);
-  containerLoginDiv.appendChild(buttonRegister);
+  windowlogin.appendChild(formRegister);
 
-  return loginDiv;
+  loginEmailDiv.appendChild(loginEmail);
+  loginPaswordDiv.appendChild(loginPasword);
+  loginQuestionDiv.appendChild(loginQuestionCount);
+  btnLoginDiv.appendChild(buttonLogin);
+  btnLoginDiv.appendChild(loginQuestionDiv);
+  btnLoginDiv.appendChild(btnToRegister);
+
+  formRegister.appendChild(loginEmailDiv);
+  formRegister.appendChild(loginPaswordDiv);
+  formRegister.appendChild(btnLoginDiv);
+
+  return windowlogin;
 };
