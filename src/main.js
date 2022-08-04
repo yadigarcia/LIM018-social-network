@@ -1,5 +1,6 @@
+/* eslint-disable import/no-cycle */
 // eslint-disable-next-line import/no-cycle
-import { login } from './component/Login.js';
+import { login } from './component/login.js';
 import { muro } from './component/Muro.js';
 import { register } from './component/Register.js';
 

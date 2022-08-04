@@ -1,7 +1,8 @@
-/* eslint-disable no-undef */
-// eslint-disable-next-line import/no-cycle
+/* eslint-disable import/no-cycle */
 import { navigation } from '../main.js';
-import { auth } from '../firebase/firebase.js';
+import {
+  auth, database, createUserWithEmailAndPassword, set, ref,
+} from '../firebase/firebase.js';
 
 export const register = () => {
   const windowRegister = document.createElement('div');
@@ -14,15 +15,15 @@ export const register = () => {
   welcomeRegister.classList.add('welcomeRegister');
   welcomeRegister.textContent = 'Regístrate en esta nueva aventura viajero!';
 
-  const registerNombresDiv = document.createElement('div');
-  const registerNombres = document.createElement('input');
-  registerNombres.setAttribute('placeholder', 'Escribe tu nombre');
-  registerNombres.classList.add('inputs');
+  const registerNameDiv = document.createElement('div');
+  const registerName = document.createElement('input');
+  registerName.setAttribute('placeholder', 'Escribe tu nombre');
+  registerName.classList.add('inputs');
 
-  const registerApellidosDiv = document.createElement('div');
-  const registerApellidos = document.createElement('input');
-  registerApellidos.setAttribute('placeholder', 'Escribe tus apellidos');
-  registerApellidos.classList.add('inputs');
+  const registerLastNameDiv = document.createElement('div');
+  const registerLastName = document.createElement('input');
+  registerLastName.setAttribute('placeholder', 'Escribe tus apellidos');
+  registerLastName.classList.add('inputs');
 
   const registerEmailDiv = document.createElement('div');
   const registerEmail = document.createElement('input');
@@ -51,13 +52,13 @@ export const register = () => {
   windowRegister.appendChild(formRegister);
 
   formRegister.appendChild(welcomeRegister);
-  formRegister.appendChild(registerNombresDiv);
-  formRegister.appendChild(registerApellidosDiv);
+  formRegister.appendChild(registerNameDiv);
+  formRegister.appendChild(registerLastNameDiv);
   formRegister.appendChild(registerEmailDiv);
   formRegister.appendChild(registerPaswordDiv);
 
-  registerNombresDiv.appendChild(registerNombres);
-  registerApellidosDiv.appendChild(registerApellidos);
+  registerNameDiv.appendChild(registerName);
+  registerLastNameDiv.appendChild(registerLastName);
   registerEmailDiv.appendChild(registerEmail);
   registerPaswordDiv.appendChild(registerPasword);
 
@@ -66,16 +67,30 @@ export const register = () => {
   formRegister.appendChild(btnsRegister);
 
   buttonBackToLogin.addEventListener('click', () => navigation('/'));
+
   buttonRegister.addEventListener('click', (e) => {
     e.preventDefault();
     const password = registerPasword.value;
     const email = registerEmail.value;
+    const username = registerName.value;
 
-    auth
-      .createUserWithEmailAndPassword(email, password)
+    createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        buttonRegister.reset();
-        console.log(hola);
+        // Signed in
+        formRegister.reset(userCredential);
+        const user = userCredential.user;
+        set(ref(database, `user/${user.uid}`), {
+          username,
+          email,
+        });
+
+        alert('Usuario Creado');
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+
+        alert(`${errorCode} ${errorMessage}`);
       });
   });
 
