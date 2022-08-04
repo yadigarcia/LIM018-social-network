@@ -123,6 +123,7 @@
 }
 
 
+
  .inputs{
    border-radius: 8px;
    margin-top:10%;
@@ -144,6 +145,13 @@ height: 100vh;
 z-index: 1;
   display: flex;
   flex-flow: column wrap; */
+=======
+.registerimputs{
+  border-radius: 2px;
+  padding: 1%;
+  margin-top:10%;
+ justify-content: center;
+
 }
 
 .contentMuroForm{
@@ -152,10 +160,24 @@ z-index: 1;
 }
 
 .titleComment{
-  background: #1d5011;
-
-
+  background: #99aff1;
+  border-radius: 8px;
+  margin: 10%;
 }
+.taskDescriptio{
+  background: #99aff1;
+  border-radius: 8px;
+  margin: 2%;
+}
+
 .commentMuro{
   color:black;
-}
+  border-radius: 4px;
+
+
+  }
+  .titlepost{
+background-color: rgb(141, 203, 236);
+border-radius: 8px;
+margin: 10%;
+  }
