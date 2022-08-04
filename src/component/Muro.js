@@ -1,11 +1,31 @@
 // eslint-disable-next-line import/no-cycle
 import { navigation } from '../main.js';
-// import { savetask, getTask } from '../firebase/firebase.js';
+import { savetask, getTask } from '../firebase/firebase.js';
 
 export const muro = () => {
   const muroDiv = document.createElement('div');
   muroDiv.classList.add('muroDiv');
   // muroDiv.id.add = ('task-form');
+
+  const headerContent = document.createElement('div');
+  headerContent.classList.add('headerContent');
+
+  const logoContent = document.createElement('div');
+  logoContent.classList.add('logoContent');
+  const logo = document.createElement('img');
+  logo.classList.add('logo');
+  const logoName = document.createElement('p');
+  logoName.classList.add('logoName');
+  logoName.textContent = 'TRAVELERS';
+
+  const iconsContent = document.createElement('div');
+  iconsContent.classList.add('iconsContent');
+
+  const iconSearch = document.createElement('i');
+  iconSearch.classList.add('icon');
+
+  logoContent.appendChild('logo');
+  logoContent.appendChild('logoName');
 
   const contentMuroForm = document.createElement('form');
   contentMuroForm.classList.add('contentMuroForm');

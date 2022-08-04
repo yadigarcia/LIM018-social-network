@@ -9,7 +9,7 @@ export const register = () => {
   windowRegister.classList.add('windowRegister');
 
   const formRegister = document.createElement('form');
-  formRegister.classList.add('formview');
+  formRegister.classList.add('formRegister');
 
   const welcomeRegister = document.createElement('div');
   welcomeRegister.classList.add('welcomeRegister');
@@ -77,9 +77,9 @@ export const register = () => {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
-        formRegister.reset(userCredential);
+        formRegister.reset(userCredential); // para resetear el valor del input
         const user = userCredential.user;
-        set(ref(database, `user/${user.uid}`), {
+        set(ref(database, `user/${user.uid}`), { // Envia a Realtime los campos indicados
           username,
           email,
         });

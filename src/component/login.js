@@ -20,6 +20,7 @@ export const login = () => {
   const loginPaswordDiv = document.createElement('div');
   const loginPasword = document.createElement('input');
   loginPasword.classList.add('inputslogin');
+  loginPasword.setAttribute('type', 'password', 'required');
   loginPasword.setAttribute('placeholder', 'Escribe tu contraseña');
 
   const btnLoginDiv = document.createElement('div');
@@ -79,6 +80,7 @@ export const login = () => {
         alert(`${errorCode} ${errorMessage}`);
       });
 
+    // observador
     const user = auth.currentUser;
     onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -94,7 +96,7 @@ export const login = () => {
 
   return windowlogin;
 };
- // para salir de la sesion
+// para salir de la sesion
 // variableparasalir.addEventListener('click', (e) => {
 //   e.preventDefault();
 //   signOut(auth).then(() => {
