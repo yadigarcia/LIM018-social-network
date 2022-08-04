@@ -1,52 +1,98 @@
-// eslint-disable-next-line import/no-cycle
+/* eslint-disable import/no-cycle */
 import { navigation } from '../main.js';
+import {
+  auth, database, createUserWithEmailAndPassword, set, ref,
+} from '../firebase/firebase.js';
 
 export const register = () => {
-  const registerDiv = document.createElement('div');
-  registerDiv.classList.add('registerDiv');
+  const windowRegister = document.createElement('div');
+  windowRegister.classList.add('windowRegister');
 
-  const containerRegisterDiv = document.createElement('div');
-  containerRegisterDiv.classList.add('containerRegisterDiv');
+  const formRegister = document.createElement('form');
+  formRegister.classList.add('formview');
 
   const welcomeRegister = document.createElement('div');
   welcomeRegister.classList.add('welcomeRegister');
-  welcomeRegister.textContent = 'Regístrate';
+  welcomeRegister.textContent = 'Regístrate en esta nueva aventura viajero!';
 
-  const registerNombres = document.createElement('input');
-  registerNombres.classList.add('registerimputs');
-  registerNombres.setAttribute('placeholder', 'Escribe tu nombre');
+  const registerNameDiv = document.createElement('div');
+  const registerName = document.createElement('input');
+  registerName.setAttribute('placeholder', 'Escribe tu nombre');
+  registerName.classList.add('inputs');
 
-  const registerApellidos = document.createElement('input');
-  registerApellidos.classList.add('registerimputs');
-  registerApellidos.setAttribute('placeholder', 'Escribe tus apellidos');
+  const registerLastNameDiv = document.createElement('div');
+  const registerLastName = document.createElement('input');
+  registerLastName.setAttribute('placeholder', 'Escribe tus apellidos');
+  registerLastName.classList.add('inputs');
 
+  const registerEmailDiv = document.createElement('div');
   const registerEmail = document.createElement('input');
-  registerEmail.classList.add('registerimputs');
+  registerEmail.setAttribute('type', 'email');
   registerEmail.setAttribute('placeholder', 'Escribe tu Email');
+  registerEmail.classList.add('inputs');
 
+  const registerPaswordDiv = document.createElement('div');
   const registerPasword = document.createElement('input');
-  registerPasword.classList.add('registerimputs');
   registerPasword.setAttribute('placeholder', 'Escribe tu contraseña');
+  registerPasword.setAttribute('type', 'password', 'required');
+  registerPasword.classList.add('inputs');
 
+  const btnsRegister = document.createElement('div');
   const buttonRegister = document.createElement('button');
+  buttonRegister.setAttribute('type', 'submit');
   buttonRegister.classList.add('buttonStyle');
-  const buttonBackToLogin = document.createElement('button');
-  buttonBackToLogin.classList.add('buttonStyle');
-
+  btnsRegister.classList.add('btnsRegister');
   buttonRegister.textContent = 'Registarse';
-  buttonBackToLogin.textContent = 'Iniciar Sesión';
+
+  const buttonBackToLogin = document.createElement('button');
+  buttonBackToLogin.setAttribute('type', 'submit');
+  buttonBackToLogin.classList.add('buttonStyle');
+  buttonBackToLogin.textContent = 'Atras';
+
+  windowRegister.appendChild(formRegister);
+
+  formRegister.appendChild(welcomeRegister);
+  formRegister.appendChild(registerNameDiv);
+  formRegister.appendChild(registerLastNameDiv);
+  formRegister.appendChild(registerEmailDiv);
+  formRegister.appendChild(registerPaswordDiv);
+
+  registerNameDiv.appendChild(registerName);
+  registerLastNameDiv.appendChild(registerLastName);
+  registerEmailDiv.appendChild(registerEmail);
+  registerPaswordDiv.appendChild(registerPasword);
+
+  btnsRegister.appendChild(buttonRegister);
+  btnsRegister.appendChild(buttonBackToLogin);
+  formRegister.appendChild(btnsRegister);
 
   buttonBackToLogin.addEventListener('click', () => navigation('/'));
 
-  registerDiv.appendChild(containerRegisterDiv);
-  containerRegisterDiv.appendChild(welcomeRegister);
-  containerRegisterDiv.appendChild(registerNombres);
-  containerRegisterDiv.appendChild(registerApellidos);
-  containerRegisterDiv.appendChild(registerEmail);
-  containerRegisterDiv.appendChild(registerPasword);
+  buttonRegister.addEventListener('click', (e) => {
+    e.preventDefault();
+    const password = registerPasword.value;
+    const email = registerEmail.value;
+    const username = registerName.value;
 
-  containerRegisterDiv.appendChild(buttonRegister);
-  containerRegisterDiv.appendChild(buttonBackToLogin);
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in
+        formRegister.reset(userCredential);
+        const user = userCredential.user;
+        set(ref(database, `user/${user.uid}`), {
+          username,
+          email,
+        });
 
-  return registerDiv;
+        alert('Usuario Creado');
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+
+        alert(`${errorCode} ${errorMessage}`);
+      });
+  });
+
+  return windowRegister;
 };

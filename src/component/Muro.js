@@ -1,6 +1,6 @@
 // eslint-disable-next-line import/no-cycle
 import { navigation } from '../main.js';
-import { savetask, getTask } from '../firebase/firebase.js';
+// import { savetask, getTask } from '../firebase/firebase.js';
 
 export const muro = () => {
   const muroDiv = document.createElement('div');
