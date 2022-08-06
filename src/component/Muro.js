@@ -12,20 +12,16 @@ export const muro = () => {
 
   const logoContent = document.createElement('div');
   logoContent.classList.add('logoContent');
-  const logo = document.createElement('img');
+  const logo = document.createElement('p');
   logo.classList.add('logo');
   const logoName = document.createElement('p');
   logoName.classList.add('logoName');
-  logoName.textContent = 'TRAVELERS';
 
-  const iconsContent = document.createElement('div');
+  const iconsContent = document.createElement('i');
   iconsContent.classList.add('iconsContent');
 
-  const iconSearch = document.createElement('i');
-  iconSearch.classList.add('icon');
-
-  logoContent.appendChild('logo');
-  logoContent.appendChild('logoName');
+  /* const iconSearch = document.createElement('i');
+  iconSearch.classList.add('icon'); */
 
   const contentMuroForm = document.createElement('form');
   contentMuroForm.classList.add('contentMuroForm');
@@ -33,6 +29,9 @@ export const muro = () => {
   // contentMuroForm.setAttribute('method', 'post');
   // contentMuroForm.setAttribute('type', 'submit');
   // contentMuroForm.id.add = ('task-form');
+
+  const posts = document.createElement('div');
+  posts.classList.add('posts');
 
   const titleComment = document.createElement('div');
   titleComment.classList.add('titleComment');
@@ -60,17 +59,26 @@ export const muro = () => {
   titleDescription.textContent = 'Cuéntanos tu aventura!';
   buttonsavepost.textContent = 'Guardar post';
   buttonBackToLogin.textContent = 'Ir al Inicio';
+  /// //////////////////////////////////////////////
+  headerContent.textContent = 'headerContent';
+  logoName.textContent = 'Travelers';
 
   buttonBackToLogin.addEventListener('click', () => navigation('/'));
 
+  muroDiv.appendChild(headerContent);
+  muroDiv.appendChild(posts);
+  contentMuroForm.appendChild(taskDescription);
   contentMuroForm.appendChild(titleComment);
   contentMuroForm.appendChild(commentMuro);
   contentMuroForm.appendChild(titleDescription);
   contentMuroForm.appendChild(taskDescription);
   contentMuroForm.appendChild(buttonsavepost);
-  contentMuroForm.appendChild(titlepost);
   contentMuroForm.appendChild(buttonBackToLogin);
-  muroDiv.appendChild(contentMuroForm);
+  headerContent.appendChild(logoContent);
+  logoContent.appendChild(logo);
+  logoContent.appendChild(logoName);
+  posts.appendChild(titlepost);
+  // -------------------------------avanzando----
 
   // ------------------------  -Evento para obtener los datos de firebase---------------------------
   // consults asincrona- querySnapshot es los datos que existen en este momento

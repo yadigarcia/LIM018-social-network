@@ -40,6 +40,7 @@ export const login = () => {
   buttonLogin.textContent = 'Ingresar';
   btnToRegister.textContent = 'Crear Cuenta';
 
+  buttonLogin.addEventListener('click', () => navigation('/muro'));
   btnToRegister.addEventListener('click', () => navigation('/register'));
 
   windowlogin.appendChild(formLogin);
@@ -54,7 +55,7 @@ export const login = () => {
   formLogin.appendChild(loginEmailDiv);
   formLogin.appendChild(loginPaswordDiv);
   formLogin.appendChild(btnLoginDiv);
-
+  /*
   buttonLogin.addEventListener('click', (e) => {
     e.preventDefault();
 
@@ -81,7 +82,7 @@ export const login = () => {
       });
 
     // observador
-    const user = auth.currentUser;
+    /* const user = auth.currentUser;
     onAuthStateChanged(auth, (user) => {
       if (user) {
         // ...
@@ -92,7 +93,7 @@ export const login = () => {
         // ...
       }
     });
-  });
+  }); */
 
   return windowlogin;
 };
