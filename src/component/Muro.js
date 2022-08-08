@@ -30,14 +30,23 @@ export const muro = () => {
   // contentMuroForm.setAttribute('type', 'submit');
   // contentMuroForm.id.add = ('task-form');
 
-  const posts = document.createElement('div');
-  posts.classList.add('posts');
+  const postsContainer = document.createElement('div');
+  postsContainer.classList.add('postsContainer');
+
+  const headerPostContainer = document.createElement('div');
+  headerPostContainer.classList.add('headerPostContainer');
+
+  const postUsePhoto = document.createElement('p');
+  postUsePhoto.classList.add('postUsePhoto');
+
+  const postUserName = document.createElement('p');
+  postUserName.classList.add('postUserName');
+
+  const postComments = document.createElement('input'); // commentmuro
+  postComments.classList.add('postComments');
 
   const titleComment = document.createElement('div');
   titleComment.classList.add('titleComment');
-
-  const commentMuro = document.createElement('input');
-  commentMuro.classList.add('commentMuro');
 
   const titleDescription = document.createElement('div');
   titleDescription.classList.add('titleDescription');
@@ -45,39 +54,47 @@ export const muro = () => {
   const taskDescription = document.createElement('textarea');
   taskDescription.classList.add('taskDescription');
 
-  const titlepost = document.createElement('div');
-  titlepost.classList.add('titlepost');
+  const postdescription = document.createElement('div');// tritlepost es igual a postdescription
+  postdescription.classList.add('postdescription');
 
   const buttonsavepost = document.createElement('button');
-  buttonsavepost.classList.add('buttonStyle');
+  buttonsavepost.classList.add('buttonMuro');
 
   const buttonBackToLogin = document.createElement('button');
-  buttonBackToLogin.classList.add('buttonStyle');
+  buttonBackToLogin.classList.add('buttonMuro');
 
-  commentMuro.setAttribute('placeholder', 'Escribe un título para el post');
+  postComments.setAttribute('placeholder', 'Comentario...');
   titleComment.textContent = 'TRAVELERS';
   titleDescription.textContent = 'Cuéntanos tu aventura!';
   buttonsavepost.textContent = 'Guardar post';
   buttonBackToLogin.textContent = 'Ir al Inicio';
   /// //////////////////////////////////////////////
-  headerContent.textContent = 'headerContent';
+  //  headerContent.textContent = 'headerContent';
   logoName.textContent = 'Travelers';
+  postUserName.textContent = 'postUserName';
+  postUsePhoto.textContent = 'postUsePphoto';
 
   buttonBackToLogin.addEventListener('click', () => navigation('/'));
 
   muroDiv.appendChild(headerContent);
-  muroDiv.appendChild(posts);
-  contentMuroForm.appendChild(taskDescription);
+  muroDiv.appendChild(contentMuroForm);
+  muroDiv.appendChild(buttonsavepost);
+  muroDiv.appendChild(buttonBackToLogin);
+  headerPostContainer.appendChild(postUsePhoto);
+  headerPostContainer.appendChild(postUserName);
+  contentMuroForm.appendChild(postsContainer);
+  /* contentMuroForm.appendChild(taskDescription);
   contentMuroForm.appendChild(titleComment);
   contentMuroForm.appendChild(commentMuro);
   contentMuroForm.appendChild(titleDescription);
-  contentMuroForm.appendChild(taskDescription);
-  contentMuroForm.appendChild(buttonsavepost);
-  contentMuroForm.appendChild(buttonBackToLogin);
+  contentMuroForm.appendChild(taskDescription); */
+
   headerContent.appendChild(logoContent);
   logoContent.appendChild(logo);
   logoContent.appendChild(logoName);
-  posts.appendChild(titlepost);
+  postsContainer.appendChild(headerPostContainer);
+  postsContainer.appendChild(postdescription);
+  postsContainer.appendChild(postComments);
   // -------------------------------avanzando----
 
   // ------------------------  -Evento para obtener los datos de firebase---------------------------
@@ -86,21 +103,21 @@ export const muro = () => {
     const querySnapshot = await getTask();
     let html1 = '';
     querySnapshot.forEach((doc) => {
-      console.log('kff');
+      // console.log('kff');
       // doc.data() convierte a objetos de js
       const task1 = doc.data();
       html1 += ` <div> <h3> ${task1.description}</h3> <p> ${task1.title}</p> </div> `;
       //   titleposted.innerHTML = task1.title;
       //   desciptionposted.innerHTML = task1.description;
     });
-    titlepost.innerHTML = html1;
+    postdescription.innerHTML = html1;
   });
 
   // -------------------- evento para enviar datos a Firestore
   contentMuroForm.addEventListener('submit', (e) => { // submit se ejecuta cuando se hace clic en el boton dentro del form
     e.preventDefault(); // cancerlar el evento por defecto (refrescar la pagina)
     //  console.log(taskDescription.value, commentMuro.value);
-    savetask(taskDescription.value, commentMuro.value);
+    savetask(taskDescription.value, postComments.value);
     contentMuroForm.reset(); // borra el contenido
   });
 

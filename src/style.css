@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Rajdhani&family=Roboto:wght@300&display=swap');
+/*@import url('https://fonts.googleapis.com/css2?family=Rajdhani&family=Roboto:wght@300&display=swap');*/
 
 /* -------background the view SPA-------- */
 *{
@@ -8,33 +8,37 @@
 }
 
 /* STYLE BUTTON */
-
-
 .buttonStyle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  /*  padding: 5% 70% 5% 70%;*/
-  background: #1d5011;
-  border-radius: 15px;
-
- width:20%;
+  background:rgb(2, 87, 66);
   color: #f1f6f0;
-
-  margin-top: 20%;
-  font-size: 60%;
+  border-radius: 8px;
+  margin-top:4%;
+padding: 8px;
+  font-size: 30%;
+display: flex;
+width: 100%;
+justify-content: space-around;
+border: none;
   }
 
   .buttonStyle:hover {
-    background: red;
+    background: rgb(21, 161, 161);
   }
 
-  /* .btnsRegister{
-    margin-top: 3%;
-  } */
+.btnsRegister{
+  margin: 1%;
+    padding: 0%;
+  
+    
+  }
  .buttonStyleLogin{
-  width: 20%;
- }
+  width: 55%;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 5%;
+
+
+  }
  
 
 
@@ -44,42 +48,45 @@
   background-size:cover;
   background-repeat: no-repeat;
   background-position: center;
-  height: 102vh;
+  height: 100vh;
   font-size: 30px;
-  font-weight: bolder;
-  z-index: 1;
-  justify-content: center;
   display: flex;
-  flex-direction: column;
   align-items: center;
+  flex-direction: column-reverse;
 }
 
 .formviewlogin{
-  background: rgba(248, 250, 241, 0.58);
+ background: rgba(248, 250, 241, 0.58);
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 5% 5% 5%;
   border-radius: 10px;
-  height: 50%;
-  width: 60%;
+  height: 55%;
+    margin-bottom: 5%;
     /*fuerza a la imagen a no tener margen*/
   justify-content: center;
   margin-top: 15%;
 }
 
 .inputslogin{
+  display: flex;
+ background: rgba(217, 217, 217, 1);
+  display: flex;
   border-radius: 8px;
   margin-top:10%;
-  width: 150%;
+  width: 100%;
   padding: 5%;
+  border: none;
+
+
 }
 
 
 .questionlogin{ 
-  color:black;
-  font-size: 60%;
-  margin-top: 20%;
+  color:rgb(6, 68, 52);
+  font-size: 40%;
+ 
   width: 220%;
   
 }
@@ -92,51 +99,51 @@
   background-size:cover;
   background-repeat: no-repeat;
   background-position: center;
-  height: 132vh;
+  height: 100vh;
   font-size: 30px;
   font-weight: bolder;
   z-index: 1;
-  justify-content: center;
-  display: flex;
+  padding: 30px;
+ /* justify-content: center;
+  display: flex;*/
   flex-direction: column;
   align-items: center;
+  
  }
 
 .formRegister{
-  background: rgba(248, 250, 241, 0.58);
+  background: rgba(217, 217, 217, 0.58);
   display: flex;
   flex-flow: column wrap;
   align-items: center;
-  padding: 0;
   border-radius: 15px;
-  height: 40%;
-  width:30%;
+   height: 80%;
+   justify-content: center;
 }  
-
 .welcomeRegister{
   color:#415c3b;
   font-size: 50%;
   margin-top: 0;
   padding: 0;
-  margin-bottom: 5%;  
+ /* margin-bottom: 5%;  */
   font-style: oblique;
   font-weight: bolder ;
 }
-
-
  .inputs{
+background: rgba(244, 254, 246, 1);
+color: #e00c5a;
+  border: none;
    border-radius: 8px;
    margin-top:10%;
    padding: 4%;
+   font-size: 30%;
  }
-
-
 /*STYLE MURO */
-
 .muroDiv{
-  background:black;
-color: #f1f6f0;
+background:rgb(8, 8, 8);
+color: #c0c0dd;
   height: 100vh;
+  margin: 0%;
 }
 /*
 .contentMuroForm{
@@ -172,11 +179,11 @@ margin: 10%;
     padding: 10px;
     border-radius: 10px;
     margin: 1%;
-    border: #f1f6f0;
+    border:#f1f6f0;
     height:20%;
     width:95%;
     color:rgb(242, 248, 237);/*  color de los elementos hijos*/
-    box-shadow: 2px 5px 17px; /*  sombreado*/
+   box-shadow: 1px 1px 14px; /*  sombreado*/
 }
 
   .logoContent{
@@ -189,6 +196,7 @@ margin: 10%;
 
 
  .logoName{
+  color: aquamarine;
   width: 95px;
   height:25px;
   border-bottom: 0px;
@@ -203,25 +211,51 @@ margin: 10%;
   /*   display: flex;
    flex-flow: row wrap; */
 }
-.posts{
-  background:url('img/paisaje.jpg'); 
-  display:flex;
-align-items: center;
-justify-content: center;
-  background-size: 80% 80%;
-  background-repeat: no-repeat;
-  color:rgb(242, 248, 237);/*  color de los elementos hijos*/
-  box-shadow: 2px 5px 17px; /*  sombreado*/
-  padding: 10px;
-
-margin: 1%;
-height:50%;
-width:95%;
-
- /* padding: 10px;
-  border-radius: 10px;
-  margin: 1%;
-  border: #f1f6f0;
-  height:20%;
-  width:95%;*/
+.contentMuroForm{
+background:rgb(0, 21, 11); 
+ /*border: 10px;*/
+ border-color: #3033cc;
+ border-radius: 10px;
+ margin: 1%;
+ padding: 10px;
+  height:60%;
+  width:95%;
+  color: rgb(30, 225, 95);
+  box-shadow: 1px 1px 4px;
 }
+.postsContainer{
+  /* background:url('img/paisaje.jpg'); */
+  background:url('img/paisaje.jpg');
+  border: 10px;
+  border-color: #3033cc;
+  border-radius: 10px;
+  height:80%;
+   width:100%;
+   color: rgb(30, 225, 95);
+   box-shadow: 1px 1px 4px;
+ }
+ .headerPostContainer{
+  background:rgb(0, 21, 11);
+  border: 10px;
+  border-color: #3033cc;
+  border-radius: 10px;
+  height:20%;
+   width:100%;
+   color: rgb(173, 7, 76);
+   box-shadow: 1px 1px 4px;
+ }
+ .postComments{
+  background:rgb(38, 40, 39);
+  border: 10px;
+  border-color: #3033cc;
+  border-radius: 10px;
+  height:15%;
+   width:100%;
+   color: rgb(68, 96, 222);
+   box-shadow: 1px 1px 4px;
+ }
+ .buttonMuro{
+  background:rgb(44, 197, 161);
+  border-radius: 6px;
+ border: none;
+ }

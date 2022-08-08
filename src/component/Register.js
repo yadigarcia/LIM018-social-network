@@ -26,12 +26,14 @@ export const register = () => {
   registerLastName.classList.add('inputs');
 
   const registerEmailDiv = document.createElement('div');
+  // registerEmailDiv.classList.add('inputs');
   const registerEmail = document.createElement('input');
   registerEmail.setAttribute('type', 'email');
   registerEmail.setAttribute('placeholder', 'Escribe tu Email');
   registerEmail.classList.add('inputs');
 
   const registerPaswordDiv = document.createElement('div');
+  // registerPaswordDiv.classList.add('inputs');
   const registerPasword = document.createElement('input');
   registerPasword.setAttribute('placeholder', 'Escribe tu contraseña');
   registerPasword.setAttribute('type', 'password', 'required');
@@ -47,7 +49,7 @@ export const register = () => {
   const buttonBackToLogin = document.createElement('button');
   buttonBackToLogin.setAttribute('type', 'submit');
   buttonBackToLogin.classList.add('buttonStyle');
-  buttonBackToLogin.textContent = 'Atras';
+  buttonBackToLogin.textContent = 'Login';
 
   windowRegister.appendChild(formRegister);
 
