@@ -1,6 +1,6 @@
 // eslint-disable-next-line import/no-cycle
 import { navigation } from '../main.js';
-import { savetask, getTask } from '../firebase/firebase.js';
+// import { savetask, getTask } from '../firebase/firebase.js';
 
 export const muro = () => {
   const muroDiv = document.createElement('div');
@@ -26,20 +26,29 @@ export const muro = () => {
   const taskDescription = document.createElement('textarea');
   taskDescription.classList.add('taskDescription');
 
+  const titlepost = document.createElement('div');
+  titlepost.classList.add('titlepost');
+
+  const buttonsavepost = document.createElement('button');
+  buttonsavepost.classList.add('buttonStyle');
+
   const buttonBackToLogin = document.createElement('button');
   buttonBackToLogin.classList.add('buttonStyle');
 
-  commentMuro.setAttribute('placeholder', 'Task titulo');
-  titleComment.textContent = 'Titulo:';
-  titleDescription.textContent = 'Descripcion:';
+  commentMuro.setAttribute('placeholder', 'Escribe un título para el post');
+  titleComment.textContent = 'TRAVELERS';
+  titleDescription.textContent = 'Cuéntanos tu aventura!';
+  buttonsavepost.textContent = 'Guardar post';
   buttonBackToLogin.textContent = 'Ir al Inicio';
 
-  // buttonBackToLogin.addEventListener('click', () => navigation('/'));
+  buttonBackToLogin.addEventListener('click', () => navigation('/'));
 
   contentMuroForm.appendChild(titleComment);
   contentMuroForm.appendChild(commentMuro);
   contentMuroForm.appendChild(titleDescription);
   contentMuroForm.appendChild(taskDescription);
+  contentMuroForm.appendChild(buttonsavepost);
+  contentMuroForm.appendChild(titlepost);
   contentMuroForm.appendChild(buttonBackToLogin);
   muroDiv.appendChild(contentMuroForm);
 
@@ -47,10 +56,16 @@ export const muro = () => {
   // consults asincrona- querySnapshot es los datos que existen en este momento
   window.addEventListener('DOMContentLoaded', async () => { // async se usa para que funcione await
     const querySnapshot = await getTask();
+    let html1 = '';
     querySnapshot.forEach((doc) => {
-    // doc.data() convierte a objetos de js
-      console.log(doc.data());
+      console.log('kff');
+      // doc.data() convierte a objetos de js
+      const task1 = doc.data();
+      html1 += ` <div> <h3> ${task1.description}</h3> <p> ${task1.title}</p> </div> `;
+      //   titleposted.innerHTML = task1.title;
+      //   desciptionposted.innerHTML = task1.description;
     });
+    titlepost.innerHTML = html1;
   });
 
   // -------------------- evento para enviar datos a Firestore
