@@ -1,13 +1,15 @@
 // eslint-disable-next-line import/no-cycle
 import { navigation } from '../main.js';
-import { savetask, getTask } from '../firebase/firebase.js';
+import {
+  savetask, getTask, onGetTasks,
+} from '../firebase/firebase.js';
 
 export const muro = () => {
   const muroDiv = document.createElement('div');
   muroDiv.classList.add('muroDiv');
   // muroDiv.id.add = ('task-form');
 
-  const headerContent = document.createElement('div');
+  const headerContent = document.createElement('form');
   headerContent.classList.add('headerContent');
 
   const logoContent = document.createElement('div');
@@ -23,7 +25,7 @@ export const muro = () => {
   /* const iconSearch = document.createElement('i');
   iconSearch.classList.add('icon'); */
 
-  const contentMuroForm = document.createElement('form');
+  const contentMuroForm = document.createElement('div');
   contentMuroForm.classList.add('contentMuroForm');
   //  contentMuroForm.submit();
   // contentMuroForm.setAttribute('method', 'post');
@@ -45,8 +47,8 @@ export const muro = () => {
   const postComments = document.createElement('input'); // commentmuro
   postComments.classList.add('postComments');
 
-  const titleComment = document.createElement('div');
-  titleComment.classList.add('titleComment');
+  const userComment = document.createElement('p');
+  userComment.classList.add('userComment');
 
   const titleDescription = document.createElement('div');
   titleDescription.classList.add('titleDescription');
@@ -63,23 +65,22 @@ export const muro = () => {
   const buttonBackToLogin = document.createElement('button');
   buttonBackToLogin.classList.add('buttonMuro');
 
-  postComments.setAttribute('placeholder', 'Comentario...');
-  titleComment.textContent = 'TRAVELERS';
+  postComments.setAttribute('placeholder', 'Nuevo post...');
+  userComment.textContent = 'Arkelly';
   titleDescription.textContent = 'Cuéntanos tu aventura!';
   buttonsavepost.textContent = 'Guardar post';
   buttonBackToLogin.textContent = 'Ir al Inicio';
   /// //////////////////////////////////////////////
   //  headerContent.textContent = 'headerContent';
   logoName.textContent = 'Travelers';
-  postUserName.textContent = 'postUserName';
-  postUsePhoto.textContent = 'postUsePphoto';
+  postUserName.textContent = 'Arkelly';
+  // postUsePhoto.textContent = 'postUsePphoto';
 
   buttonBackToLogin.addEventListener('click', () => navigation('/'));
 
   muroDiv.appendChild(headerContent);
   muroDiv.appendChild(contentMuroForm);
-  muroDiv.appendChild(buttonsavepost);
-  muroDiv.appendChild(buttonBackToLogin);
+
   headerPostContainer.appendChild(postUsePhoto);
   headerPostContainer.appendChild(postUserName);
   contentMuroForm.appendChild(postsContainer);
@@ -94,31 +95,46 @@ export const muro = () => {
   logoContent.appendChild(logoName);
   postsContainer.appendChild(headerPostContainer);
   postsContainer.appendChild(postdescription);
+  postsContainer.appendChild(userComment);
   postsContainer.appendChild(postComments);
+  postsContainer.appendChild(buttonsavepost);
+  postsContainer.appendChild(buttonBackToLogin);
   // -------------------------------avanzando----
 
   // ------------------------  -Evento para obtener los datos de firebase---------------------------
   // consults asincrona- querySnapshot es los datos que existen en este momento
   window.addEventListener('DOMContentLoaded', async () => { // async se usa para que funcione await
-    const querySnapshot = await getTask();
-    let html1 = '';
-    querySnapshot.forEach((doc) => {
-      // console.log('kff');
-      // doc.data() convierte a objetos de js
-      const task1 = doc.data();
-      html1 += ` <div> <h3> ${task1.description}</h3> <p> ${task1.title}</p> </div> `;
+    onGetTasks((querySnapshot) => {
+      let html1 = '';
+      querySnapshot.forEach((doc) => {
+        //   console.log('kff');
+        // doc.data();convierte a objetos de js
+        const bdmuro = doc.data();
+        html1 += ` <div>
+         <h3> ${bdmuro.postDescription}</h3> 
+         <p> ${bdmuro.userName}</p>
+         <Input placeholder="Comentarios..."></Input>
+         <button>Guardar Comentario<button>
+         <button>Borrar Post<button>
+         <button>Editar Post</<button>
+         </div> `
+        ;
       //   titleposted.innerHTML = task1.title;
       //   desciptionposted.innerHTML = task1.description;
+      });
+      postdescription.innerHTML = html1;
     });
-    postdescription.innerHTML = html1;
   });
 
   // -------------------- evento para enviar datos a Firestore
-  contentMuroForm.addEventListener('submit', (e) => { // submit se ejecuta cuando se hace clic en el boton dentro del form
+  // postsContainer.addEventListener('submit', (e) => { // submit se ejecuta cuando se hace clic en el boton dentro del form
+  buttonsavepost.addEventListener('click', (e) => { // submit se ejecuta cuando se hace clic en el boton dentro del form
+  //  console.log('holi');
     e.preventDefault(); // cancerlar el evento por defecto (refrescar la pagina)
-    //  console.log(taskDescription.value, commentMuro.value);
-    savetask(taskDescription.value, postComments.value);
-    contentMuroForm.reset(); // borra el contenido
+    //   console.log(taskDescription.value, commentMuro.value);
+    savetask('Arkelly', postComments.value);
+    console.log(userComment.value, postComments.value);
+  //  postsContainer.reset(); // borra el contenido
   });
 
   return muroDiv;
