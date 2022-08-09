@@ -20,6 +20,7 @@ export const login = () => {
   const loginPaswordDiv = document.createElement('div');
   const loginPasword = document.createElement('input');
   loginPasword.classList.add('inputslogin');
+  loginPasword.setAttribute('type', 'password', 'required');
   loginPasword.setAttribute('placeholder', 'Escribe tu contraseña');
 
   const btnLoginDiv = document.createElement('div');
@@ -39,6 +40,7 @@ export const login = () => {
   buttonLogin.textContent = 'Ingresar';
   btnToRegister.textContent = 'Crear Cuenta';
 
+  buttonLogin.addEventListener('click', () => navigation('/muro'));
   btnToRegister.addEventListener('click', () => navigation('/register'));
 
   windowlogin.appendChild(formLogin);
@@ -53,7 +55,7 @@ export const login = () => {
   formLogin.appendChild(loginEmailDiv);
   formLogin.appendChild(loginPaswordDiv);
   formLogin.appendChild(btnLoginDiv);
-
+  /*
   buttonLogin.addEventListener('click', (e) => {
     e.preventDefault();
 
@@ -79,7 +81,8 @@ export const login = () => {
         alert(`${errorCode} ${errorMessage}`);
       });
 
-    const user = auth.currentUser;
+    // observador
+    /* const user = auth.currentUser;
     onAuthStateChanged(auth, (user) => {
       if (user) {
         // ...
@@ -90,11 +93,11 @@ export const login = () => {
         // ...
       }
     });
-  });
+  }); */
 
   return windowlogin;
 };
- // para salir de la sesion
+// para salir de la sesion
 // variableparasalir.addEventListener('click', (e) => {
 //   e.preventDefault();
 //   signOut(auth).then(() => {
