@@ -12,7 +12,7 @@ import {
   collection, // collection nos permite creae una tabla o coleccion de datos en firestore
   addDoc, // Nos permite indicar a FireStre que es lo que quiero hacer (guardar, actualizar,etc)
   getDocs, // Permite traer datos de Firestore
-  onSnapshot,
+  onSnapshot, // Permite mostrar los datos cuando son enviados
 } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-firestore.js';
 
 const firebaseConfig = {
