@@ -55,7 +55,7 @@ export const login = () => {
   formLogin.appendChild(loginEmailDiv);
   formLogin.appendChild(loginPaswordDiv);
   formLogin.appendChild(btnLoginDiv);
-  /*
+
   buttonLogin.addEventListener('click', (e) => {
     e.preventDefault();
 
@@ -92,8 +92,8 @@ export const login = () => {
         // User is signed out
         // ...
       }
-    });
-  }); */
+    }); */
+  });
 
   return windowlogin;
 };

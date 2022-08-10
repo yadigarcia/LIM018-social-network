@@ -180,7 +180,7 @@ margin: 10%;
     border-radius: 10px;
     margin: 1%;
     border:#f1f6f0;
-    height:20%;
+    height:10%;
     width:95%;
     color:rgb(242, 248, 237);/*  color de los elementos hijos*/
    box-shadow: 1px 1px 14px; /*  sombreado*/
@@ -218,7 +218,7 @@ background:rgb(0, 21, 11);
  border-radius: 10px;
  margin: 1%;
  padding: 10px;
-  height:60%;
+  height:80%;
   width:95%;
   color: rgb(30, 225, 95);
   box-shadow: 1px 1px 4px;
@@ -229,7 +229,7 @@ background:rgb(0, 21, 11);
   border: 10px;
   border-color: #3033cc;
   border-radius: 10px;
-  height:80%;
+  height:90%;
    width:100%;
    color: rgb(30, 225, 95);
    box-shadow: 1px 1px 4px;
@@ -239,7 +239,7 @@ background:rgb(0, 21, 11);
   border: 10px;
   border-color: #3033cc;
   border-radius: 10px;
-  height:20%;
+  height:15%;
    width:100%;
    color: rgb(173, 7, 76);
    box-shadow: 1px 1px 4px;
@@ -258,4 +258,12 @@ background:rgb(0, 21, 11);
   background:rgb(44, 197, 161);
   border-radius: 6px;
  border: none;
+ }
+ .postUsePhoto{
+  background:url('img/userlogo.JPG'); 
+   background-size: 35px 35px;
+   background-repeat: no-repeat;
+   border-radius: 30px;
+   width: 35px;
+    height:35px;
  }
