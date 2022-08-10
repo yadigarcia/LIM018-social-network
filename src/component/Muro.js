@@ -125,7 +125,7 @@ export const muro = () => {
   // ------------------------  -Evento para obtener los datos de firebase---------------------------
   // consults asincrona- querySnapshot es los datos que existen en este momento
   window.addEventListener('DOMContentLoaded', async () => { // async se usa para que funcione await
-  /*  onGetTasks((querySnapshot) => {
+   onGetTasks((querySnapshot) => {
       let html1 = '';
       querySnapshot.forEach((doc) => {
         //   console.log('kff');
@@ -140,12 +140,12 @@ export const muro = () => {
       //   desciptionposted.innerHTML = task1.description;
       });
       post.innerHTML = html1;
-    }); */
+    }); 
 
     onGetTasks((querySnapshot) => {
-      viewposts(querySnapshot);
-      post.insertAdjacentHTML('afterbegin', viewposts(querySnapshot).join(''));
-    });
+    //  viewposts(querySnapshot);
+  //    post.insertAdjacentHTML('afterbegin', viewposts(querySnapshot).join(''));
+  //  });
   });
 
   return muroDiv;
