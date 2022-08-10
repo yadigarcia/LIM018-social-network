@@ -12,16 +12,16 @@ export const muro = () => {
 
   const logoContent = document.createElement('div');
   logoContent.classList.add('logoContent');
-  const logo = document.createElement('p');
+  const logo = document.createElement('img');
   logo.classList.add('logo');
   const logoName = document.createElement('p');
   logoName.classList.add('logoName');
 
-  const iconsContent = document.createElement('i');
+  const iconsContent = document.createElement('div');
   iconsContent.classList.add('iconsContent');
 
-  /* const iconSearch = document.createElement('i');
-  iconSearch.classList.add('icon'); */
+  const iconSearch = document.createElement('i');
+  iconSearch.classList.add('icon'); 
 
   const contentMuroForm = document.createElement('form');
   contentMuroForm.classList.add('contentMuroForm');
@@ -96,6 +96,7 @@ export const muro = () => {
   postsContainer.appendChild(postdescription);
   postsContainer.appendChild(postComments);
   // -------------------------------avanzando----
+  
 
   // ------------------------  -Evento para obtener los datos de firebase---------------------------
   // consults asincrona- querySnapshot es los datos que existen en este momento
