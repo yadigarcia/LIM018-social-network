@@ -12,6 +12,7 @@ import {
   collection, // collection nos permite creae una tabla o coleccion de datos en firestore
   addDoc, // Nos permite indicar a FireStre que es lo que quiero hacer (guardar, actualizar,etc)
   getDocs, // Permite traer datos de Firestore
+  onSnapshot, // Permite mostrar los datos cuando son enviados
 } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-firestore.js';
 
 const firebaseConfig = {
@@ -42,10 +43,12 @@ export { set, ref, update };
 const db = getFirestore();
 
 // Funcion para enviar y almacenar datos en Firestore
-export const savetask = (title, description) => {
-  console.log(title, description);
-  addDoc(collection(db, 'asks'), { title, description });// {} es un objeto que estás enviando
+export const savetask = (userName, postDescription) => {
+//  console.log(title, description);
+  addDoc(collection(db, 'bd-muro'), { userName, postDescription });// {} es un objeto que estás enviando
 };
 
 // Funcion para obtener datos de Firestore
-export const getTask = () => getDocs(collection(db, 'asks'));
+export const getTask = () => getDocs(collection(db, 'bd-muro'));
+// Funcion para cuando pase eso estará escuchando modificacion para mostrarlo
+export const onGetTasks = (callback) => onSnapshot(collection(db, 'bd-muro'), callback);
