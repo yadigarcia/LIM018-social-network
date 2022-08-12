@@ -57,9 +57,6 @@ const createPost = function (postDescription, userName) {
   const postImg = document.createElement('img');
   postImg.classList.add('postImg');
 
-  // const IconsPostContainer = document.createElement('div');
-  //  IconsPostContainer.classList.add('IconsPostContainer');
-
   const likeIcon = document.createElement('button');
   likeIcon.classList.add('likeIcon');
 
