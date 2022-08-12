@@ -28,21 +28,14 @@ border: none;
 .btnsRegister{
   margin: 1%;
     padding: 0%;
-  
-    
   }
  .buttonStyleLogin{
   width: 55%;
   display: flex;
   flex-wrap: wrap;
   margin-bottom: 5%;
-
-
   }
- 
-
-
-/* STYLE LOGIN */
+ /* STYLE LOGIN */
 .windowlogin{
   background:url('img/loros.jpg'); 
   background-size:cover;
@@ -78,19 +71,18 @@ border: none;
   width: 100%;
   padding: 5%;
   border: none;
-
-
 }
-
-
 .questionlogin{ 
   color:rgb(6, 68, 52);
   font-size: 40%;
  
   width: 220%;
-  
 }
 
+.lineLogin{
+  color:rgb(60, 63, 66);
+  font-size: 30%;
+}
 
 
  /*  STYLE REGISTER */
@@ -145,35 +137,7 @@ color: #c0c0dd;
   height: 100vh;
   margin: 0%;
 }
-/*
-.contentMuroForm{
-   display: flex;
-  flex-flow: column wrap; 
-}
 
-.titleComment{
-  background: #99aff1;
-  border-radius: 8px;
-  margin: 10%;
-}
-.taskDescriptio{
-  background: #99aff1;
-  border-radius: 8px;
-  margin: 2%;
-}
-
-.commentMuro{
-  color:black;
-  border-radius: 4px;
-
-
-  }
-  .titlepost{
-background-color: rgb(141, 203, 236);
-border-radius: 8px;
-margin: 10%;
-  }
-*/
   .headerContent{
     background: rgba(5, 6, 5, 0.893);
     padding: 10px;
@@ -225,17 +189,18 @@ background:rgb(0, 21, 11);
 }
 .postsContainer{
   /* background:url('img/paisaje.jpg'); */
-  background:url('img/paisaje.jpg');
-  border: 10px;
+  /*background:url('img/paisaje.jpg'); */
+  background:rgb(71, 69, 69);
   border-color: #3033cc;
   border-radius: 10px;
   height:90%;
-   width:100%;
+   width:97%;
    color: rgb(30, 225, 95);
    box-shadow: 1px 1px 4px;
+   margin:1%;
  }
  .headerPostContainer{
-  background:rgb(0, 21, 11);
+ background:rgb(0, 21, 11);
   border: 10px;
   border-color: #3033cc;
   border-radius: 10px;
@@ -243,6 +208,9 @@ background:rgb(0, 21, 11);
    width:100%;
    color: rgb(173, 7, 76);
    box-shadow: 1px 1px 4px;
+   display: flex;
+   justify-content: space-between;
+
  }
  .postComments{
   background:rgb(38, 40, 39);
@@ -255,9 +223,10 @@ background:rgb(0, 21, 11);
    box-shadow: 1px 1px 4px;
  }
  .buttonMuro{
-  background:rgb(44, 197, 161);
+  background:rgb(2, 87, 66);
   border-radius: 6px;
  border: none;
+ padding: 4px;
  }
  .postUsePhoto{
   background:url('img/userlogo.JPG'); 
@@ -266,4 +235,33 @@ background:rgb(0, 21, 11);
    border-radius: 30px;
    width: 35px;
     height:35px;
+ }
+ .iconsEditDeletePostContainer{
+  background-color: rgb(4, 14, 5);
+  color: rgb(246, 242, 242);
+display: flex;
+justify-content: center;
+align-items: flex-start
+ }
+ .iconPostEdit{
+  background-color: black;
+  color: rgb(246, 242, 242);
+padding: 3%;
+width:70%;
+border-radius: 4px;
+
+}
+.iconPostDelete{
+  background-color: black;
+  color: rgb(246, 242, 242);
+  padding: 3%;
+  width:70%;
+  border-radius: 4px;
+
+
+ }
+ .newPost{
+  border-radius: 4px;
+  height:4%;
+  width:70%;
  }

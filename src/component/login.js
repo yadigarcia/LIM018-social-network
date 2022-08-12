@@ -34,11 +34,17 @@ export const login = () => {
   loginQuestionDiv.classList.add('questionlogin');
   loginQuestionCount.textContent = '¿No tengo cuenta?';
 
+  const lineLogin = document.createElement('p');
+  lineLogin.classList.add('lineLogin');
+
   const btnToRegister = document.createElement('button');
   btnToRegister.classList.add('buttonStyle');
 
   buttonLogin.textContent = 'Ingresar';
   btnToRegister.textContent = 'Crear Cuenta';
+  lineLogin.textContent = 'Or';
+
+  // lineLogin.textContent = '_____________Or______________';
 
   buttonLogin.addEventListener('click', () => navigation('/muro'));
   btnToRegister.addEventListener('click', () => navigation('/register'));
@@ -55,6 +61,7 @@ export const login = () => {
   formLogin.appendChild(loginEmailDiv);
   formLogin.appendChild(loginPaswordDiv);
   formLogin.appendChild(btnLoginDiv);
+  formLogin.appendChild(lineLogin);
 
   buttonLogin.addEventListener('click', (e) => {
     e.preventDefault();
