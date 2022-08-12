@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/no-cycle
 import { navigation } from '../main.js';
 import {
-  savetask, getTask, onGetTasks, database,
+  savetask, onGetTasks,
 } from '../firebase/firebase.js';
 // ............................Construyendo el Muro.........................................
 const muroDiv = document.createElement('div');
@@ -93,20 +93,23 @@ const createPost = function (postDescription, userName) {
   posttext.textContent = postDescription;
 
   muroDiv.appendChild(bodyContainer);
+  // muroDiv.innerHTML = bodyContainer;
 };
 
 // -------------------------mostrarPosts-----------------------
 const mostrarPosts = function (querySnapshot) {
+  bodyContainer.innerHTML = ' ';// consulta si es válido
   querySnapshot.forEach((doc) => {
     const bdmuro = doc.data();
-
     createPost(bdmuro.postDescription, bdmuro.userName);
+    console.log('mostrar most  dentro de funcion');
   });
 };
 
 // ------------------------Guardar Posts en Firestore -----------------------
 const guardarPost = function () {
   savetask('Arkelly', newPost.value);
+  console.log('guardando  dentro de funcion');
 };
 // ............................Función Principal.........................................
 export const muro = () => {
@@ -148,16 +151,21 @@ export const muro = () => {
   buttonsavepost.addEventListener('click', (e) => { // submit se ejecuta cuando se hace clic en el boton dentro del form
     e.preventDefault(); // cancerlar el evento por defecto (refrescar la pagina)
     guardarPost();
-    //  postsContainer.reset(); // borra el contenido
+    console.log('guardANDO');
+    // bodyContainer.reset(); // borra el contenido
+    // newPost.reset(); // borra el contenido
   });
 
   // ------------------------  -Evento para obtener los datos de firebase---------------------------
   // consults asincrona- querySnapshot es los datos que existen en este momento
   window.addEventListener('DOMContentLoaded', async () => { // async se usa para que funcione await
     onGetTasks((querySnapshot) => {
+      console.log('recargando');
       mostrarPosts(querySnapshot);
+      // bodyContainer.reset();
     });
   });
+
   muroDiv.appendChild(newPost);
   muroDiv.appendChild(buttonsavepost);
   muroDiv.appendChild(buttonBackToLogin);
