@@ -10,6 +10,7 @@ muroDiv.classList.add('muroDiv');
 const bodyContainer = document.createElement('div');
 bodyContainer.classList.add('bodyContainer');
 
+
 const buttonsavepost = document.createElement('button');
 buttonsavepost.classList.add('buttonMuro');
 
@@ -21,7 +22,6 @@ buttonBackToLogin.textContent = 'Ir al Inicio';
 const newPost = document.createElement('input');
 newPost.classList.add('newPost');
 newPost.setAttribute('placeholder', 'Nuevo Post..');
-
 // ............................Funciones crear Post.........................................
 const createPost = function (postDescription, userName) {
   const postsContainer = document.createElement('div');
