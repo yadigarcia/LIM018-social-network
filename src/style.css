@@ -136,6 +136,9 @@ background:rgb(8, 8, 8);
 color: #c0c0dd;
   height: 100vh;
   margin: 0%;
+
+  position: relative;
+  z-index: 1;
 }
 
   .headerContent{
@@ -264,4 +267,24 @@ border-radius: 4px;
   border-radius: 4px;
   height:4%;
   width:70%;
+ }
+
+ .modalDelete{
+  background-color: #078070;
+  position: absolute;/* para superponer el modal */
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+ padding: 5%;
+border-radius: 4px;
+ margin: 30%;
+  height:100px;
+  width:100px;
+  z-index: 60;
+ }
+
+ .buttonDeletePost{
+  background-color: rgb(11, 99, 37);
+  padding: 4px;
+  border-radius: 7px;
  }

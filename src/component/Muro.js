@@ -25,9 +25,29 @@ newPost.setAttribute('placeholder', 'Nuevo Post..');
 
 // ------------------------ Funcion para borrar post de firestore---------------------------
 const borrarPost = function (idpost) {
-  deleteTasks(idpost);
-};
+  const modalDelete = document.createElement('div');
+  modalDelete.classList.add('modalDelete');
 
+  const buttonAceptDeletePost = document.createElement('button');
+  buttonAceptDeletePost.classList.add('buttonDeletePost');
+
+  const buttonCancelDeletePost = document.createElement('button');
+  buttonCancelDeletePost.classList.add('buttonDeletePost');
+
+  modalDelete.textContent = 'Desea borrar el post?';
+  buttonAceptDeletePost.textContent = 'Aceptar';
+  buttonCancelDeletePost.textContent = 'Cancelar';
+  muroDiv.appendChild(modalDelete);
+  modalDelete.appendChild(buttonAceptDeletePost);
+  modalDelete.appendChild(buttonCancelDeletePost);
+  console.log('afuera');
+  buttonAceptDeletePost.addEventListener('click', (e) => {
+    e.preventDefault();
+    deleteTasks(idpost);
+    console.log(`${idpost}adentro`);
+    muroDiv.removeChild(modalDelete);
+  });
+};
 // ............................Funciones crear Post.........................................
 const createPost = function (postDescription, userName, idpost) {
   const postsContainer = document.createElement('div');
