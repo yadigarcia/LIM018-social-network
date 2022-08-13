@@ -12,7 +12,9 @@ import {
   collection, // collection nos permite creae una tabla o coleccion de datos en firestore
   addDoc, // Nos permite indicar a FireStre que es lo que quiero hacer (guardar, actualizar,etc)
   getDocs, // Permite traer datos de Firestore
+  deleteDoc, // Permite eliminar datos de Firestore
   onSnapshot, // Permite mostrar los datos cuando son enviados
+  doc,
 } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-firestore.js';
 
 const firebaseConfig = {
@@ -52,3 +54,5 @@ export const savetask = (userName, postDescription) => {
 export const getTask = () => getDocs(collection(db, 'bd-muro'));
 // Funcion para cuando pase eso estará escuchando modificacion para mostrarlo
 export const onGetTasks = (callback) => onSnapshot(collection(db, 'bd-muro'), callback);
+// Funcion para eliminar posts de Firestore
+export const deleteTasks = (id) => deleteDoc(doc(db, 'bd-muro', id));
