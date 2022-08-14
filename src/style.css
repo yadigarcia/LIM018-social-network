@@ -12,22 +12,22 @@
   background:rgb(2, 87, 66);
   color: #f1f6f0;
   border-radius: 8px;
-  margin-top:4%;
-padding: 8px;
-  font-size: 30%;
-display: flex;
-width: 100%;
-justify-content: space-around;
-border: none;
+  margin-top:5%;
+  padding: 10px;
+  font-size: 45%;
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  border: none;
   }
 
   .buttonStyle:hover {
-    background: rgb(21, 161, 161);
+    background: rgb(212, 34, 87);
   }
 
 .btnsRegister{
-  margin: 1%;
-    padding: 0%;
+   margin: 1%;
+  padding: 0%;
   }
  .buttonStyleLogin{
   width: 55%;
@@ -41,95 +41,169 @@ border: none;
   background-size:cover;
   background-repeat: no-repeat;
   background-position: center;
-  height: 100vh;
+  height: 98vh;
   font-size: 30px;
   display: flex;
   align-items: center;
   flex-direction: column-reverse;
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+.logoLogin{
+margin: 0;
+padding: 0;
+display: flex;
+flex-direction: column;
+align-items: center;
+margin-bottom: 10%;
+margin-top: 5%;
+}
+
+.imgLogo{
+  margin: 0;
+  padding: 0;
+  background:url('img/logo.JPG'); 
+  border-radius: 50%;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  width: 80px;
+  height:80px;
+}
+.nameLogo{
+  font-size: 80%;
+  color: #186b05;
+  font-weight: bold;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .formviewlogin{
- background: rgba(248, 250, 241, 0.58);
+ background: rgba(248, 250, 241, 0.5);
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 5% 5% 5%;
-  border-radius: 10px;
-  height: 55%;
-    margin-bottom: 5%;
-    /*fuerza a la imagen a no tener margen*/
   justify-content: center;
-  margin-top: 15%;
+  align-items: center;
+  padding: 5%;
+  border-radius: 10px;
+  height: 80%; 
 }
 
-.inputslogin{
-  display: flex;
- background: rgba(217, 217, 217, 1);
-  display: flex;
-  border-radius: 8px;
-  margin-top:10%;
+.loginImputDiv{
   width: 100%;
-  padding: 5%;
-  border: none;
+  display: flex;
+  flex-direction: column;
+  margin:0;
+  text-align-last: center;
 }
-.questionlogin{ 
+.inputs{
+  background: rgba(217, 217, 217, 1);
+  border-radius: 8px;
+  padding: 3% ;
+  border: none;
+  margin: 3% 10%; 
+}
+
+.loginQuestionDiv{ 
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.questionAboutCount{
   color:rgb(6, 68, 52);
   font-size: 40%;
- 
-  width: 220%;
 }
 
 .lineLogin{
-  color:rgb(60, 63, 66);
-  font-size: 30%;
+  color:rgb(6, 68, 52);
+  font-size: 50%;
+ font-weight: bolder;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5%;
 }
 
+.googleFacebook{
+   display: flex;
+   justify-content: space-between;
+   margin:5% 15%;
+   padding:0;
+   width: 100%;
+   margin-bottom: 10%;
+}
 
- /*  STYLE REGISTER */
- .windowRegister {
+.imgGoogle{
+  margin: 0;
+  padding: 0;
+  background:url('img/google.png'); 
+  border-radius: 50%;
+  background-size: 100%;
+  width: 30px;
+  height:30px;
+  border: none;
+}
+
+.imgFacebook{
+  margin: 0;
+  padding: 0;
+  background:url('img/facebook.png'); 
+  border-radius: 50%;
+  background-size: 100%;
+  width: 30px;
+  height:30px;  
+  border: none;
+} 
+
+
+/*  STYLE REGISTER */
+.windowRegister {
   background:url('https://www.lumen-colombia.com/blog/wp-content/uploads/2017/01/bavaria-1617529_1920-683x1024.jpg'); 
   background-size:cover;
   background-repeat: no-repeat;
   background-position: center;
-  height: 100vh;
+  height: 91vh;
   font-size: 30px;
   font-weight: bolder;
   z-index: 1;
-  padding: 30px;
- /* justify-content: center;
-  display: flex;*/
-  flex-direction: column;
-  align-items: center;
-  
- }
+  padding-top: 10%;
+  padding-bottom: 10%;
+  display: flex;
+  align-items: center;  
+}
 
 .formRegister{
-  background: rgba(217, 217, 217, 0.58);
+  background: rgba(248, 250, 241, 0.5);
   display: flex;
-  flex-flow: column wrap;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  border-radius: 15px;
-   height: 80%;
-   justify-content: center;
+  border-radius: 10px;
+  height: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 5%;
 }  
+
 .welcomeRegister{
   color:#415c3b;
-  font-size: 50%;
-  margin-top: 0;
+  font-size: 55%;
+  margin:5%;
   padding: 0;
- /* margin-bottom: 5%;  */
   font-style: oblique;
   font-weight: bolder ;
+  text-align: center;
 }
- .inputs{
-background: rgba(244, 254, 246, 1);
-color: #e00c5a;
-  border: none;
-   border-radius: 8px;
-   margin-top:10%;
-   padding: 4%;
-   font-size: 30%;
- }
+.registerDateDiv{
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  margin:0;
+  text-align-last: center;
+  /* margin:0% 300%; */
+}
+
+.btnsRegisterDiv{
+  width: 50%;
+}
+
 /*STYLE MURO */
 .muroDiv{
 background:rgb(8, 8, 8);
