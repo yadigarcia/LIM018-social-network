@@ -1,15 +1,15 @@
 // eslint-disable-next-line import/no-cycle
 import { navigation } from '../main.js';
 import {
-  savetask, getTask, onGetTasks, database,
+  savetask, onGetTasks, deleteTasks,
 } from '../firebase/firebase.js';
+
 // ............................Construyendo el Muro.........................................
 const muroDiv = document.createElement('div');
 muroDiv.classList.add('muroDiv');
 
 const bodyContainer = document.createElement('div');
 bodyContainer.classList.add('bodyContainer');
-
 
 const buttonsavepost = document.createElement('button');
 buttonsavepost.classList.add('buttonMuro');
@@ -22,8 +22,34 @@ buttonBackToLogin.textContent = 'Ir al Inicio';
 const newPost = document.createElement('input');
 newPost.classList.add('newPost');
 newPost.setAttribute('placeholder', 'Nuevo Post..');
+
+// ------------------------ Funcion para borrar post de firestore---------------------------
+const borrarPost = function (idpost) {
+  const modalDelete = document.createElement('div');
+  modalDelete.classList.add('modalDelete');
+
+  const buttonAceptDeletePost = document.createElement('button');
+  buttonAceptDeletePost.classList.add('buttonDeletePost');
+
+  const buttonCancelDeletePost = document.createElement('button');
+  buttonCancelDeletePost.classList.add('buttonDeletePost');
+
+  modalDelete.textContent = 'Desea borrar el post?';
+  buttonAceptDeletePost.textContent = 'Aceptar';
+  buttonCancelDeletePost.textContent = 'Cancelar';
+  muroDiv.appendChild(modalDelete);
+  modalDelete.appendChild(buttonAceptDeletePost);
+  modalDelete.appendChild(buttonCancelDeletePost);
+  console.log('afuera');
+  buttonAceptDeletePost.addEventListener('click', (e) => {
+    e.preventDefault();
+    deleteTasks(idpost);
+    console.log(`${idpost}adentro`);
+    muroDiv.removeChild(modalDelete);
+  });
+};
 // ............................Funciones crear Post.........................................
-const createPost = function (postDescription, userName) {
+const createPost = function (postDescription, userName, idpost) {
   const postsContainer = document.createElement('div');
   postsContainer.classList.add('postsContainer');
 
@@ -47,6 +73,7 @@ const createPost = function (postDescription, userName) {
 
   const iconPostDelete = document.createElement('button');
   iconPostDelete.classList.add('iconPostDelete');
+  iconPostDelete.setAttribute('id', idpost);
 
   const post = document.createElement('div');
   post.classList.add('post');
@@ -93,14 +120,19 @@ const createPost = function (postDescription, userName) {
   posttext.textContent = postDescription;
 
   muroDiv.appendChild(bodyContainer);
+  // --------------------------evento para borrar post
+  iconPostDelete.addEventListener('click', (event) => {
+    borrarPost(event.target.id);
+  });
+//-----------------------------------------------
 };
 
 // -------------------------mostrarPosts-----------------------
 const mostrarPosts = function (querySnapshot) {
+  bodyContainer.innerHTML = ' ';// consulta si es válido
   querySnapshot.forEach((doc) => {
     const bdmuro = doc.data();
-
-    createPost(bdmuro.postDescription, bdmuro.userName);
+    createPost(bdmuro.postDescription, bdmuro.userName, doc.id);
   });
 };
 
@@ -144,20 +176,19 @@ export const muro = () => {
   iconsContent.appendChild(iconSearch);
   iconsContent.appendChild(iconMessage);
   iconsContent.appendChild(iconBacktoLogin);
-  // -------------------- evento para enviar datos a Firestore
+  // -------------------- evento para enviar datos a Firestore-----------------------
   buttonsavepost.addEventListener('click', (e) => { // submit se ejecuta cuando se hace clic en el boton dentro del form
     e.preventDefault(); // cancerlar el evento por defecto (refrescar la pagina)
     guardarPost();
-    //  postsContainer.reset(); // borra el contenido
   });
-
-  // ------------------------  -Evento para obtener los datos de firebase---------------------------
+  // ------------------------  -Evento para obtener los datos de firestore-------------------------
   // consults asincrona- querySnapshot es los datos que existen en este momento
   window.addEventListener('DOMContentLoaded', async () => { // async se usa para que funcione await
     onGetTasks((querySnapshot) => {
       mostrarPosts(querySnapshot);
     });
   });
+
   muroDiv.appendChild(newPost);
   muroDiv.appendChild(buttonsavepost);
   muroDiv.appendChild(buttonBackToLogin);
