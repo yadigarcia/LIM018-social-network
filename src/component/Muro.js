@@ -8,46 +8,76 @@ import {
 const muroDiv = document.createElement('div');
 muroDiv.classList.add('muroDiv');
 
-const bodyContainer = document.createElement('div');
-bodyContainer.classList.add('bodyContainer');
+// header para muro--------------------------------
+const headerContent = document.createElement('div');
+headerContent.classList.add('headerContent');
 
-const buttonsavepost = document.createElement('button');
-buttonsavepost.classList.add('buttonMuro');
+const logoContent = document.createElement('div');
+logoContent.classList.add('logoContent');
 
-const buttonBackToLogin = document.createElement('button');
-buttonBackToLogin.classList.add('buttonMuro');
-buttonsavepost.textContent = 'Guardar post';
-buttonBackToLogin.textContent = 'Ir al Inicio';
+const logo = document.createElement('img');
+logo.classList.add('logo');
+const logoName = document.createElement('p');
+logoName.classList.add('logoName');
+logoName.textContent = 'Travelers';
+
+const iconsContent = document.createElement('div');
+iconsContent.classList.add('iconsContent');
+
+const iconSearch = document.createElement('i');
+iconSearch.classList.add('icon');
+iconSearch.insertAdjacentHTML('afterbegin', '<i class="fa-solid fa-magnifying-glass"></i>');
+
+const iconMessage = document.createElement('i');
+iconMessage.classList.add('icon');
+iconMessage.insertAdjacentHTML('afterbegin', '<i class="fa-solid fa-envelope"></i>');
+
+const iconBacktoLogin = document.createElement('i');
+iconBacktoLogin.classList.add('icon');
+iconBacktoLogin.insertAdjacentHTML('afterbegin', '<i class="fa-solid fa-arrow-left"></i>');
+
+const iconExit = document.createElement('i');
+iconExit.classList.add('icon');
+iconExit.insertAdjacentHTML('afterbegin', '<i class="fa-solid fa-arrow-right-from-bracket"></i>');
+
+iconBacktoLogin.addEventListener('click', () => navigation('/'));
+
+muroDiv.appendChild(headerContent);
+
+headerContent.appendChild(logoContent);
+headerContent.appendChild(iconsContent);
+
+logoContent.appendChild(logo);
+logoContent.appendChild(logoName);
+iconsContent.appendChild(iconSearch);
+iconsContent.appendChild(iconMessage);
+iconsContent.appendChild(iconBacktoLogin);
+iconsContent.appendChild(iconExit);
+
+// New post-----------------------------------------
+const newPostDiv = document.createElement('div');
+newPostDiv.classList.add('newPostDiv');
+
+const photoUpload = document.createElement('i');
+photoUpload.classList.add('photoUpload');
+photoUpload.insertAdjacentHTML('afterbegin', '<i class="fa-regular fa-image"></i>');
 
 const newPost = document.createElement('input');
 newPost.classList.add('newPost');
-newPost.setAttribute('placeholder', 'Nuevo Post..');
+newPost.setAttribute('placeholder', 'Cuentanos tu aventura Traveller');
 
-// ------------------------ Funcion para borrar post de firestore---------------------------
-const borrarPost = function (idpost) {
-  const modalDelete = document.createElement('div');
-  modalDelete.classList.add('modalDelete');
+const buttonsavepost = document.createElement('i');
+buttonsavepost.classList.add('publicar');
+buttonsavepost.insertAdjacentHTML('beforeend', '<i class="fa-solid fa-paper-plane"></i>');
 
-  const buttonAceptDeletePost = document.createElement('button');
-  buttonAceptDeletePost.classList.add('buttonDeletePost');
+muroDiv.appendChild(newPostDiv);
+newPostDiv.appendChild(photoUpload);
+newPostDiv.appendChild(newPost);
+newPostDiv.appendChild(buttonsavepost);
 
-  const buttonCancelDeletePost = document.createElement('button');
-  buttonCancelDeletePost.classList.add('buttonDeletePost');
+const bodyContainer = document.createElement('div');// donde esta este elemento?
+bodyContainer.classList.add('bodyContainer');
 
-  modalDelete.textContent = 'Desea borrar el post?';
-  buttonAceptDeletePost.textContent = 'Aceptar';
-  buttonCancelDeletePost.textContent = 'Cancelar';
-  muroDiv.appendChild(modalDelete);
-  modalDelete.appendChild(buttonAceptDeletePost);
-  modalDelete.appendChild(buttonCancelDeletePost);
-  console.log('afuera');
-  buttonAceptDeletePost.addEventListener('click', (e) => {
-    e.preventDefault();
-    deleteTasks(idpost);
-    console.log(`${idpost}adentro`);
-    muroDiv.removeChild(modalDelete);
-  });
-};
 // ............................Funciones crear Post.........................................
 const createPost = function (postDescription, userName, idpost) {
   const postsContainer = document.createElement('div');
@@ -124,7 +154,11 @@ const createPost = function (postDescription, userName, idpost) {
   iconPostDelete.addEventListener('click', (event) => {
     borrarPost(event.target.id);
   });
-//-----------------------------------------------
+};
+
+// ------------------------Guardar Posts en Firestore -----------------------
+const guardarPost = function () {
+  savetask('Arkelly', newPost.value);
 };
 
 // -------------------------mostrarPosts-----------------------
@@ -136,46 +170,34 @@ const mostrarPosts = function (querySnapshot) {
   });
 };
 
-// ------------------------Guardar Posts en Firestore -----------------------
-const guardarPost = function () {
-  savetask('Arkelly', newPost.value);
+// ------------------------ Funcion para borrar post de firestore---------------------------
+const borrarPost = function (idpost) {
+  const modalDelete = document.createElement('div');
+  modalDelete.classList.add('modalDelete');
+
+  const buttonAceptDeletePost = document.createElement('button');
+  buttonAceptDeletePost.classList.add('buttonDeletePost');
+
+  const buttonCancelDeletePost = document.createElement('button');
+  buttonCancelDeletePost.classList.add('buttonDeletePost');
+
+  modalDelete.textContent = 'Desea borrar el post?';
+  buttonAceptDeletePost.textContent = 'Aceptar';
+  buttonCancelDeletePost.textContent = 'Cancelar';
+  muroDiv.appendChild(modalDelete);
+  modalDelete.appendChild(buttonAceptDeletePost);
+  modalDelete.appendChild(buttonCancelDeletePost);
+  console.log('afuera');
+  buttonAceptDeletePost.addEventListener('click', (e) => {
+    e.preventDefault();
+    deleteTasks(idpost);
+    console.log(`${idpost}adentro`);
+    muroDiv.removeChild(modalDelete);
+  });
 };
+
 // ............................Función Principal.........................................
 export const muro = () => {
-  const headerContent = document.createElement('div');
-  headerContent.classList.add('headerContent');
-
-  const logoContent = document.createElement('div');
-  logoContent.classList.add('logoContent');
-  const logo = document.createElement('img');// img
-  logo.classList.add('logo');
-  const logoName = document.createElement('p');
-  logoName.classList.add('logoName');
-
-  const iconsContent = document.createElement('i');// i
-  iconsContent.classList.add('iconsContent');
-
-  const iconSearch = document.createElement('i');
-  iconSearch.classList.add('icon');
-  const iconMessage = document.createElement('i');
-  iconMessage.classList.add('icon');
-  const iconBacktoLogin = document.createElement('i');
-  iconBacktoLogin.classList.add('i');
-
-  buttonBackToLogin.addEventListener('click', () => navigation('/'));
-
-  logoName.textContent = 'Travelers';
-
-  muroDiv.appendChild(headerContent);
-
-  // header muro
-  headerContent.appendChild(logoContent);
-  logoContent.appendChild(logo);
-  logoContent.appendChild(logoName);
-  headerContent.appendChild(iconsContent);
-  iconsContent.appendChild(iconSearch);
-  iconsContent.appendChild(iconMessage);
-  iconsContent.appendChild(iconBacktoLogin);
   // -------------------- evento para enviar datos a Firestore-----------------------
   buttonsavepost.addEventListener('click', (e) => { // submit se ejecuta cuando se hace clic en el boton dentro del form
     e.preventDefault(); // cancerlar el evento por defecto (refrescar la pagina)
@@ -189,8 +211,5 @@ export const muro = () => {
     });
   });
 
-  muroDiv.appendChild(newPost);
-  muroDiv.appendChild(buttonsavepost);
-  muroDiv.appendChild(buttonBackToLogin);
   return muroDiv;
 };
