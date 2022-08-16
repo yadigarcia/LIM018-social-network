@@ -1,6 +1,13 @@
+/* eslint-disable import/no-unresolved */
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-app.js';
 import {
-  getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut,
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  onAuthStateChanged, signOut,
+  GoogleAuthProvider,
+  signInWithPopup,
+  FacebookAuthProvider,
 } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-auth.js';
 
 import {
@@ -33,10 +40,18 @@ export const app = initializeApp(firebaseConfig);
 // Autentication auth from Firebase
 
 export const database = getDatabase(app);
+export const auth = getAuth(app);
+export const provider = new GoogleAuthProvider(app);
+export const providerf = new FacebookAuthProvider(app);
 
-export const auth = getAuth();
 export {
-  createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+  signOut,
+  GoogleAuthProvider,
+  signInWithPopup,
+  FacebookAuthProvider,
 };
 export { set, ref, update };
 
