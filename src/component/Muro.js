@@ -72,6 +72,34 @@ newPostDiv.appendChild(buttonsavepost);
 const bodyContainer = document.createElement('div');// donde esta este elemento?
 bodyContainer.classList.add('bodyContainer');
 
+// ------------------------ Funcion para borrar post de firestore---------------------------
+const borrarPost = function (idpost) {
+  const modalDelete = document.createElement('div');
+  modalDelete.classList.add('modalDelete');
+
+  const buttonAceptDeletePost = document.createElement('button');
+  buttonAceptDeletePost.classList.add('buttonDeletePost');
+
+  const buttonCancelDeletePost = document.createElement('button');
+  buttonCancelDeletePost.classList.add('buttonDeletePost');
+
+  modalDelete.textContent = 'Desea borrar el post?';
+  buttonAceptDeletePost.textContent = 'Aceptar';
+  buttonCancelDeletePost.textContent = 'Cancelar';
+  muroDiv.appendChild(modalDelete);
+  modalDelete.appendChild(buttonAceptDeletePost);
+  modalDelete.appendChild(buttonCancelDeletePost);
+  console.log('afuera');
+  console.log(idpost);
+  console.log('afuera');
+  buttonAceptDeletePost.addEventListener('click', (e) => {
+    e.preventDefault();
+    deleteTasks(idpost);
+    console.log(`${idpost}adentro`);
+    muroDiv.removeChild(modalDelete);
+  });
+};
+
 // ............................Funciones crear Post.........................................
 const createPost = function (postDescription, userName, idpost) {
   const postsContainer = document.createElement('div');
@@ -96,8 +124,9 @@ const createPost = function (postDescription, userName, idpost) {
   const iconPostEdit = document.createElement('i');
   iconPostEdit.insertAdjacentHTML('afterbegin', '<i class="fa-solid fa-pencil"></i>');
 
-  const iconPostDelete = document.createElement('i');
-  iconPostDelete.insertAdjacentHTML('afterbegin', '<i class="fa-solid fa-trash-can"></i>');
+  const iconPostDelete = document.createElement('button');
+  iconPostDelete.classList.add('b');
+  // iconPostDelete.insertAdjacentHTML('afterbegin', '<i class="fa-solid fa-trash-can"></i>');
   iconPostDelete.setAttribute('id', idpost);
 
   // cuerpo del post
@@ -107,7 +136,7 @@ const createPost = function (postDescription, userName, idpost) {
   const postTextDiv = document.createElement('div');
   postTextDiv.classList.add('postTextDiv');
 
-  const posttext = document.createElement('input');
+  const posttext = document.createElement('div');
   posttext.setAttribute('type', 'text');
   posttext.classList.add('posttext');
 
@@ -131,10 +160,10 @@ const createPost = function (postDescription, userName, idpost) {
   postComments.setAttribute('type', 'text');
   postComments.classList.add('postComments');
 
-  postUserName.textContent = 'Arkelly';
+  iconPostDelete.textContent = 'X';
   postComments.setAttribute('placeholder', 'Comentario...');
   posttext.textContent = postDescription;
-
+  postUserName.textContent = 'Arkelly';
   bodyContainer.appendChild(postsContainer);// eliminar uno
 
   postsContainer.appendChild(headerPostContainer);
@@ -155,10 +184,11 @@ const createPost = function (postDescription, userName, idpost) {
   postIcon.appendChild(likeIcon);
   postIcon.appendChild(comentIcon);
   postCommentsDiv.appendChild(postComments);
-
+  console.log(`borrar ${idpost}`);
   muroDiv.appendChild(bodyContainer);
   // --------------------------evento para borrar post
   iconPostDelete.addEventListener('click', (event) => {
+    console.log(event.target.id);
     borrarPost(event.target.id);
   });
 };
@@ -174,32 +204,6 @@ const mostrarPosts = function (querySnapshot) {
   querySnapshot.forEach((doc) => {
     const bdmuro = doc.data();
     createPost(bdmuro.postDescription, bdmuro.userName, doc.id);
-  });
-};
-
-// ------------------------ Funcion para borrar post de firestore---------------------------
-const borrarPost = function (idpost) {
-  const modalDelete = document.createElement('div');
-  modalDelete.classList.add('modalDelete');
-
-  const buttonAceptDeletePost = document.createElement('button');
-  buttonAceptDeletePost.classList.add('buttonDeletePost');
-
-  const buttonCancelDeletePost = document.createElement('button');
-  buttonCancelDeletePost.classList.add('buttonDeletePost');
-
-  modalDelete.textContent = 'Desea borrar el post?';
-  buttonAceptDeletePost.textContent = 'Aceptar';
-  buttonCancelDeletePost.textContent = 'Cancelar';
-  muroDiv.appendChild(modalDelete);
-  modalDelete.appendChild(buttonAceptDeletePost);
-  modalDelete.appendChild(buttonCancelDeletePost);
-  // .log('afuera');
-  buttonAceptDeletePost.addEventListener('click', (e) => {
-    e.preventDefault();
-    deleteTasks(idpost);
-    // console.log(`${idpost}adentro`);
-    muroDiv.removeChild(modalDelete);
   });
 };
 
@@ -227,7 +231,7 @@ iconExit.addEventListener('click', (e) => {
   e.preventDefault();
   signOut(auth).then(() => {
   // Sign-out successful.
-    alert('Estas seguro que quieres salir');
+    alert('Estás seguro que quieres salir');
 
     navigation('/');
   }).catch((error) => {

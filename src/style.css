@@ -207,14 +207,16 @@ margin-top: 5%;
 /*STYLE MURO------------------------------------------------------- */
 
 .muroDiv{
+
 background: rgba(15, 15, 15);
-color: white;
+color: rgb(36, 134, 34);
 /* height: 100vh; */
 height: max-content;
 }
 
  /* style HEADER */
 .headerContent{
+  background-color: #186b05;
   padding: 10px;
   height:9%;
   width:100%;
@@ -237,6 +239,7 @@ flex-direction:row;
   border: none;
   border-radius: 120%; 
   background-size: 100%;
+  background-repeat: no-repeat;
   width: 40px;
   height:50px;
   filter:saturate(150%);
@@ -275,6 +278,7 @@ flex-direction:row;
  font-size: 25px;
 }
 .newPost{
+  background-color: #dffdd8;
   margin-left: 1%;
   padding: 1.5%;
   height:fit-content;
@@ -296,6 +300,7 @@ flex-direction:row;
 .bodyContainer{
   margin: 0;
   padding: 0;
+  background-color: #f2f5f1;
 }
 .postsContainer{
   background: rgb(50, 50, 50);
@@ -357,6 +362,8 @@ width: 100%;
 }
 
 .posttext{
+  background-color: rgb(218, 243, 220);
+  color: #186b05;
 width: 95%;
 padding: 1% 2%;
 
@@ -381,7 +388,8 @@ width: 100%;
   color:white;
 }
 .modalDelete{
-  background-color: #078070;
+  background-color: #071614;
+  color: azure;
   position: absolute;/* para superponer el modal */
   display: flex;
   justify-content: space-between;
@@ -398,4 +406,14 @@ border-radius: 4px;
   background-color: rgb(11, 99, 37);
   padding: 4px;
   border-radius: 7px;
+ }
+ .b{
+  background-color:black;
+ /* background-image:url('img/like.JPG'); */
+ color: rgb(163, 230, 208);
+  height:15px;
+  width:15px;
+  background-size: 100%;
+  background-repeat: no-repeat;
+
  }
