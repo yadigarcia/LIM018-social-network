@@ -1,10 +1,11 @@
+/* eslint-disable func-names */
 // eslint-disable-next-line import/no-cycle
 import { navigation } from '../main.js';
 import {
-  savetask, onGetTasks, deleteTasks,
+  savetask, onGetTasks, deleteTasks, auth, signOut,
 } from '../firebase/firebase.js';
 
-// ............................Construyendo el Muro.........................................
+// ............................Construyendo el Muro...............................................
 const muroDiv = document.createElement('div');
 muroDiv.classList.add('muroDiv');
 
@@ -32,15 +33,9 @@ const iconMessage = document.createElement('i');
 iconMessage.classList.add('icon');
 iconMessage.insertAdjacentHTML('afterbegin', '<i class="fa-solid fa-envelope"></i>');
 
-const iconBacktoLogin = document.createElement('i');
-iconBacktoLogin.classList.add('icon');
-iconBacktoLogin.insertAdjacentHTML('afterbegin', '<i class="fa-solid fa-arrow-left"></i>');
-
 const iconExit = document.createElement('i');
 iconExit.classList.add('icon');
 iconExit.insertAdjacentHTML('afterbegin', '<i class="fa-solid fa-arrow-right-from-bracket"></i>');
-
-iconBacktoLogin.addEventListener('click', () => navigation('/'));
 
 muroDiv.appendChild(headerContent);
 
@@ -51,7 +46,6 @@ logoContent.appendChild(logo);
 logoContent.appendChild(logoName);
 iconsContent.appendChild(iconSearch);
 iconsContent.appendChild(iconMessage);
-iconsContent.appendChild(iconBacktoLogin);
 iconsContent.appendChild(iconExit);
 
 // New post-----------------------------------------
@@ -59,7 +53,7 @@ const newPostDiv = document.createElement('div');
 newPostDiv.classList.add('newPostDiv');
 
 const photoUpload = document.createElement('i');
-photoUpload.classList.add('photoUpload');
+photoUpload.classList.add('iconphoto');
 photoUpload.insertAdjacentHTML('afterbegin', '<i class="fa-regular fa-image"></i>');
 
 const newPost = document.createElement('input');
@@ -83,6 +77,7 @@ const createPost = function (postDescription, userName, idpost) {
   const postsContainer = document.createElement('div');
   postsContainer.classList.add('postsContainer');
 
+  // header del post
   const headerPostContainer = document.createElement('div');
   headerPostContainer.classList.add('headerPostContainer');
 
@@ -98,56 +93,68 @@ const createPost = function (postDescription, userName, idpost) {
   const postUserName = document.createElement('p');
   postUserName.classList.add('postUserName');
 
-  const iconPostEdit = document.createElement('button');
-  iconPostEdit.classList.add('iconPostEdit');
+  const iconPostEdit = document.createElement('i');
+  iconPostEdit.insertAdjacentHTML('afterbegin', '<i class="fa-solid fa-pencil"></i>');
 
-  const iconPostDelete = document.createElement('button');
-  iconPostDelete.classList.add('iconPostDelete');
+  const iconPostDelete = document.createElement('i');
+  iconPostDelete.insertAdjacentHTML('afterbegin', '<i class="fa-solid fa-trash-can"></i>');
   iconPostDelete.setAttribute('id', idpost);
 
+  // cuerpo del post
   const post = document.createElement('div');
   post.classList.add('post');
 
-  const posttext = document.createElement('div');
+  const postTextDiv = document.createElement('div');
+  postTextDiv.classList.add('postTextDiv');
+
+  const posttext = document.createElement('input');
+  posttext.setAttribute('type', 'text');
   posttext.classList.add('posttext');
 
-  const postImg = document.createElement('img');
-  postImg.classList.add('postImg');
+  const postIcon = document.createElement('div');
+  postIcon.classList.add('postIcon');
 
-  const likeIcon = document.createElement('button');
+  const starIcon = document.createElement('i');
+  starIcon.classList.add('starIcon');
+  starIcon.insertAdjacentHTML('afterbegin', '<i class="fa-regular fa-star"></i>');
+
+  const likeIcon = document.createElement('i');
   likeIcon.classList.add('likeIcon');
+  likeIcon.insertAdjacentHTML('afterbegin', '<i class="fa-regular fa-heart"></i>');
 
-  const postCommentsContainer = document.createElement('div');
-  postCommentsContainer.classList.add('postCommentsContainer');
+  const comentIcon = document.createElement('i');
+  comentIcon.insertAdjacentHTML('afterbegin', '<i class="fa-regular fa-comment-dots"></i>');
 
-  const postComments = document.createElement('input'); //
+  const postCommentsDiv = document.createElement('div');
+  postCommentsDiv.classList.add('postCommentsContainer');
+  const postComments = document.createElement('input');
+  postComments.setAttribute('type', 'text');
   postComments.classList.add('postComments');
 
-  const userComment = document.createElement('p');
-  userComment.classList.add('userComment');
+  postUserName.textContent = 'Arkelly';
+  postComments.setAttribute('placeholder', 'Comentario...');
+  posttext.textContent = postDescription;
 
-  bodyContainer.appendChild(postsContainer);
+  bodyContainer.appendChild(postsContainer);// eliminar uno
+
   postsContainer.appendChild(headerPostContainer);
+  postsContainer.appendChild(post);
+
   headerPostContainer.appendChild(userPostContainer);
+  headerPostContainer.appendChild(iconsEditDeletePostContainer);
   userPostContainer.appendChild(postUsePhoto);
   userPostContainer.appendChild(postUserName);
-
-  headerPostContainer.appendChild(iconsEditDeletePostContainer);
   iconsEditDeletePostContainer.appendChild(iconPostEdit);
   iconsEditDeletePostContainer.appendChild(iconPostDelete);
 
-  postsContainer.appendChild(post);
-  post.appendChild(posttext);
-  post.appendChild(postImg);
-  postsContainer.appendChild(likeIcon);
-  postsContainer.appendChild(postCommentsContainer);
-  postCommentsContainer.appendChild(postComments);
-
-  postUserName.textContent = 'Arkelly';
-  iconPostEdit.textContent = '...';
-  iconPostDelete.textContent = 'X';
-  postComments.setAttribute('placeholder', 'Comentario...');
-  posttext.textContent = postDescription;
+  post.appendChild(postTextDiv);
+  post.appendChild(postIcon);
+  post.appendChild(postCommentsDiv);
+  postTextDiv.appendChild(posttext);
+  postIcon.appendChild(starIcon);
+  postIcon.appendChild(likeIcon);
+  postIcon.appendChild(comentIcon);
+  postCommentsDiv.appendChild(postComments);
 
   muroDiv.appendChild(bodyContainer);
   // --------------------------evento para borrar post
@@ -187,11 +194,11 @@ const borrarPost = function (idpost) {
   muroDiv.appendChild(modalDelete);
   modalDelete.appendChild(buttonAceptDeletePost);
   modalDelete.appendChild(buttonCancelDeletePost);
-  console.log('afuera');
+  // .log('afuera');
   buttonAceptDeletePost.addEventListener('click', (e) => {
     e.preventDefault();
     deleteTasks(idpost);
-    console.log(`${idpost}adentro`);
+    // console.log(`${idpost}adentro`);
     muroDiv.removeChild(modalDelete);
   });
 };
@@ -213,3 +220,20 @@ export const muro = () => {
 
   return muroDiv;
 };
+
+// para salir de la sesion
+
+iconExit.addEventListener('click', (e) => {
+  e.preventDefault();
+  signOut(auth).then(() => {
+  // Sign-out successful.
+    alert('Estas seguro que quieres salir');
+
+    navigation('/');
+  }).catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+
+    alert(`${errorCode} ${errorMessage}`);
+  });
+});

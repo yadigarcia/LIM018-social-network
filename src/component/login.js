@@ -14,7 +14,6 @@ import {
   signInWithPopup,
   FacebookAuthProvider,
   providerf,
-  signOut,
 } from '../firebase/firebase.js';
 
 export const login = () => {
@@ -192,17 +191,3 @@ export const login = () => {
 
   return windowlogin;
 };
-
-// para salir de la sesion
-// variableparasalir.addEventListener('click', (e) => {
-//   e.preventDefault();
-//   signOut(auth).then(() => {
-//   // Sign-out successful.
-//     alert('Estas seguro que quieres salir de la pagina');
-//   }).catch((error) => {
-//     const errorCode = error.code;
-//     const errorMessage = error.message;
-
-//     alert(`${errorCode} ${errorMessage}`);
-//   });
-// });

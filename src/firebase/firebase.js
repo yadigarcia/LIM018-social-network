@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-app.js';
 import {
   getAuth,
