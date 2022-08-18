@@ -5,6 +5,8 @@ import {
   savetask, onGetTasks, deleteTasks, auth, signOut,
 } from '../firebase/firebase.js';
 
+// const userC = auth.currentUser;
+// console.log(userC);
 // ............................Construyendo el Muro...............................................
 const muroDiv = document.createElement('div');
 muroDiv.classList.add('muroDiv');
@@ -89,13 +91,10 @@ const borrarPost = function (idpost) {
   muroDiv.appendChild(modalDelete);
   modalDelete.appendChild(buttonAceptDeletePost);
   modalDelete.appendChild(buttonCancelDeletePost);
-  console.log('afuera');
-  console.log(idpost);
-  console.log('afuera');
+
   buttonAceptDeletePost.addEventListener('click', (e) => {
     e.preventDefault();
     deleteTasks(idpost);
-    console.log(`${idpost}adentro`);
     muroDiv.removeChild(modalDelete);
   });
 };
@@ -184,17 +183,17 @@ const createPost = function (postDescription, userName, idpost) {
   postIcon.appendChild(likeIcon);
   postIcon.appendChild(comentIcon);
   postCommentsDiv.appendChild(postComments);
-  console.log(`borrar ${idpost}`);
   muroDiv.appendChild(bodyContainer);
   // --------------------------evento para borrar post
   iconPostDelete.addEventListener('click', (event) => {
-    console.log(event.target.id);
     borrarPost(event.target.id);
   });
 };
 
 // ------------------------Guardar Posts en Firestore -----------------------
 const guardarPost = function () {
+  const userC = auth.currentUser;
+  console.log(userC);
   savetask('Arkelly', newPost.value);
 };
 

@@ -1,7 +1,7 @@
 /* eslint-disable import/no-cycle */
 import { navigation } from '../main.js';
 import {
-  auth, database, createUserWithEmailAndPassword, set, ref,
+  auth, database, createUserWithEmailAndPassword, set, ref, userCollection,
 } from '../firebase/firebase.js';
 
 export const register = () => {
@@ -75,12 +75,14 @@ export const register = () => {
         // Signed in
         formRegister.reset(userCredential); // para resetear el valor del input
         const user = userCredential.user;
+        // userCollection('idd');
         set(ref(database, `user/${user.uid}`), { // Envia a Realtime los campos indicados
           username,
           email,
         });
-
         alert('Usuario Creado');
+        console.log(auth.currentUser);
+        userCollection(user.uid, username, user.photoURL);
       })
       .catch((error) => {
         const errorCode = error.code;
