@@ -224,7 +224,7 @@ export const muro = () => {
   return muroDiv;
 };
 
-// para salir de la sesion del muro
+// para salir de la sesion
 iconExit.addEventListener('click', (e) => {
   e.preventDefault();
   signOut(auth).then(() => {
