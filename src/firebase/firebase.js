@@ -22,6 +22,7 @@ import {
   deleteDoc, // Permite eliminar datos de Firestore
   onSnapshot, // Permite mostrar los datos cuando son enviados
   doc,
+  setDoc,
 } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-firestore.js';
 
 const firebaseConfig = {
@@ -52,7 +53,10 @@ export {
   GoogleAuthProvider,
   signInWithPopup,
   FacebookAuthProvider,
+  setDoc,
+  doc,
 };
+
 export { set, ref, update };
 
 // FIRESTORE
@@ -60,14 +64,23 @@ export { set, ref, update };
 const db = getFirestore();
 
 // Funcion para enviar y almacenar datos en Firestore
-export const savetask = (userName, postDescription) => {
+export const savetask = (uId, userName, postDescription) => {
 //  console.log(title, description);
-  addDoc(collection(db, 'bd-muro'), { userName, postDescription });// {} es un objeto que estás enviando
+  addDoc(collection(db, 'bd-muro'), { uId, userName, postDescription });// {} es un objeto que estás enviando
 };
 
 // Funcion para obtener datos de Firestore
-export const getTask = () => getDocs(collection(db, 'bd-muro'));
+// export const getTask = () => getDocs(collection(db, 'bd-muro'));
 // Funcion para cuando pase eso estará escuchando modificacion para mostrarlo
 export const onGetTasks = (callback) => onSnapshot(collection(db, 'bd-muro'), callback);
 // Funcion para eliminar posts de Firestore
 export const deleteTasks = (id) => deleteDoc(doc(db, 'bd-muro', id));
+
+export const userCollection = (uId, nameUser, photoUser) => {
+  //  console.log(title, description);
+  setDoc(doc(db, 'db-user', uId), {
+    id: uId,
+    name: nameUser,
+    photo: photoUser,
+  });
+};
