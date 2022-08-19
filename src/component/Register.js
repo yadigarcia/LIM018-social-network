@@ -81,7 +81,8 @@ export const register = () => {
           email,
         });
         alert('Usuario Creado');
-        console.log(auth.currentUser);
+        // console.log(auth.currentUser);
+
         userCollection(user.uid, username, user.photoURL);
       })
       .catch((error) => {

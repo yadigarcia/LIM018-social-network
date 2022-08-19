@@ -51,7 +51,7 @@ iconsContent.appendChild(iconMessage);
 iconsContent.appendChild(iconExit);
 
 // New post-----------------------------------------
-const newPostDiv = document.createElement('div');
+const newPostDiv = document.createElement('form');
 newPostDiv.classList.add('newPostDiv');
 
 const photoUpload = document.createElement('i');
@@ -71,7 +71,7 @@ newPostDiv.appendChild(photoUpload);
 newPostDiv.appendChild(newPost);
 newPostDiv.appendChild(buttonsavepost);
 
-const bodyContainer = document.createElement('div');// donde esta este elemento?
+const bodyContainer = document.createElement('form');// donde esta este elemento?
 bodyContainer.classList.add('bodyContainer');
 
 // ------------------------ Funcion para borrar post de firestore---------------------------
@@ -101,6 +101,7 @@ const borrarPost = function (idpost) {
 
 // ............................Funciones crear Post.........................................
 const createPost = function (postDescription, userName, idpost) {
+  console.log(`dentro de createpost${idpost}`);
   const postsContainer = document.createElement('div');
   postsContainer.classList.add('postsContainer');
 
@@ -162,7 +163,7 @@ const createPost = function (postDescription, userName, idpost) {
   iconPostDelete.textContent = 'X';
   postComments.setAttribute('placeholder', 'Comentario...');
   posttext.textContent = postDescription;
-  postUserName.textContent = 'Arkelly';
+  postUserName.innerHTML = `${userName}`;
   bodyContainer.appendChild(postsContainer);// eliminar uno
 
   postsContainer.appendChild(headerPostContainer);
@@ -186,15 +187,18 @@ const createPost = function (postDescription, userName, idpost) {
   muroDiv.appendChild(bodyContainer);
   // --------------------------evento para borrar post
   iconPostDelete.addEventListener('click', (event) => {
+    event.preventDefault();
+    console.log(event);
     borrarPost(event.target.id);
   });
 };
 
 // ------------------------Guardar Posts en Firestore -----------------------
 const guardarPost = function () {
-  const userC = auth.currentUser;
-  console.log(userC);
-  savetask('Arkelly', newPost.value);
+// const userC = auth.currentUser;
+  // console.log(auth.currentUser.displayName);
+
+  savetask(auth.currentUser.uid, auth.currentUser.displayName, newPost.value);
 };
 
 // -------------------------mostrarPosts-----------------------
@@ -202,7 +206,9 @@ const mostrarPosts = function (querySnapshot) {
   bodyContainer.innerHTML = ' ';// consulta si es válido
   querySnapshot.forEach((doc) => {
     const bdmuro = doc.data();
+
     createPost(bdmuro.postDescription, bdmuro.userName, doc.id);
+    console.log(createPost);
   });
 };
 
@@ -212,6 +218,7 @@ export const muro = () => {
   buttonsavepost.addEventListener('click', (e) => { // submit se ejecuta cuando se hace clic en el boton dentro del form
     e.preventDefault(); // cancerlar el evento por defecto (refrescar la pagina)
     guardarPost();
+    newPostDiv.reset();
   });
   // ------------------------  -Evento para obtener los datos de firestore-------------------------
   // consults asincrona- querySnapshot es los datos que existen en este momento

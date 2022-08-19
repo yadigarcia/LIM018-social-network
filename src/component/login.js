@@ -115,7 +115,6 @@ export const login = () => {
           last_Login: dt,
         });
         navigation('/muro');
-        console.log(auth.currentUser);
       })
       .catch((error) => {
         const errorCode = error.code;
