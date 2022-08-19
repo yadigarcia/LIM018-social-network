@@ -1,20 +1,30 @@
-// eslint-disable-next-line spaced-comment
-//Type=module permite importar y exportar codigo
-// Import the functions you need from the SDKs you need
-// eslint-disable-next-line import/no-cycle
+/* eslint-disable import/no-unresolved */
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-app.js';
-import { getAuth, createUserWithEmailAndPassword} from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-auth.js';
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  onAuthStateChanged, signOut,
+  GoogleAuthProvider,
+  signInWithPopup,
+  FacebookAuthProvider,
+} from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-auth.js';
+
+import {
+  getDatabase, set, ref, update,
+} from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-database.js';
+
 import {
   getFirestore, // getFirestore nos permite conectarnos con firestore
   collection, // collection nos permite creae una tabla o coleccion de datos en firestore
   addDoc, // Nos permite indicar a FireStre que es lo que quiero hacer (guardar, actualizar,etc)
   getDocs, // Permite traer datos de Firestore
+  deleteDoc, // Permite eliminar datos de Firestore
+  onSnapshot, // Permite mostrar los datos cuando son enviados
+  doc,
+  setDoc,
 } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-firestore.js';
 
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: 'AIzaSyDBqQpWxgLbRQOupFwXsIOZfFUfRuKNfnk',
   authDomain: 'travelers-lim018.firebaseapp.com',
@@ -24,32 +34,53 @@ const firebaseConfig = {
   appId: '1:928230572150:web:4030d235fab2ba0663df57',
   measurementId: 'G-8Z6J1FH9JZ',
 };
+
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+export const app = initializeApp(firebaseConfig);
+
+// Autentication auth from Firebase
+
+export const database = getDatabase(app);
+export const auth = getAuth(app);
+export const provider = new GoogleAuthProvider(app);
+export const providerf = new FacebookAuthProvider(app);
+
+export {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+  signOut,
+  GoogleAuthProvider,
+  signInWithPopup,
+  FacebookAuthProvider,
+  setDoc,
+  doc,
+};
+
+export { set, ref, update };
+
+// FIRESTORE
 // Coneccion a la base de datos Firestore
 const db = getFirestore();
 
 // Funcion para enviar y almacenar datos en Firestore
-export const savetask = (title, description) => {
-  console.log(title, description);
-  addDoc(collection(db, 'asks'), { title, description });// {} es un objeto que estás enviando
+export const savetask = (uId, userName, postDescription) => {
+//  console.log(title, description);
+  addDoc(collection(db, 'bd-muro'), { uId, userName, postDescription });// {} es un objeto que estás enviando
 };
 
 // Funcion para obtener datos de Firestore
-export const getTask = () => getDocs(collection(db, 'asks'));
+// export const getTask = () => getDocs(collection(db, 'bd-muro'));
+// Funcion para cuando pase eso estará escuchando modificacion para mostrarlo
+export const onGetTasks = (callback) => onSnapshot(collection(db, 'bd-muro'), callback);
+// Funcion para eliminar posts de Firestore
+export const deleteTasks = (id) => deleteDoc(doc(db, 'bd-muro', id));
 
-// ------- funtion for Autenticaciones new Users - Register-----------//
-
-export const auth = getAuth();
-// createUserWithEmailAndPassword(auth, email, password)
-//   .then((userCredential) => {
-//     // Signed in
-//     const user = userCredential.user;
-//     // ...
-//   })
-//   .catch((error) => {
-//     const errorCode = error.code;
-//     const errorMessage = error.message;
-//     // ..
-//   });
-
+export const userCollection = (uId, nameUser, photoUser) => {
+  //  console.log(title, description);
+  setDoc(doc(db, 'db-user', uId), {
+    id: uId,
+    name: nameUser,
+    photo: photoUser,
+  });
+};

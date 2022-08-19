@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Rajdhani&family=Roboto:wght@300&display=swap');
+/*@import url('https://fonts.googleapis.com/css2?family=Rajdhani&family=Roboto:wght@300&display=swap');*/
 
 /* -------background the view SPA-------- */
 *{
@@ -8,154 +8,412 @@
 }
 
 /* STYLE BUTTON */
-
 .buttonStyle {
-  display: flex;
-  justify-content: center;
-  background: #1d5011;
-  border-radius: 15px;
-  padding: 5%;
-  width: 200%;
+  background:rgb(2, 87, 66);
   color: #f1f6f0;
-  margin-top: 20%;
-  font-size: 60%;
+  border-radius: 8px;
+  margin-top:5%;
+  padding: 10px;
+  font-size: 45%;
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  border: none;
   }
 
   .buttonStyle:hover {
-    background: red;
+    background: rgb(212, 34, 87);
   }
 
-  /* .btnsRegister{
-    margin-top: 3%;
-  } */
+.btnsRegister{
+   margin: 1%;
+  padding: 0%;
+  }
  .buttonStyleLogin{
-  width: 20%;
- }
- 
-
-
-/* STYLE LOGIN */
+  width: 55%;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 5%;
+  }
+ /* STYLE LOGIN */
 .windowlogin{
   background:url('img/loros.jpg'); 
   background-size:cover;
   background-repeat: no-repeat;
   background-position: center;
-  height: 102vh;
+  height: 98vh;
   font-size: 30px;
-  font-weight: bolder;
-  z-index: 1;
-  justify-content: center;
   display: flex;
-  flex-direction: column;
   align-items: center;
+  flex-direction: column-reverse;
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+.logoLogin{
+margin: 0;
+padding: 0;
+display: flex;
+flex-direction: column;
+align-items: center;
+margin-bottom: 10%;
+margin-top: 5%;
+}
+
+.imgLogo{
+  margin: 0;
+  padding: 0;
+  background:url('img/logo.JPG'); 
+  border-radius: 50%;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  width: 80px;
+  height:80px;
+}
+.nameLogo{
+  font-size: 80%;
+  color: #186b05;
+  font-weight: bold;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .formviewlogin{
-  background: rgba(248, 250, 241, 0.58);
+ background: rgba(248, 250, 241, 0.5);
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 5% 5% 5%;
-  border-radius: 10px;
-  height: 50%;
-  width: 60%;
-    /*fuerza a la imagen a no tener margen*/
   justify-content: center;
-  margin-top: 15%;
-}
-
-.inputslogin{
-  border-radius: 8px;
-  margin-top:10%;
-  width: 150%;
+  align-items: center;
   padding: 5%;
+  border-radius: 10px;
+  height: 80%; 
 }
 
-
-.questionlogin{ 
-  color:black;
-  font-size: 60%;
-  margin-top: 20%;
-  width: 220%;
-  
+.loginImputDiv{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin:0;
+  text-align-last: center;
+}
+.inputs{
+  background: rgba(217, 217, 217, 1);
+  border-radius: 8px;
+  padding: 3% ;
+  border: none;
+  margin: 3% 10%; 
 }
 
+.loginQuestionDiv{ 
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.questionAboutCount{
+  color:rgb(6, 68, 52);
+  font-size: 40%;
+}
+
+.lineLogin{
+  color:rgb(6, 68, 52);
+  font-size: 50%;
+ font-weight: bolder;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5%;
+}
+
+.googleFacebook{
+   display: flex;
+   justify-content: space-between;
+   margin:5% 15%;
+   padding:0;
+   width: 100%;
+   margin-bottom: 10%;
+}
+
+.imgGoogle{
+  margin: 0;
+  padding: 0;
+  background:url('img/google.png'); 
+  border-radius: 50%;
+  background-size: 100%;
+  width: 30px;
+  height:30px;
+  border: none;
+}
+
+.imgFacebook{
+  margin: 0;
+  padding: 0;
+  background:url('img/facebook.png'); 
+  border-radius: 50%;
+  background-size: 100%;
+  width: 30px;
+  height:30px;  
+  border: none;
+} 
 
 
- /*  STYLE REGISTER */
- .windowRegister {
+/*  STYLE REGISTER */
+.windowRegister {
   background:url('https://www.lumen-colombia.com/blog/wp-content/uploads/2017/01/bavaria-1617529_1920-683x1024.jpg'); 
   background-size:cover;
   background-repeat: no-repeat;
   background-position: center;
-  height: 132vh;
+  height: 91vh;
   font-size: 30px;
   font-weight: bolder;
   z-index: 1;
-  justify-content: center;
+  padding-top: 10%;
+  padding-bottom: 10%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
- }
+  align-items: center;  
+}
 
-.formview{
-  background: rgba(248, 250, 241, 0.58);
+.formRegister{
+  background: rgba(248, 250, 241, 0.5);
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  padding: 10% 10% 10%;
   border-radius: 10px;
-  height: 50%;
+  height: 80%;
   margin-left: auto;
   margin-right: auto;
-  position: absolute; /*fuerza a la imagen a no tener margen*/
-  justify-content: center;
- 
+  padding: 5%;
 }  
 
 .welcomeRegister{
   color:#415c3b;
-  font-size: 30px;
-  margin-top: 0;
-  margin-bottom: 5%;  
+  font-size: 55%;
+  margin:5%;
+  padding: 0;
   font-style: oblique;
   font-weight: bolder ;
+  text-align: center;
+}
+.registerDateDiv{
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  margin:0;
+  text-align-last: center;
+  /* margin:0% 300%; */
 }
 
+.btnsRegisterDiv{
+  width: 50%;
+}
 
- .inputs{
-   border-radius: 8px;
-   margin-top:10%;
-   width: 150%;
-   padding: 4%;
- }
-
-
-/* STYLE MURO */
+/*STYLE MURO------------------------------------------------------- */
 
 .muroDiv{
-  background:url('https://www.lumen-colombia.com/blog/wp-content/uploads/2017/01/bavaria-1617529_1920-683x1024.jpg'); 
 
-  height: 100vh;
-  z-index: 1;
-/*argin: 0;
-padding: 0;
-height: 100vh;
-z-index: 1;
+background: rgba(15, 15, 15);
+color: rgb(36, 134, 34);
+/* height: 100vh; */
+height: max-content;
+}
+
+ /* style HEADER */
+.headerContent{
+  background-color: #186b05;
+  padding: 10px;
+  height:9%;
+  width:100%;
+  color:rgb(242, 248, 237);/*  color de los elementos hijos*/
+display: flex;
+justify-content: space-between;
+}
+
+.logoContent{
+width: 30%;
+background-size: auto;
+display: flex;
+flex-direction:row;
+}
+
+.logo{
+  margin: 0;
+  padding: 0;
+  background:url('img/logo1.png'); 
+  border: none;
+  border-radius: 120%; 
+  background-size: 100%;
+  background-repeat: no-repeat;
+  width: 40px;
+  height:50px;
+  filter:saturate(150%);
+  border-color: none;
+  
+}
+
+.logoName{
+  font-size: 150%;
+  color: #186b05;
+  filter:saturate(500%);
+  font-weight: bold;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+} 
+
+.iconsContent{
+  margin:1% 5%;
+  width: 20%;
   display: flex;
-  flex-flow: column wrap; */
+  justify-content: space-between;
 }
 
-.contentMuroForm{
-   display: flex;
-  flex-flow: column wrap; 
+.icon{
+  height: 20%;
+  color: #cff6c8;
+}
+/* Imput para publicaciones */
+.newPostDiv{
+  display: flex;
+  flex-wrap: nowrap;
 }
 
-.titleComment{
-  background: #1d5011;
+.iconphoto{  
+ color:#1b83dd; 
+ margin-left: 4%;
+ font-size: 25px;
+}
+.newPost{
+  background-color: #dffdd8;
+  margin-left: 1%;
+  padding: 1.5%;
+  height:fit-content;
+  width: 80%;
+  border-radius: 10px;
+  text-align: center;
+ }
 
+ .publicar{
+  color: #cff6c8;
+  background:#1b83dd;
+  border-radius: 50%;
+  border: none;
+  padding: 1.5%;
+  margin-left: 1%;
+ }
+
+/* style BODY -----------------------------------------*/
+.bodyContainer{
+  margin: 0;
+  padding: 0;
+  background-color: #f2f5f1;
+}
+.postsContainer{
+  background: rgb(50, 50, 50);
+  margin: 3% 10%;
+  border-radius: 3%; 
+  box-shadow: 1px 1px 2px; 
+ }
+ /* style del HEADER POST */
+ .headerPostContainer{
+  background:  rgba(25, 25, 25);
+  display: flex;
+  justify-content: space-between;
+ }
+
+ .userPostContainer{
+  display: flex;
+  flex-wrap: nowrap;
+  width: 50%;
+  align-items: center;
+ }
+
+ .postUsePhoto{
+   background:url('img/userlogo.PNG'); 
+   background-size:contain; 
+   background-repeat: no-repeat;
+   border-radius: 50%;
+   width: 40px;
+   height: 40px;
+   margin:3%
+ }
+
+.postUserName{
+color:whitesmoke;
+font-size: 100%;
+width: 30%;
+font-family:cursive;
+}
+
+.iconsEditDeletePostContainer{
+background:  rgba(25, 25, 25);
+margin:1% 4%;
+display: flex;
+flex-wrap: nowrap;
+justify-content: space-between;
+width: 8%;
+color: #cff6c8;
+font-size: 12px;
+}
+/* style del POST----------------- */
+
+.postsContainer{
+  background: rgba(25, 25,25);
+  margin-bottom: 2%;
+}
+
+.postTextDiv{
+display: inline-block;
+width: 100%;
+}
+
+.posttext{
+  background-color: rgb(218, 243, 220);
+  color: #186b05;
+width: 95%;
+padding: 1% 2%;
 
 }
-.commentMuro{
-  color:black;
+.postIcon{
+width: 20%;
+display:flex;
+flex-wrap: nowrap;
+justify-content: space-between;
+margin: 1% 1.5%;
 }
+.postCommentsDiv{
+display: inline-block;
+width: 100%;
+}
+.postComments{
+  background:rgb(90, 90, 90);
+  padding: 2% 3%;
+  border-radius: 0px 0px 8px 8px;
+  height:15%;
+  width:93.5%;
+  color:white;
+}
+.modalDelete{
+  background-color: #071614;
+  color: azure;
+  position: absolute;/* para superponer el modal */
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+ padding: 5%;
+border-radius: 4px;
+ margin: 30%;
+  height:100px;
+  width:100px;
+  z-index: 60;
+ }
+
+ .buttonDeletePost{
+  background-color: rgb(11, 99, 37);
+  padding: 4px;
+  border-radius: 7px;
+ }
+ .b{
+  background-color:black;
+ /* background-image:url('img/like.JPG'); */
+ color: rgb(163, 230, 208);
+  height:15px;
+  width:15px;
+  background-size: 100%;
+  background-repeat: no-repeat;
+
+ }
