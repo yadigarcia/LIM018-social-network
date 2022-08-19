@@ -5,13 +5,15 @@ import {
   savetask, onGetTasks, deleteTasks, auth, signOut,
 } from '../firebase/firebase.js';
 
-// const userC = auth.currentUser;
-// console.log(userC);
-// ............................Construyendo el Muro...............................................
+// ..................HEADER DEL MURO, SE VA A MANTENER FIJO.............................
+
 const muroDiv = document.createElement('div');
 muroDiv.classList.add('muroDiv');
 
-// header para muro--------------------------------
+const bodyContainer = document.createElement('div');
+bodyContainer.classList.add('bodyContainer');
+
+//---------------------------------------------
 const headerContent = document.createElement('div');
 headerContent.classList.add('headerContent');
 
@@ -40,7 +42,6 @@ iconExit.classList.add('icon');
 iconExit.insertAdjacentHTML('afterbegin', '<i class="fa-solid fa-arrow-right-from-bracket"></i>');
 
 muroDiv.appendChild(headerContent);
-
 headerContent.appendChild(logoContent);
 headerContent.appendChild(iconsContent);
 
@@ -50,7 +51,8 @@ iconsContent.appendChild(iconSearch);
 iconsContent.appendChild(iconMessage);
 iconsContent.appendChild(iconExit);
 
-// New post-----------------------------------------
+// ---------------DONDE SE VA A ESCRIBIR NUEVOS POST------------------------------
+
 const newPostDiv = document.createElement('form');
 newPostDiv.classList.add('newPostDiv');
 
@@ -58,7 +60,7 @@ const photoUpload = document.createElement('i');
 photoUpload.classList.add('iconphoto');
 photoUpload.insertAdjacentHTML('afterbegin', '<i class="fa-regular fa-image"></i>');
 
-const newPost = document.createElement('input');
+const newPost = document.createElement('input'); // -------POST_TEXT_IMPUT
 newPost.classList.add('newPost');
 newPost.setAttribute('placeholder', 'Cuentanos tu aventura Traveller');
 
@@ -71,10 +73,8 @@ newPostDiv.appendChild(photoUpload);
 newPostDiv.appendChild(newPost);
 newPostDiv.appendChild(buttonsavepost);
 
-const bodyContainer = document.createElement('form');// donde esta este elemento?
-bodyContainer.classList.add('bodyContainer');
+// -------------------FUNCION PARA BORRAR POST DE FIREBASE-----------------
 
-// ------------------------ Funcion para borrar post de firestore---------------------------
 const borrarPost = function (idpost) {
   const modalDelete = document.createElement('div');
   modalDelete.classList.add('modalDelete');
@@ -99,13 +99,14 @@ const borrarPost = function (idpost) {
   });
 };
 
-// ............................Funciones crear Post.........................................
-const createPost = function (postDescription, userName, idpost) {
-  console.log(`dentro de createpost${idpost}`);
-  const postsContainer = document.createElement('div');
-  postsContainer.classList.add('postsContainer');
+// ........................FUNCION PARA CREAR POST..................................
 
-  // header del post
+const createPost = function (postDescription, userName, idpost) {
+  // console.log(`dentro de createpost${idpost}`);
+  const postsContainerDiv = document.createElement('div');
+  postsContainerDiv.classList.add('postsContainerDiv');
+
+  // HEADER_POST
   const headerPostContainer = document.createElement('div');
   headerPostContainer.classList.add('headerPostContainer');
 
@@ -129,7 +130,7 @@ const createPost = function (postDescription, userName, idpost) {
   // iconPostDelete.insertAdjacentHTML('afterbegin', '<i class="fa-solid fa-trash-can"></i>');
   iconPostDelete.setAttribute('id', idpost);
 
-  // cuerpo del post
+  // CUERPO_POST
   const post = document.createElement('div');
   post.classList.add('post');
 
@@ -164,10 +165,10 @@ const createPost = function (postDescription, userName, idpost) {
   postComments.setAttribute('placeholder', 'Comentario...');
   posttext.textContent = postDescription;
   postUserName.innerHTML = `${userName}`;
-  bodyContainer.appendChild(postsContainer);// eliminar uno
 
-  postsContainer.appendChild(headerPostContainer);
-  postsContainer.appendChild(post);
+  muroDiv.appendChild(postsContainerDiv);
+  postsContainerDiv.appendChild(headerPostContainer);
+  postsContainerDiv.appendChild(post);
 
   headerPostContainer.appendChild(userPostContainer);
   headerPostContainer.appendChild(iconsEditDeletePostContainer);
@@ -184,45 +185,37 @@ const createPost = function (postDescription, userName, idpost) {
   postIcon.appendChild(likeIcon);
   postIcon.appendChild(comentIcon);
   postCommentsDiv.appendChild(postComments);
-  muroDiv.appendChild(bodyContainer);
+
   // --------------------------evento para borrar post
   iconPostDelete.addEventListener('click', (event) => {
     event.preventDefault();
-    console.log(event);
     borrarPost(event.target.id);
   });
 };
 
-// ------------------------Guardar Posts en Firestore -----------------------
+// ----------------------GUARDAR POST EN FIRESTORE ----
 const guardarPost = function () {
-// const userC = auth.currentUser;
-  // console.log(auth.currentUser.displayName);
-
   savetask(auth.currentUser.uid, auth.currentUser.displayName, newPost.value);
 };
 
-// -------------------------mostrarPosts-----------------------
-const mostrarPosts = function (querySnapshot) {
-  bodyContainer.innerHTML = ' ';// consulta si es válido
-  querySnapshot.forEach((doc) => {
-    const bdmuro = doc.data();
+buttonsavepost.addEventListener('click', (e) => {
+  e.preventDefault();
+  guardarPost();
+  newPostDiv.reset();
+});
 
-    createPost(bdmuro.postDescription, bdmuro.userName, doc.id);
-    console.log(createPost);
-  });
-};
+// -----------------------MOSTAR POST A MURO-----------------------
 
-// ............................Función Principal.........................................
 export const muro = () => {
-  // -------------------- evento para enviar datos a Firestore-----------------------
-  buttonsavepost.addEventListener('click', (e) => { // submit se ejecuta cuando se hace clic en el boton dentro del form
-    e.preventDefault(); // cancerlar el evento por defecto (refrescar la pagina)
-    guardarPost();
-    newPostDiv.reset();
-  });
-  // ------------------------  -Evento para obtener los datos de firestore-------------------------
-  // consults asincrona- querySnapshot es los datos que existen en este momento
-  window.addEventListener('DOMContentLoaded', async () => { // async se usa para que funcione await
+  const mostrarPosts = function (querySnapshot) {
+    querySnapshot.forEach((doc) => {
+      const bdmuro = doc.data();
+
+      createPost(bdmuro.postDescription, bdmuro.userName, doc.id);
+    });
+  };
+
+  window.addEventListener('DOMContentLoaded', async () => {
     onGetTasks((querySnapshot) => {
       mostrarPosts(querySnapshot);
     });
@@ -232,7 +225,6 @@ export const muro = () => {
 };
 
 // para salir de la sesion
-
 iconExit.addEventListener('click', (e) => {
   e.preventDefault();
   signOut(auth).then(() => {
