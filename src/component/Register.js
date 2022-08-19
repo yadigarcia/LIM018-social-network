@@ -63,26 +63,21 @@ export const register = () => {
 
   buttonBackToLogin.addEventListener('click', () => navigation('/'));
 
-  buttonRegister.addEventListener('click', (e) => {
-    e.preventDefault();
-
-    const username = registerName.value;
+  function createRegister() {
+    const username = registerName.value + registerLastName.value;
     const email = registerEmail.value;
     const password = registerPasword.value;
 
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        // Signed in
-        formRegister.reset(userCredential); // para resetear el valor del input
+        formRegister.reset(userCredential);
         const user = userCredential.user;
-        // userCollection('idd');
+
         set(ref(database, `user/${user.uid}`), { // Envia a Realtime los campos indicados
           username,
           email,
         });
         alert('Usuario Creado');
-        // console.log(auth.currentUser);
-
         userCollection(user.uid, username, user.photoURL);
       })
       .catch((error) => {
@@ -91,6 +86,11 @@ export const register = () => {
 
         alert(`${errorMessage}`);
       });
+  }
+
+  buttonRegister.addEventListener('click', (e) => {
+    e.preventDefault();
+    createRegister();
   });
 
   return windowRegister;

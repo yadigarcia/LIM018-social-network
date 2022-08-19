@@ -53,8 +53,8 @@ export {
   GoogleAuthProvider,
   signInWithPopup,
   FacebookAuthProvider,
-  setDoc,
-  doc,
+  // setDoc,
+  // doc,
 };
 
 export { set, ref, update };
@@ -70,7 +70,7 @@ export const savetask = (uId, userName, postDescription) => {
 };
 
 // Funcion para obtener datos de Firestore
-// export const getTask = () => getDocs(collection(db, 'bd-muro'));
+export const getTask = () => getDocs(collection(db, 'bd-muro'));
 // Funcion para cuando pase eso estará escuchando modificacion para mostrarlo
 export const onGetTasks = (callback) => onSnapshot(collection(db, 'bd-muro'), callback);
 // Funcion para eliminar posts de Firestore
