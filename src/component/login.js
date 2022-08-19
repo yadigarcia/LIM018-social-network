@@ -95,17 +95,13 @@ export const login = () => {
   formLogin.appendChild(loginImputDiv);
   formLogin.appendChild(btnLoginDiv);
 
-  btnToRegister.addEventListener('click', () => navigation('/register'));
-
-  buttonLogin.addEventListener('click', (e) => {
-    e.preventDefault();
-
+  // Ingreso con Email
+  function signEmail() {
     const email = loginEmail.value;
     const password = loginPasword.value;
 
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        // Signed in
         formLogin.reset(userCredential);
 
         const dt = new Date();
@@ -117,69 +113,61 @@ export const login = () => {
         navigation('/muro');
       })
       .catch((error) => {
-        const errorCode = error.code;
         const errorMessage = error.message;
 
         alert(`${errorMessage}`);
       });
-  });
+  }
 
   // Ingreso con google-------------------------------------
-
-  btnGoogle.addEventListener('click', (e) => {
-    e.preventDefault();
+  function signGoogle() {
     signInWithPopup(auth, provider)
       .then((result) => {
-        // This gives you a Google Access Token. You can use it to access the Google API.
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential.accessToken;
         // The signed-in user info.
         const user = result.user;
-        console.log(user);
 
         navigation('/muro');
         userCollection(user.uid, user.displayName, user.photoURL);
       })
       .catch((error) => {
-        // Handle Errors here.
-        const errorCode = error.code;
         const errorMessage = error.message;
-        // The email of the user's account used.
-        const email = error.customData.email;
-        // The AuthCredential type that was used.
-        const credential = GoogleAuthProvider.credentialFromError(error);
         alert(`${errorMessage}`);
       });
-  });
+  }
 
   // Ingreso con facebook-------------------------------------
-
-  btnFacebook.addEventListener('click', (e) => {
-    e.preventDefault();
-
+  function signFacebook() {
     signInWithPopup(auth, providerf)
       .then((result) => {
-      // The signed-in user info.
         const user = result.user;
-        auth.cur
-
-        // This gives you a Facebook Access Token. You can use it to access the Facebook API.
         const credential = FacebookAuthProvider.credentialFromResult(result);
         const accessToken = credential.accessToken;
         navigation('/muro');
         userCollection(user.uid, user.displayName, user.photoURL);
       })
       .catch((error) => {
-      // Handle Errors here.
-        const errorCode = error.code;
         const errorMessage = error.message;
-        // The email of the user's account used.
-        const email = error.customData.email;
-        // The AuthCredential type that was used.
-        const credential = FacebookAuthProvider.credentialFromError(error);
-
         alert(`${errorMessage}`);
       });
+  }
+
+  btnToRegister.addEventListener('click', () => navigation('/register'));
+
+  buttonLogin.addEventListener('click', (e) => {
+    e.preventDefault();
+    signEmail();
+  });
+
+  btnGoogle.addEventListener('click', (e) => {
+    e.preventDefault();
+    signGoogle();
+  });
+
+  btnFacebook.addEventListener('click', (e) => {
+    e.preventDefault();
+    signFacebook();
   });
 
   // observador------------------
