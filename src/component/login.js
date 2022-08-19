@@ -14,6 +14,7 @@ import {
   signInWithPopup,
   FacebookAuthProvider,
   providerf,
+  userCollection,
 } from '../firebase/firebase.js';
 
 export const login = () => {
@@ -109,6 +110,7 @@ export const login = () => {
 
         const dt = new Date();
         const user = userCredential.user;
+
         update(ref(database, `user/${user.uid}`), {
           last_Login: dt,
         });
@@ -136,6 +138,7 @@ export const login = () => {
         console.log(user);
 
         navigation('/muro');
+        userCollection(user.uid, user.displayName, user.photoURL);
       })
       .catch((error) => {
         // Handle Errors here.
@@ -164,6 +167,7 @@ export const login = () => {
         const credential = FacebookAuthProvider.credentialFromResult(result);
         const accessToken = credential.accessToken;
         navigation('/muro');
+        userCollection(user.uid, user.displayName, user.photoURL);
       })
       .catch((error) => {
       // Handle Errors here.
