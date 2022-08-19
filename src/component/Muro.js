@@ -2,7 +2,7 @@
 // eslint-disable-next-line import/no-cycle
 import { navigation } from '../main.js';
 import {
-  savetask, onGetTasks, deleteTasks, auth, signOut,
+  savetask, onGetTasks, deleteTasks, auth, signOut, userCollection,
 } from '../firebase/firebase.js';
 
 // ............................Construyendo el Muro...............................................

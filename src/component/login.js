@@ -133,6 +133,7 @@ export const login = () => {
         const token = credential.accessToken;
         // The signed-in user info.
         const user = result.user;
+        console.log(user);
 
         navigation('/muro');
       })
@@ -157,6 +158,7 @@ export const login = () => {
       .then((result) => {
       // The signed-in user info.
         const user = result.user;
+        auth.cur
 
         // This gives you a Facebook Access Token. You can use it to access the Facebook API.
         const credential = FacebookAuthProvider.credentialFromResult(result);
