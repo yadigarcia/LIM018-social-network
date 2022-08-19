@@ -65,7 +65,7 @@ const db = getFirestore();
 
 // Funcion para enviar y almacenar datos en Firestore
 export const savetask = (uId, userName, postDescription) => {
-//  console.log(title, description);
+  console.log('title, description');
   addDoc(collection(db, 'bd-muro'), { uId, userName, postDescription });// {} es un objeto que estás enviando
 };
 

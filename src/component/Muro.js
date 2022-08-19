@@ -51,7 +51,7 @@ iconsContent.appendChild(iconMessage);
 iconsContent.appendChild(iconExit);
 
 // New post-----------------------------------------
-const newPostDiv = document.createElement('form');
+const newPostDiv = document.createElement('div');
 newPostDiv.classList.add('newPostDiv');
 
 const photoUpload = document.createElement('i');
@@ -62,16 +62,16 @@ const newPost = document.createElement('input');
 newPost.classList.add('newPost');
 newPost.setAttribute('placeholder', 'Cuentanos tu aventura Traveller');
 
-const buttonsavepost = document.createElement('i');
+const buttonsavepost = document.createElement('button');
 buttonsavepost.classList.add('publicar');
-buttonsavepost.insertAdjacentHTML('beforeend', '<i class="fa-solid fa-paper-plane"></i>');
+// buttonsavepost.insertAdjacentHTML('beforeend', '<i class="fa-solid fa-paper-plane"></i>');
 
 muroDiv.appendChild(newPostDiv);
 newPostDiv.appendChild(photoUpload);
 newPostDiv.appendChild(newPost);
 newPostDiv.appendChild(buttonsavepost);
 
-const bodyContainer = document.createElement('form');// donde esta este elemento?
+const bodyContainer = document.createElement('div');// donde esta este elemento?
 bodyContainer.classList.add('bodyContainer');
 
 // ------------------------ Funcion para borrar post de firestore---------------------------
@@ -101,7 +101,7 @@ const borrarPost = function (idpost) {
 
 // ............................Funciones crear Post.........................................
 const createPost = function (postDescription, userName, idpost) {
-  console.log(`dentro de createpost${idpost}`);
+  // console.log(`dentro de createpost${idpost}`);
   const postsContainer = document.createElement('div');
   postsContainer.classList.add('postsContainer');
 
@@ -197,7 +197,7 @@ const createPost = function (postDescription, userName, idpost) {
 const guardarPost = function () {
 // const userC = auth.currentUser;
   // console.log(auth.currentUser.displayName);
-
+  console.log('dentro de guardar post post');
   savetask(auth.currentUser.uid, auth.currentUser.displayName, newPost.value);
 };
 
@@ -208,23 +208,21 @@ const mostrarPosts = function (querySnapshot) {
     const bdmuro = doc.data();
 
     createPost(bdmuro.postDescription, bdmuro.userName, doc.id);
-    console.log(createPost);
+    console.log('dentro de mostrar post');
   });
 };
 
 // ............................Función Principal.........................................
 export const muro = () => {
-  // -------------------- evento para enviar datos a Firestore-----------------------
-  buttonsavepost.addEventListener('click', (e) => { // submit se ejecuta cuando se hace clic en el boton dentro del form
-    e.preventDefault(); // cancerlar el evento por defecto (refrescar la pagina)
-    guardarPost();
-    newPostDiv.reset();
-  });
   // ------------------------  -Evento para obtener los datos de firestore-------------------------
   // consults asincrona- querySnapshot es los datos que existen en este momento
-  window.addEventListener('DOMContentLoaded', async () => { // async se usa para que funcione await
+  window.addEventListener('DOMContentLoaded', async () => {
+    console.log('anted de inner borrar');// async se usa para que funcione await
+    //  bodyContainer.innerHTML = ' ';
     onGetTasks((querySnapshot) => {
+      console.log('anted de mostrar posts de guardar');
       mostrarPosts(querySnapshot);
+      console.log('despues de mostrar posts de guardar');
     });
   });
 
@@ -245,5 +243,16 @@ iconExit.addEventListener('click', (e) => {
     const errorMessage = error.message;
 
     alert(`${errorCode} ${errorMessage}`);
+    muroDiv.innerHTML = ' ';
   });
+});
+
+// -------------------- evento para enviar datos a Firestore-----------------------
+buttonsavepost.addEventListener('click', (event) => { // submit se ejecuta cuando se hace clic en el boton dentro del form
+  event.preventDefault(); // cancerlar el evento por defecto (refrescar la pagina)
+  console.log('antes de guardar');
+  guardarPost();
+  event.stopPropagation();
+  console.log('despues de guardar');
+  // newPostDiv.reset(s);
 });
