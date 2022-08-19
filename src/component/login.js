@@ -171,17 +171,17 @@ export const login = () => {
   });
 
   // observador------------------
-  const user = auth.currentUser;
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      // ...
-      const uid = user.uid;
-      // ...
-    } else {
-      // User is signed out
-      // ...
-    }
-  });
+  // const user = auth.currentUser;
+  // onAuthStateChanged(auth, (user) => {
+  //   if (user) {
+  //     // ...
+  //     const uid = user.uid;
+  //     // ...
+  //   } else {
+  //     // User is signed out
+  //     // ...
+  //   }
+  // });
 
   return windowlogin;
 };
