@@ -1,13 +1,13 @@
 import {
-    savebdPost, onGetTasks, auth, signOut,
-  } from '../firebase/firebase.js';
-  /*
+  savebdPost, onGetTasks, auth, signOut,
+} from '../firebase/firebase.js';
+/*
   function getPost(pBodyContainer) {
     onGetTasks((querySnapshot) => {
       let viewposts = '';
       querySnapshot.forEach((doc) => {
         const bdmuro = doc.data();
-  
+
         viewposts += `<div class="postsContainerDiv">
           <div class="headerPostContainer">
              <div class="userPostContainer">
@@ -39,19 +39,16 @@ import {
   }
   export function sendNewPost(uId, userName, postDescription) {
     const currentUser = auth.currentUser;
-    
+
     savebdPost(currentUser.uid, currentUser.displayName);
     console.log('aqui');
     // console.log(savebdPost);
-    
-  }*/
-  
-  
-  
-  export function showPostFunt(containerMuro) {
-    const postBodyContainer = containerMuro.querySelector('.postBodyContainer');
-    // const xc = containerMuro.querySelector('.postBodyContainer');
-    console.log( postBodyContainer);
-   // getPost(postBodyContainer);
-  }
-  
+
+  } */
+
+export function showPostFunt(containerMuro) {
+  const postBodyContainer = containerMuro.querySelector('.postBodyContainer');
+  // const xc = containerMuro.querySelector('.postBodyContainer');
+  console.log(postBodyContainer);
+  // getPost(postBodyContainer);
+}

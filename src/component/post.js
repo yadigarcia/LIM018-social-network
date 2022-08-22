@@ -1,7 +1,8 @@
 import {
   savebdPost, onGetTasks, auth, signOut,
 } from '../firebase/firebase.js';
-/*function getPost(pBodyContainer) {
+
+function getPost(pBodyContainer) {
   onGetTasks((querySnapshot) => {
     let viewposts = '';
     querySnapshot.forEach((doc) => {
@@ -33,14 +34,32 @@ import {
       </div>
       `;
     });
-   // pBodyContainer.innerHTML = viewposts;
+    pBodyContainer.innerHTML = viewposts;
   });
-}*/
+}
+
+export function sendNewPost() {
+  const currentUser = auth.currentUser;
+
+  // savebdPost(currentUser.uid, currentUser.displayName);
+  console.log('new poee');
+  // console.log(savebdPost);
+}
 
 export function showPostFunt(containerMuro) {
- // const postBodyContainer = containerMuro.querySelector('.postBodyContainer');
- console.log("hola"); 
- console.log(containerMuro);
-  // const xc = containerMuro.querySelector('.postBodyContainer');
- // getPost(postBodyContainer);
+  const postBodyContainer = containerMuro.querySelector('.postBodyContainer');
+  const buttonSharePost = containerMuro.querySelector('.publicar');
+  const inputRe = containerMuro.querySelector('.newPost');
+  const currentUser = auth.currentUser;
+  console.log('imoutre', inputRe);
+  console.log('aqui aut', auth.currentU);
+  buttonSharePost.addEventListener('click', (e) => {
+    e.preventDefault();
+    console.log(auth.currentUser);
+    console.log('aqui', auth.currentUser);
+    savebdPost(currentUser.uid, currentUser.displayName, inputRe.value);
+  });
+
+  getPost(postBodyContainer);
+  // sendNewPost();
 }
