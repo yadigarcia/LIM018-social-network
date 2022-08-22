@@ -2,52 +2,52 @@
 
 /* -------background the view SPA-------- */
 *{
-    margin: 0;
-    padding: 0;
-    font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
 }
 
 /* STYLE BUTTON */
 .buttonStyle {
-  background:rgb(2, 87, 66);
-  color: #f1f6f0;
-  border-radius: 8px;
-  margin-top:5%;
-  padding: 10px;
-  font-size: 45%;
-  display: flex;
-  width: 100%;
-  justify-content: space-around;
-  border: none;
-  }
+background:rgb(2, 87, 66);
+color: #f1f6f0;
+border-radius: 8px;
+margin-top:5%;
+padding: 10px;
+font-size: 45%;
+display: flex;
+width: 100%;
+justify-content: space-around;
+border: none;
+}
 
-  .buttonStyle:hover {
-    background: rgb(212, 34, 87);
-  }
+.buttonStyle:hover {
+  background: rgb(212, 34, 87);
+}
 
 .btnsRegister{
-   margin: 1%;
-  padding: 0%;
-  }
- .buttonStyleLogin{
-  width: 55%;
-  display: flex;
-  flex-wrap: wrap;
-  margin-bottom: 5%;
-  }
- /* STYLE LOGIN */
+ margin: 1%;
+padding: 0%;
+}
+.buttonStyleLogin{
+width: 55%;
+display: flex;
+flex-wrap: wrap;
+margin-bottom: 5%;
+}
+/* STYLE LOGIN */
 .windowlogin{
-  background:url('img/loros.jpg'); 
-  background-size:cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  height: 98vh;
-  font-size: 30px;
-  display: flex;
-  align-items: center;
-  flex-direction: column-reverse;
-  padding-top: 2%;
-  padding-bottom: 2%;
+background:url('img/loros.jpg'); 
+background-size:cover;
+background-repeat: no-repeat;
+background-position: center;
+height: 98vh;
+font-size: 30px;
+display: flex;
+align-items: center;
+flex-direction: column-reverse;
+padding-top: 2%;
+padding-bottom: 2%;
 }
 .logoLogin{
 margin: 0;
@@ -60,167 +60,165 @@ margin-top: 5%;
 }
 
 .imgLogo{
-  margin: 0;
-  padding: 0;
-  background:url('img/logo.JPG'); 
-  border-radius: 50%;
-  background-size: 100%;
-  background-repeat: no-repeat;
-  width: 80px;
-  height:80px;
+margin: 0;
+padding: 0;
+background:url('img/logo.JPG'); 
+border-radius: 50%;
+background-size: 100%;
+background-repeat: no-repeat;
+width: 80px;
+height:80px;
 }
 .nameLogo{
-  font-size: 80%;
-  color: #186b05;
-  font-weight: bold;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+font-size: 80%;
+color: #186b05;
+font-weight: bold;
+font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .formviewlogin{
- background: rgba(248, 250, 241, 0.5);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 5%;
-  border-radius: 10px;
-  height: 80%; 
+background: rgba(248, 250, 241, 0.5);
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding: 5%;
+border-radius: 10px;
+height: 80%; 
 }
 
 .loginImputDiv{
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  margin:0;
-  text-align-last: center;
+width: 100%;
+display: flex;
+flex-direction: column;
+margin:0;
+text-align-last: center;
 }
 .inputs{
-  background: rgba(217, 217, 217, 1);
-  border-radius: 8px;
-  padding: 3% ;
-  border: none;
-  margin: 3% 10%; 
+background: rgba(217, 217, 217, 1);
+border-radius: 8px;
+padding: 3% ;
+border: none;
+margin: 3% 10%; 
 }
 
 .loginQuestionDiv{ 
-  margin-left: auto;
-  margin-right: auto;
+margin-left: auto;
+margin-right: auto;
 }
 
 .questionAboutCount{
-  color:rgb(6, 68, 52);
-  font-size: 40%;
+color:rgb(6, 68, 52);
+font-size: 40%;
 }
 
 .lineLogin{
-  color:rgb(6, 68, 52);
-  font-size: 50%;
- font-weight: bolder;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 5%;
+color:rgb(6, 68, 52);
+font-size: 50%;
+font-weight: bolder;
+margin-left: auto;
+margin-right: auto;
+margin-top: 5%;
 }
 
 .googleFacebook{
-   display: flex;
-   justify-content: space-between;
-   margin:5% 15%;
-   padding:0;
-   width: 100%;
-   margin-bottom: 10%;
+ display: flex;
+ justify-content: space-between;
+ margin:5% 15%;
+ padding:0;
+ width: 100%;
+ margin-bottom: 10%;
 }
 
 .imgGoogle{
-  margin: 0;
-  padding: 0;
-  background:url('img/google.png'); 
-  border-radius: 50%;
-  background-size: 100%;
-  width: 30px;
-  height:30px;
-  border: none;
+margin: 0;
+padding: 0;
+background:url('img/google.png'); 
+border-radius: 50%;
+background-size: 100%;
+width: 30px;
+height:30px;
+border: none;
 }
 
 .imgFacebook{
-  margin: 0;
-  padding: 0;
-  background:url('img/facebook.png'); 
-  border-radius: 50%;
-  background-size: 100%;
-  width: 30px;
-  height:30px;  
-  border: none;
+margin: 0;
+padding: 0;
+background:url('img/facebook.png'); 
+border-radius: 50%;
+background-size: 100%;
+width: 30px;
+height:30px;  
+border: none;
 } 
 
 
 /*  STYLE REGISTER */
 .windowRegister {
-  background:url('https://www.lumen-colombia.com/blog/wp-content/uploads/2017/01/bavaria-1617529_1920-683x1024.jpg'); 
-  background-size:cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  height: 91vh;
-  font-size: 30px;
-  font-weight: bolder;
-  z-index: 1;
-  padding-top: 10%;
-  padding-bottom: 10%;
-  display: flex;
-  align-items: center;  
+background:url('https://www.lumen-colombia.com/blog/wp-content/uploads/2017/01/bavaria-1617529_1920-683x1024.jpg'); 
+background-size:cover;
+background-repeat: no-repeat;
+background-position: center;
+height: 91vh;
+font-size: 30px;
+font-weight: bolder;
+z-index: 1;
+padding-top: 10%;
+padding-bottom: 10%;
+display: flex;
+align-items: center;  
 }
 
 .formRegister{
-  background: rgba(248, 250, 241, 0.5);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border-radius: 10px;
-  height: 80%;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 5%;
+background: rgba(248, 250, 241, 0.5);
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+border-radius: 10px;
+height: 80%;
+margin-left: auto;
+margin-right: auto;
+padding: 5%;
 }  
 
 .welcomeRegister{
-  color:#415c3b;
-  font-size: 55%;
-  margin:5%;
-  padding: 0;
-  font-style: oblique;
-  font-weight: bolder ;
-  text-align: center;
+color:#415c3b;
+font-size: 55%;
+margin:5%;
+padding: 0;
+font-style: oblique;
+font-weight: bolder ;
+text-align: center;
 }
 .registerDateDiv{
-  width: 80%;
-  display: flex;
-  flex-direction: column;
-  margin:0;
-  text-align-last: center;
-  /* margin:0% 300%; */
+width: 80%;
+display: flex;
+flex-direction: column;
+margin:0;
+text-align-last: center;
+/* margin:0% 300%; */
 }
 
 .btnsRegisterDiv{
-  width: 50%;
+width: 50%;
 }
 
 /*STYLE MURO------------------------------------------------------- */
 
 .muroDiv{
-
-background: rgba(15, 15, 15);
+background: #ede6db;
 color: rgb(36, 134, 34);
-/* height: 100vh; */
-height: max-content;
+height: 120vh;
 }
 
- /* style HEADER */
+/* style HEADER */
 .headerContent{
-  background-color: #186b05;
-  padding: 10px;
-  height:9%;
-  width:100%;
-  color:rgb(242, 248, 237);/*  color de los elementos hijos*/
+background-color:#7f00b2;
+padding: 10px;
+height:6%;
+width:100%;
+color:rgb(242, 248, 237);/*  color de los elementos hijos*/
 display: flex;
 justify-content: space-between;
 }
@@ -230,107 +228,112 @@ width: 30%;
 background-size: auto;
 display: flex;
 flex-direction:row;
+border: none;
 }
 
 .logo{
-  margin: 0;
-  padding: 0;
-  background:url('img/logo1.png'); 
-  border: none;
-  border-radius: 120%; 
-  background-size: 100%;
-  background-repeat: no-repeat;
-  width: 40px;
-  height:50px;
-  filter:saturate(150%);
-  border-color: none;
-  
+margin: 0;
+padding: 0;
+background:url('img/logo1.png'); 
+border: none;
+border-radius: 120%; 
+background-size: 100%;
+background-repeat: no-repeat;
+width: 40px;
+height:50px;
+filter:saturate(150%);
+border-color: none;
 }
 
 .logoName{
-  font-size: 150%;
-  color: #186b05;
-  filter:saturate(500%);
-  font-weight: bold;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+font-size: 150%;
+color: #186b05;
+filter:saturate(500%);
+font-weight: bold;
+font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 } 
 
 .iconsContent{
-  margin:1% 5%;
-  width: 20%;
-  display: flex;
-  justify-content: space-between;
+margin:1% 5%;
+width: 20%;
+display: flex;
+justify-content: space-between;
 }
 
 .icon{
-  height: 20%;
-  color: #cff6c8;
+height: 20%;
+color: #cff6c8;
 }
 /* Imput para publicaciones */
 .newPostDiv{
-  display: flex;
-  flex-wrap: nowrap;
+display: flex;
+flex-wrap: nowrap;
+margin-top: 2%;
 }
 
 .iconphoto{  
- color:#1b83dd; 
- margin-left: 4%;
- font-size: 25px;
+color:#1b83dd; 
+margin-left: 4%;
+font-size: 30px;
+display: flex;
+align-items: center;
 }
-.newPost{
-  background-color: #dffdd8;
-  margin-left: 1%;
-  padding: 1.5%;
-  height:fit-content;
-  width: 80%;
-  border-radius: 10px;
-  text-align: center;
- }
 
- .publicar{
-  color: #cff6c8;
-  background:#1b83dd;
-  border-radius: 50%;
-  border: none;
-  padding: 1.5%;
-  margin-left: 1%;
- }
+.newPost{
+background-color: #dffdd8;
+margin-left: 1%;
+padding: 1.5%;
+height:fit-content;
+width: 75%;
+border-radius: 10px;
+text-align: center;
+border: none;
+}
+
+.publicar{
+color: #cff6c8;
+background:#1b83dd;
+border-radius: 50%;
+border: none;
+padding: 0.2% 1%;
+margin-left: 1%;
+margin-right: 4%;
+font-size: 100%;
+display: flex;
+align-items: center;
+}
 
 /* style BODY -----------------------------------------*/
-.bodyContainer{
-  margin: 0;
-  padding: 0;
-  background-color: #f2f5f1;
+
+.postsContainerDiv{
+background: rgb(50, 50, 50);
+margin: 3% 10%;
+border-radius: 3%; 
+box-shadow: 1px 1px 2px; 
 }
-.postsContainer{
-  background: rgb(50, 50, 50);
-  margin: 3% 10%;
-  border-radius: 3%; 
-  box-shadow: 1px 1px 2px; 
- }
- /* style del HEADER POST */
- .headerPostContainer{
-  background:  rgba(25, 25, 25);
-  display: flex;
-  justify-content: space-between;
- }
+/* style del HEADER POST */
+.headerPostContainer{
+background:  rgba(25, 25, 25);
+display: flex;
+justify-content: space-between;
+}
 
- .userPostContainer{
-  display: flex;
-  flex-wrap: nowrap;
-  width: 50%;
-  align-items: center;
- }
+.userPostContainer{
+display: flex;
+flex-wrap: nowrap;
+width: 50%;
+align-items: center;
+}
 
- .postUsePhoto{
-   background:url('img/userlogo.PNG'); 
-   background-size:contain; 
-   background-repeat: no-repeat;
-   border-radius: 50%;
-   width: 40px;
-   height: 40px;
-   margin:3%
- }
+.postUsePhoto{
+ background:url('img/userlogo.PNG'); 
+ background-size:contain; 
+ background-repeat: no-repeat;
+ border-radius: 50%;
+ width: 40px;
+ height: 40px;
+ margin:3%
+}
 
 .postUserName{
 color:whitesmoke;
@@ -352,8 +355,8 @@ font-size: 12px;
 /* style del POST----------------- */
 
 .postsContainer{
-  background: rgba(25, 25,25);
-  margin-bottom: 2%;
+background: rgba(25, 25,25);
+margin-bottom: 2%;
 }
 
 .postTextDiv{
@@ -362,8 +365,8 @@ width: 100%;
 }
 
 .posttext{
-  background-color: rgb(218, 243, 220);
-  color: #186b05;
+background-color: rgb(218, 243, 220);
+color: #186b05;
 width: 95%;
 padding: 1% 2%;
 
@@ -380,40 +383,41 @@ display: inline-block;
 width: 100%;
 }
 .postComments{
-  background:rgb(90, 90, 90);
-  padding: 2% 3%;
-  border-radius: 0px 0px 8px 8px;
-  height:15%;
-  width:93.5%;
-  color:white;
+background:rgb(90, 90, 90);
+padding: 2% 3%;
+border-radius: 0px 0px 8px 8px;
+height:15%;
+width:93.5%;
+color:white;
 }
 .modalDelete{
-  background-color: #071614;
-  color: azure;
-  position: absolute;/* para superponer el modal */
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
- padding: 5%;
-border-radius: 4px;
- margin: 30%;
-  height:100px;
-  width:100px;
-  z-index: 60;
- }
+background: rgba(179, 236, 23, 0.2);
+color: #fff;
+display: flex;
+flex-flow: column wrap;
+justify-content: center;
+position: fixed;
+top: 50%;
+left: 50%;
 
- .buttonDeletePost{
-  background-color: rgb(11, 99, 37);
-  padding: 4px;
-  border-radius: 7px;
- }
- .b{
-  background-color:black;
- /* background-image:url('img/like.JPG'); */
- color: rgb(163, 230, 208);
-  height:15px;
-  width:15px;
-  background-size: 100%;
-  background-repeat: no-repeat;
+height: 20%;
+width: 20%;
+transition: all .5s;
 
- }
+}
+
+.buttonDeletePost{
+background-color: rgb(11, 99, 37);
+padding: 4px;
+border-radius: 7px;
+}
+.b{
+background-color:black;
+background-image:url('img/like.JPG'); 
+color: rgb(163, 230, 208);
+height:15px;
+width:15px;
+background-size: 100%;
+background-repeat: no-repeat;
+
+} 
