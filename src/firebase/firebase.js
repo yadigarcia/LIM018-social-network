@@ -1,5 +1,11 @@
 /* eslint-disable import/no-unresolved */
+// 1. Import y export de FIREBASE------------------------------------------------------------------
+
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-app.js';
+import {
+  getDatabase, set, ref, update,
+} from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-database.js';
+
 import {
   getAuth,
   createUserWithEmailAndPassword,
@@ -9,10 +15,6 @@ import {
   signInWithPopup,
   FacebookAuthProvider,
 } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-auth.js';
-
-import {
-  getDatabase, set, ref, update,
-} from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-database.js';
 
 import {
   getFirestore, // getFirestore nos permite conectarnos con firestore
@@ -34,17 +36,6 @@ const firebaseConfig = {
   appId: '1:928230572150:web:4030d235fab2ba0663df57',
   measurementId: 'G-8Z6J1FH9JZ',
 };
-
-// Initialize Firebase
-export const app = initializeApp(firebaseConfig);
-
-// Autentication auth from Firebase
-
-export const database = getDatabase(app);
-export const auth = getAuth(app);
-export const provider = new GoogleAuthProvider(app);
-export const providerf = new FacebookAuthProvider(app);
-
 export {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -59,14 +50,22 @@ export {
 
 export { set, ref, update };
 
-// FIRESTORE
-// Coneccion a la base de datos Firestore
-const db = getFirestore();
+// 2.  Inicializando AUTENTICACION ---------------------------------------------------------------
 
-// Funcion para enviar y almacenar datos en Firestore
-export const savetask = (uId, userName, postDescription) => {
-//  console.log(title, description);
-  addDoc(collection(db, 'bd-muro'), { uId, userName, postDescription });// {} es un objeto que estás enviando
+export const app = initializeApp(firebaseConfig);
+export const database = getDatabase(app);
+export const auth = getAuth(app);
+export const provider = new GoogleAuthProvider(app);
+export const providerf = new FacebookAuthProvider(app);
+
+// 3.  Inicializando FIRESTORE------------------------------------------------------------------
+
+const db = getFirestore(app);
+
+// 3.1. Funcion para enviar y almacenar datos en Firestore
+export const savebdPost = (uId, userName) => {
+//  console.log(postDescription);
+  addDoc(collection(db, 'bd-muro'), { uId, userName });
 };
 
 // Funcion para obtener datos de Firestore
