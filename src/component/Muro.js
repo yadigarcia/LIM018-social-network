@@ -1,31 +1,71 @@
+/* eslint-disable no-alert */
+/* eslint-disable no-use-before-define */
 /* eslint-disable func-names */
 // eslint-disable-next-line import/no-cycle
 import { navigation } from '../main.js';
 import {
-  savetask, onGetTasks, deleteTasks, auth, signOut,
+  savebdPost, onGetTasks, auth, signOut,
 } from '../firebase/firebase.js';
 
-// ..................HEADER DEL MURO, SE VA A MANTENER FIJO.............................
+// 1. HEADER DEL MURO, SE VA A MANTENER FIJO.............................
+export function muro() {
+  const viewMuro = `
+    <div id="muroDiv" class="muroDiv">
+        <nav class="headerContent">
+            <div class="'logoContent">
+            <img class="logo" src="img/logo1.png" alt="logo"> </img>
+            <p class="logoName">Travelers</p>
+            </div>
+            <div class="iconsContent">
+                <i id="icon" class="fa-solid fa-magnifying-glass"> </i>
+                <i id="icon" class="fa-solid fa-envelope"></i>
+                <i id="iconExit"class="fa-solid fa-arrow-right-from-bracket"></i>
+            </div>
+        </nav>
 
-const muroDiv = document.createElement('div');
-muroDiv.classList.add('muroDiv');
+        <form class="newPostDiv">
+            <i id="iconPhoto" class="fa-regular fa-image"></i>
+            <input type="text" class="newPost" placeholder="Cuentanos tu aventura Traveller"></input>
+            <button class="publicar" ><i class="fa-solid fa-paper-plane"></i></button>     
+        </form>;
 
-const bodyContainer = document.createElement('div');
-bodyContainer.classList.add('bodyContainer');
+        <!--POST-->
 
-//---------------------------------------------
-const headerContent = document.createElement('div');
-headerContent.classList.add('headerContent');
+        <div class="postsContainerDiv">
+        <div class="headerPostContainer"> 
+            <div class="userPostContainer"> 
+            <img class=" postUsePhoto">postUsePhoto
+            <p class="postUserName"> postUserName</p>
+            </div>
+            <div class="iconsEditDeletePostContainer"> 
+            <i class="fa-solid fa-pencil"></i>
+            <i class="fa-solid fa-trash-can"></i>
+            </div>
+        </div>
+        <div class="post"> 
+                <div class="postTextDiv ">
+                <div class="posttext "> posttext</div>
+                </div>
+                <div class="postIcon "> 
+                    <i class="fa-regular fa-heart"></i>
+                    <i class="fa-regular fa-comment-dots"></i>
+                </div>
+                <div class="postCommentsDiv "> 
+                <div class="postComments"> postComments</div>
+                </div>
+        
+  </div>
 
-const logoContent = document.createElement('div');
-logoContent.classList.add('logoContent');
+</div>
 
-const logo = document.createElement('img');
-logo.classList.add('logo');
-const logoName = document.createElement('p');
-logoName.classList.add('logoName');
-logoName.textContent = 'Travelers';
+    </div>`;
 
+<<<<<<< HEAD
+  const containerMuro = document.createElement('div');
+  containerMuro.innerHTML = viewMuro;
+  return containerMuro;
+}
+=======
 const iconsContent = document.createElement('div');
 iconsContent.classList.add('iconsContent');
 
@@ -207,6 +247,7 @@ buttonsavepost.addEventListener('click', (e) => {
 // -----------------------MOSTAR POST A MURO-----------------------
 
 export const muro = () => {
+// revisar rama yadi------------
   const mostrarPosts = function (querySnapshot) {
     querySnapshot.forEach((doc) => {
       const bdmuro = doc.data();
@@ -216,6 +257,12 @@ export const muro = () => {
   };
 
   window.addEventListener('DOMContentLoaded', async () => {
+
+  // ------------------------  -Evento para obtener los datos de firestore-------------------------
+  // consults asincrona- querySnapshot es los datos que existen en este momento
+  window.addEventListener('DOMContentLoaded', async () => { // async se usa para que funcione await
+  
+  //Arkelly-rama-------------------
     onGetTasks((querySnapshot) => {
       mostrarPosts(querySnapshot);
     });
@@ -239,3 +286,11 @@ iconExit.addEventListener('click', (e) => {
     alert(`${errorCode} ${errorMessage}`);
   });
 });
+
+// -------------------- evento para enviar datos a Firestore-----------------------
+buttonsavepost.addEventListener('click', (e) => { // submit se ejecuta cuando se hace clic en el boton dentro del form
+  e.preventDefault(); // cancerlar el evento por defecto (refrescar la pagina)
+  guardarPost();
+  newPostDiv.reset();
+});
+>>>>>>> f4e26b367719d6d2d39f259f2bbe671bb0889b1e
