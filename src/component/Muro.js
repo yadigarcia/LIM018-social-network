@@ -6,7 +6,7 @@ import { navigation } from '../main.js';
 import {
   savebdPost, onGetTasks, auth, signOut,
 } from '../firebase/firebase.js';
-
+import { postsfunction } from './post.js';
 // 1. HEADER DEL MURO, SE VA A MANTENER FIJO.............................
 export function muro() {
   const viewMuro = `
@@ -31,36 +31,17 @@ export function muro() {
 
         <!--POST-->
 
-        <div class="postsContainerDiv">
-        <div class="headerPostContainer"> 
-            <div class="userPostContainer"> 
-            <img class=" postUsePhoto">postUsePhoto
-            <p class="postUserName"> postUserName</p>
-            </div>
-            <div class="iconsEditDeletePostContainer"> 
-            <i class="fa-solid fa-pencil"></i>
-            <i class="fa-solid fa-trash-can"></i>
-            </div>
-        </div>
-        <div class="post"> 
-                <div class="postTextDiv ">
-                <div class="posttext "> posttext</div>
-                </div>
-                <div class="postIcon "> 
-                    <i class="fa-regular fa-heart"></i>
-                    <i class="fa-regular fa-comment-dots"></i>
-                </div>
-                <div class="postCommentsDiv "> 
-                <div class="postComments"> postComments</div>
-                </div>
-        
-  </div>
+        <div class="postBodyContainer">ds</div>
 
-</div>
+
 
     </div>`;
 
   const containerMuro = document.createElement('div');
   containerMuro.innerHTML = viewMuro;
+
+  // const postBodyContainer = postBodyContainer.querySelector('.postBodyContainer');
+
+  postsfunction(containerMuro);
   return containerMuro;
 }
