@@ -207,16 +207,16 @@ margin-top: 5%;
 /*STYLE MURO------------------------------------------------------- */
 
 .muroDiv{
-background: rgba(15, 15, 15);
+background: #ede6db;
 color: rgb(36, 134, 34);
- height: 100vh;
+ height: 120vh;
 }
 
  /* style HEADER */
 .headerContent{
-  background-color: #186b05;
+  background-color:#7f00b2;
   padding: 10px;
-  height:9%;
+  height:6%;
   width:100%;
   color:rgb(242, 248, 237);/*  color de los elementos hijos*/
 display: flex;
@@ -228,6 +228,7 @@ width: 30%;
 background-size: auto;
 display: flex;
 flex-direction:row;
+border: none;
 }
 
 .logo{
@@ -242,7 +243,6 @@ flex-direction:row;
   height:50px;
   filter:saturate(150%);
   border-color: none;
-  
 }
 
 .logoName{
@@ -268,31 +268,40 @@ flex-direction:row;
 .newPostDiv{
   display: flex;
   flex-wrap: nowrap;
+  margin-top: 2%;
 }
 
 .iconphoto{  
  color:#1b83dd; 
  margin-left: 4%;
- font-size: 25px;
+ font-size: 30px;
+ display: flex;
+ align-items: center;
 }
+
 .newPost{
   background-color: #dffdd8;
   margin-left: 1%;
   padding: 1.5%;
   height:fit-content;
-  width: 80%;
+  width: 75%;
   border-radius: 10px;
   text-align: center;
- }
+  border: none;
+}
 
- .publicar{
+.publicar{
   color: #cff6c8;
   background:#1b83dd;
   border-radius: 50%;
   border: none;
-  padding: 1.5%;
+  padding: 0.2% 1%;
   margin-left: 1%;
- }
+  margin-right: 4%;
+  font-size: 100%;
+  display: flex;
+  align-items: center;
+}
 
 /* style BODY -----------------------------------------*/
 
