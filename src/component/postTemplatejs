@@ -1,8 +1,7 @@
 import {
   savebdPost, onGetTasks, auth, signOut,
 } from '../firebase/firebase.js';
-
-function getPost(pBodyContainer) {
+/*function getPost(pBodyContainer) {
   onGetTasks((querySnapshot) => {
     let viewposts = '';
     querySnapshot.forEach((doc) => {
@@ -34,13 +33,14 @@ function getPost(pBodyContainer) {
       </div>
       `;
     });
-    pBodyContainer.innerHTML = viewposts;
+   // pBodyContainer.innerHTML = viewposts;
   });
-}
+}*/
 
-export function postsfunction(containerMuro) {
-  const postBodyContainer = containerMuro.querySelector('.postBodyContainer');
+export function showPostFunt(containerMuro) {
+ // const postBodyContainer = containerMuro.querySelector('.postBodyContainer');
+ console.log("hola"); 
+ console.log(containerMuro);
   // const xc = containerMuro.querySelector('.postBodyContainer');
-
-  getPost(postBodyContainer);
+ // getPost(postBodyContainer);
 }

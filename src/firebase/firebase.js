@@ -63,9 +63,9 @@ export const providerf = new FacebookAuthProvider(app);
 const db = getFirestore(app);
 
 // 3.1. Funcion para enviar y almacenar datos en Firestore
-export const savebdPost = (uId, userName) => {
+export const savebdPost = (uId, userName, postDescription) => {
 //  console.log(postDescription);
-  addDoc(collection(db, 'bd-muro'), { uId, userName });
+  addDoc(collection(db, 'bd-muro'), { uId, userName, postDescription});
 };
 
 // Funcion para obtener datos de Firestore
