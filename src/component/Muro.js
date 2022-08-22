@@ -207,6 +207,7 @@ buttonsavepost.addEventListener('click', (e) => {
 // -----------------------MOSTAR POST A MURO-----------------------
 
 export const muro = () => {
+// revisar rama yadi------------
   const mostrarPosts = function (querySnapshot) {
     querySnapshot.forEach((doc) => {
       const bdmuro = doc.data();
@@ -216,6 +217,12 @@ export const muro = () => {
   };
 
   window.addEventListener('DOMContentLoaded', async () => {
+
+  // ------------------------  -Evento para obtener los datos de firestore-------------------------
+  // consults asincrona- querySnapshot es los datos que existen en este momento
+  window.addEventListener('DOMContentLoaded', async () => { // async se usa para que funcione await
+  
+  //Arkelly-rama-------------------
     onGetTasks((querySnapshot) => {
       mostrarPosts(querySnapshot);
     });
@@ -238,4 +245,11 @@ iconExit.addEventListener('click', (e) => {
 
     alert(`${errorCode} ${errorMessage}`);
   });
+});
+
+// -------------------- evento para enviar datos a Firestore-----------------------
+buttonsavepost.addEventListener('click', (e) => { // submit se ejecuta cuando se hace clic en el boton dentro del form
+  e.preventDefault(); // cancerlar el evento por defecto (refrescar la pagina)
+  guardarPost();
+  newPostDiv.reset();
 });
