@@ -2,11 +2,11 @@
 /* eslint-disable no-use-before-define */
 /* eslint-disable func-names */
 // eslint-disable-next-line import/no-cycle
-import { navigation } from '../main.js';
+
 import {
   savebdPost, onGetTasks, auth, signOut,
 } from '../firebase/firebase.js';
-import { showPostFunt } from './post.js';
+import { showPostFunt, exitPost } from './post.js';
 // 1. HEADER DEL MURO, SE VA A MANTENER FIJO.............................
 export function muro() {
   const viewMuro = `
@@ -36,17 +36,10 @@ export function muro() {
 
   const containerViewMuro = document.createElement('div');
   containerViewMuro.innerHTML = viewMuro;
-  const buttonSharePost = containerViewMuro.querySelector('.publicar');
-  const inputRe = containerViewMuro.querySelector('.newPost');
   showPostFunt(containerViewMuro);
-  console.log('aquid');
-  buttonSharePost.addEventListener('click', (e) => {
-    const currentUser = auth.currentUser;
-    console.log(auth.currentUser);
-    e.preventDefault();
-    console.log('aqui');
-    savebdPost(currentUser.uid, currentUser.displayName, inputRe.value);
-  });
 
+  const iconExit = containerViewMuro.querySelector('#iconExit');
+  iconExit.addEventListener('click', (e) => e.then(exitPost()));
   return containerViewMuro;
 }
+

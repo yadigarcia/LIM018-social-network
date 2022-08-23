@@ -1,6 +1,7 @@
 import {
   savebdPost, onGetTasks, auth, signOut,
 } from '../firebase/firebase.js';
+import { navigation } from '../main.js';
 
 function getPost(pBodyContainer) {
   onGetTasks((querySnapshot) => {
@@ -15,8 +16,8 @@ function getPost(pBodyContainer) {
               <p class="postUserName">${bdmuro.userName}</p>
            </div>
            <div class="iconsEditDeletePostContainer">
-              <i class="fa-solid fa-pencil"></i>
-              <i class="fa-solid fa-trash-can"></i>
+              <i id="btnEdit" class="fa-solid fa-pencil"></i>
+              <button class="btnDelete" id=${doc.id} >x</button>
            </div>
         </div>
         <div class="post">
@@ -38,28 +39,66 @@ function getPost(pBodyContainer) {
   });
 }
 
-export function sendNewPost() {
+// 1.enviar pors nuevos--------
+export function sendNewPost(inputRe) {
   const currentUser = auth.currentUser;
-
-  // savebdPost(currentUser.uid, currentUser.displayName);
-  console.log('new poee');
-  // console.log(savebdPost);
+  savebdPost(currentUser.uid, currentUser.displayName, inputRe.value);
 }
 
+// 3. Eliminar post-----
+function deletePost(btnDelete) {
+  console.log(btnDelete);
+  /*
+  const modalDelete=`
+<div class="modalDelete">
+  <p> ¿Deseas borra este Post?</p>
+  <button class="buttonAceptDeletePost">Aceptar</button>
+  <button class="buttonCancelDeletePost">Cancelar</button>
+</div>`;
+
+const  buttonAceptDeletePost = modalDelete.querySelector('.buttonAceptDeletePost');
+const  buttonCancelDeletePost = modalDelete.querySelector('.buttonCancelDeletePost');
+
+ buttonAceptDeletePost.addEventListener('click', (e) =>{
+     deleteTasks(idpost);
+ });
+  buttonCancelDeletePost.addEventListener('click', CancelDeletePost);
+*/
+}
+
+// 2. funcion para mostrar todos los post - funcion principal---
 export function showPostFunt(containerMuro) {
   const postBodyContainer = containerMuro.querySelector('.postBodyContainer');
   const buttonSharePost = containerMuro.querySelector('.publicar');
   const inputRe = containerMuro.querySelector('.newPost');
-  const currentUser = auth.currentUser;
-  console.log('imoutre', inputRe);
-  console.log('aqui aut', auth.currentU);
-  buttonSharePost.addEventListener('click', (e) => {
-    e.preventDefault();
-    console.log(auth.currentUser);
-    console.log('aqui', auth.currentUser);
-    savebdPost(currentUser.uid, currentUser.displayName, inputRe.value);
-  });
 
   getPost(postBodyContainer);
-  // sendNewPost();
+
+  buttonSharePost.addEventListener('click', (e) => {
+    e.preventDefault();
+    sendNewPost(inputRe);
+  });
+/*
+ let templatePost=getPost(postBodyContainer);
+  const btnDelete = templatePost.querySelectorAll('#btnDelete');
+  console.log(templatePost);
+  console.log(btnDelete);
+ /* btnDelete.addEventListener('click', (e) => {
+    e.preventDefault();
+    deletePost(btnDelete);
+  }); */
 }
+
+// 5. salir de la sesion---
+export const exitPost = () => {
+  signOut(auth).then(() => {
+    alert('Estás seguro que quieres salir');
+
+    navigation('/');
+  }).catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+
+    alert(`${errorCode} ${errorMessage}`);
+  });
+};
