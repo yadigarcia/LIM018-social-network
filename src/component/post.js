@@ -1,41 +1,72 @@
 import {
-  savebdPost, onGetTasks, auth, signOut,
+  savebdPost, onGetTasks, auth, signOut, deleteTasks,
 } from '../firebase/firebase.js';
 import { navigation } from '../main.js';
 
-function getPost(pBodyContainer) {
+function mostrarPost(doc) {
+  const bdmuro = doc.data();
+  const viewpost = `<div class="postsContainerDiv">
+  <div class="headerPostContainer">
+     <div class="userPostContainer">
+        <img class=" postUsePhoto">
+        <p class="postUserName">${bdmuro.userName}</p>
+     </div>
+     <div class="iconsEditDeletePostContainer">
+        <i id="btnEdit" class="fa-solid fa-pencil"></i>
+        <button class="btnDelete" id=${doc.id} >x</button>
+     </div>
+  </div>
+  <div class="post">
+        <div class="postTextDiv ">
+            <div class="posttext "> ${bdmuro.postDescription}</div>
+        </div>
+        <div class="postIcon ">
+            <i class="fa-regular fa-heart"></i>
+            <i class="fa-regular fa-comment-dots"></i>
+        </div>
+        <div class="postCommentsDiv ">
+            <div class="postComments"> postComments</div>
+       </div>
+  </div>
+</div>
+`;
+  return viewpost;
+}
+
+// 3. Eliminar post-----
+function deletePost(idpost) {
+  deleteTasks(idpost);
+}
+
+function callPost(containerMuro) {
+  const postBodyContainer = containerMuro.querySelector('.postBodyContainer');
+  const modalDelete = containerMuro.querySelector('.modalDelete');
+  const buttonAceptDeletePost = containerMuro.querySelector('.buttonAceptDeletePost');
+  const buttonCancelDeletePost = containerMuro.querySelector('.buttonCancelDeletePost');
+
   onGetTasks((querySnapshot) => {
     let viewposts = '';
     querySnapshot.forEach((doc) => {
-      const bdmuro = doc.data();
+      viewposts += mostrarPost(doc);// fubcion para mostrar los posts
+      postBodyContainer.innerHTML = viewposts;
+      const btnDelete = postBodyContainer.querySelector('.btnDelete');
+      // -----------evento para borrar posts......................................
+      btnDelete.addEventListener('click', (e) => {
+        e.preventDefault();
+        modalDelete.style.display = 'block';
 
-      viewposts += `<div class="postsContainerDiv">
-        <div class="headerPostContainer">
-           <div class="userPostContainer">
-              <img class=" postUsePhoto">
-              <p class="postUserName">${bdmuro.userName}</p>
-           </div>
-           <div class="iconsEditDeletePostContainer">
-              <i id="btnEdit" class="fa-solid fa-pencil"></i>
-              <button class="btnDelete" id=${doc.id} >x</button>
-           </div>
-        </div>
-        <div class="post">
-              <div class="postTextDiv ">
-                  <div class="posttext "> ${bdmuro.postDescription}</div>
-              </div>
-              <div class="postIcon ">
-                  <i class="fa-regular fa-heart"></i>
-                  <i class="fa-regular fa-comment-dots"></i>
-              </div>
-              <div class="postCommentsDiv ">
-                  <div class="postComments"> postComments</div>
-             </div>
-        </div>
-      </div>
-      `;
+        buttonAceptDeletePost.addEventListener('click', (ef) => {
+          ef.preventDefault();
+
+          deletePost(e.target.id);
+          modalDelete.style.display = 'none';
+        });
+        buttonCancelDeletePost.addEventListener('click', (ev) => {
+          ev.preventDefault();
+          modalDelete.style.display = 'none';
+        });
+      });
     });
-    pBodyContainer.innerHTML = viewposts;
   });
 }
 
@@ -45,48 +76,17 @@ export function sendNewPost(inputRe) {
   savebdPost(currentUser.uid, currentUser.displayName, inputRe.value);
 }
 
-// 3. Eliminar post-----
-function deletePost(btnDelete) {
-  console.log(btnDelete);
-  /*
-  const modalDelete=`
-<div class="modalDelete">
-  <p> ¿Deseas borra este Post?</p>
-  <button class="buttonAceptDeletePost">Aceptar</button>
-  <button class="buttonCancelDeletePost">Cancelar</button>
-</div>`;
-
-const  buttonAceptDeletePost = modalDelete.querySelector('.buttonAceptDeletePost');
-const  buttonCancelDeletePost = modalDelete.querySelector('.buttonCancelDeletePost');
-
- buttonAceptDeletePost.addEventListener('click', (e) =>{
-     deleteTasks(idpost);
- });
-  buttonCancelDeletePost.addEventListener('click', CancelDeletePost);
-*/
-}
-
 // 2. funcion para mostrar todos los post - funcion principal---
 export function showPostFunt(containerMuro) {
-  const postBodyContainer = containerMuro.querySelector('.postBodyContainer');
+  // const postBodyContainer = containerMuro.querySelector('.postBodyContainer');
   const buttonSharePost = containerMuro.querySelector('.publicar');
   const inputRe = containerMuro.querySelector('.newPost');
 
-  getPost(postBodyContainer);
-
+  callPost(containerMuro);
   buttonSharePost.addEventListener('click', (e) => {
     e.preventDefault();
     sendNewPost(inputRe);
   });
-/*
- let templatePost=getPost(postBodyContainer);
-  const btnDelete = templatePost.querySelectorAll('#btnDelete');
-  console.log(templatePost);
-  console.log(btnDelete);
- /* btnDelete.addEventListener('click', (e) => {
-    e.preventDefault();
-    deletePost(btnDelete);
-  }); */
 }
 
 // 5. salir de la sesion---

@@ -27,11 +27,21 @@ export function muro() {
             <i id="iconPhoto" class="fa-regular fa-image"></i>
             <input type="text" class="newPost" placeholder="Cuentanos tu aventura Traveller"></input>
             <button class="publicar" ><i class="fa-solid fa-paper-plane"></i></button>     
-        </form>;
+        </form>
 
         <!--POST-->
 
-        <div class="postBodyContainer">ds</div>
+        <div class="postBodyContainer"> </div>
+        <div class="modalDelete" style="display:none">
+           <div class="modalDelete">
+              <p> ¿Deseas borra este Post?</p>
+              <button class="buttonAceptDeletePost">Aceptar</button>
+              <button class="buttonCancelDeletePost">Cancelar</button>
+           </div>
+                
+       </div>
+      
+        
     </div>`;
 
   const containerViewMuro = document.createElement('div');
@@ -42,4 +52,3 @@ export function muro() {
   iconExit.addEventListener('click', (e) => e.then(exitPost()));
   return containerViewMuro;
 }
-
