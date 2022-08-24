@@ -1,12 +1,6 @@
-/* eslint-disable no-alert */
-/* eslint-disable no-use-before-define */
-/* eslint-disable func-names */
-// eslint-disable-next-line import/no-cycle
-
-import {
-  savebdPost, onGetTasks, auth, signOut,
-} from '../firebase/firebase.js';
+/* eslint-disable import/no-cycle */
 import { showPostFunt, exitPost } from './post.js';
+
 // 1. HEADER DEL MURO, SE VA A MANTENER FIJO.............................
 export function muro() {
   const viewMuro = `
@@ -31,7 +25,7 @@ export function muro() {
 
         <!--POST-->
 
-        <div class="postBodyContainer"> </div>
+        <div class="containerPost"> </div>
         <div class="modalDelete" style="display:none">
            <div class="modalDelete">
               <p> ¿Deseas borra este Post?</p>
@@ -51,4 +45,35 @@ export function muro() {
   const iconExit = containerViewMuro.querySelector('#iconExit');
   iconExit.addEventListener('click', (e) => e.then(exitPost()));
   return containerViewMuro;
+}
+
+export function mostrarPost(doc) {
+  const bdmuro = doc.data();
+  const viewpost = `<div class="postsContainerDiv">
+    <div class="headerPostContainer">
+       <div class="userPostContainer">
+          <img class=" postUsePhoto">
+          <p class="postUserName">${bdmuro.userName}</p>
+       </div>
+       <div class="iconsEditDeletePostContainer">
+          
+          <button class="btnEdit" id=${doc.id} ><i id="btnEdit" class="fa-solid fa-pencil"></i></button>
+          <button class="btnDelete" id=${doc.id} ><i class="fa-solid fa-trash-can"></i></button>
+       </div>
+    </div>
+    <div class="post">
+          <div class="postTextDiv ">
+              <textarea class="posttext" readonly > ${bdmuro.postDescription}</textarea>
+          </div>
+          <div class="postIcon ">
+              <i class="fa-regular fa-heart"></i>
+              <i class="fa-regular fa-comment-dots"></i>
+          </div>
+          <div class="postCommentsDiv ">
+              <div class="postComments"> postComments</div>
+         </div>
+    </div>
+  </div>
+  `;
+  return viewpost;
 }
