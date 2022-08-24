@@ -5,7 +5,6 @@ import { muro } from './component/Muro.js';
 import { register } from './component/Register.js';
 
 const rootDiv = document.getElementById('root');
-// whitch
 const routes = {
   '/': login,
   '/register': register,

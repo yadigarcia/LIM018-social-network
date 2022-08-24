@@ -5,14 +5,14 @@ import { navigation } from '../main.js';
 import {
   auth,
   signInWithEmailAndPassword,
-  onAuthStateChanged,
+  // onAuthStateChanged,
   database,
   ref,
   update,
   provider,
-  GoogleAuthProvider,
+  // GoogleAuthProvider,
   signInWithPopup,
-  FacebookAuthProvider,
+  // FacebookAuthProvider,
   providerf,
   userCollection,
 } from '../firebase/firebase.js';
@@ -123,8 +123,8 @@ export const login = () => {
   function signGoogle() {
     signInWithPopup(auth, provider)
       .then((result) => {
-        const credential = GoogleAuthProvider.credentialFromResult(result);
-        const token = credential.accessToken;
+        // GoogleAuthProvider.credentialFromResult(result);
+        // const token = credential.accessToken;
         // The signed-in user info.
         const user = result.user;
 
@@ -142,8 +142,8 @@ export const login = () => {
     signInWithPopup(auth, providerf)
       .then((result) => {
         const user = result.user;
-        const credential = FacebookAuthProvider.credentialFromResult(result);
-        const accessToken = credential.accessToken;
+        // FacebookAuthProvider.credentialFromResult(result);
+        // const accessToken = credential.accessToken;
         navigation('/muro');
         userCollection(user.uid, user.displayName, user.photoURL);
       })

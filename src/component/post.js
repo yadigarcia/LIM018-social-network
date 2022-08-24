@@ -1,7 +1,8 @@
+/* eslint-disable no-alert */
 /* eslint-disable import/no-cycle */
 /* eslint-disable no-use-before-define */
 import {
-  savebdPost, onGetTasks, auth, signOut, deleteTasks, getTask, updateTask,
+  savebdPost, onGetTasks, auth, signOut, deleteTasks, updateTask,
 } from '../firebase/firebase.js';
 import { navigation } from '../main.js';
 import { mostrarPost } from './Muro.js';
@@ -15,12 +16,12 @@ export function sendNewPost(inputRe) {
 
 // 2. Eliminar post---------------------------------------------------------------------
 
-function deletePost(idpost) {
+export function deletePost(idpost) {
   deleteTasks(idpost);
 }
 
 // 3. Editar post---------------------------------------------------------------------
-function editPost(idEdit, newInput) {
+export function editPost(idEdit, newInput) {
   updateTask(idEdit, newInput);
 }
 // 4. funcion para mostrar todos los post ----------------------------------------------
@@ -29,7 +30,7 @@ export function showPostFunt(containerMuro) {
   callPost(containerMuro);
 }
 
-function callPost(containerMuro) {
+export function callPost(containerMuro) {
   const containerPost = containerMuro.querySelector('.containerPost');
   const buttonSharePost = containerMuro.querySelector('.publicar');
   const inputRe = containerMuro.querySelector('.newPost');
@@ -73,7 +74,7 @@ function callPost(containerMuro) {
 
     // -----------evento para editar posts......................................
     const btnEdit = containerPost.querySelectorAll('.btnEdit');
-    const posttext = containerPost.querySelectorAll('.posttext');// listado de texarea donde esta el post
+    // const posttext = containerPost.querySelectorAll('.posttext');// l
 
     const modificationInput = () => {
       // posttext.removeAttribute('readonly');
