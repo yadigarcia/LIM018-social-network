@@ -25,6 +25,8 @@ import {
   onSnapshot, // Permite mostrar los datos cuando son enviados
   doc,
   setDoc,
+  getDoc,
+  updateDoc,
 } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-firestore.js';
 
 const firebaseConfig = {
@@ -44,8 +46,6 @@ export {
   GoogleAuthProvider,
   signInWithPopup,
   FacebookAuthProvider,
-  // setDoc,
-  // doc,
 };
 
 export { set, ref, update };
@@ -62,21 +62,27 @@ export const providerf = new FacebookAuthProvider(app);
 
 const db = getFirestore(app);
 
-// 3.1. Funcion para enviar y almacenar datos en Firestore
+// Funcion para enviar y almacenar datos en Firestore
 export const savebdPost = (uId, userName, postDescription) => {
-//  console.log(postDescription);
   addDoc(collection(db, 'bd-muro'), { uId, userName, postDescription });
 };
 
 // Funcion para obtener datos de Firestore
-export const getTask = () => getDocs(collection(db, 'bd-muro'));
+export const getTasks = () => getDocs(collection(db, 'bd-muro'));
+
 // Funcion para cuando pase eso estará escuchando modificacion para mostrarlo
 export const onGetTasks = (callback) => onSnapshot(collection(db, 'bd-muro'), callback);
+
 // Funcion para eliminar posts de Firestore
 export const deleteTasks = (id) => deleteDoc(doc(db, 'bd-muro', id));
 
+// Funcion para editar posts de Firestore
+export const getTask = (idEdit) => getDoc(db, 'bd-muro', idEdit);
+
+export const updateTask = (idEdit, newInput) => updateDoc(doc(db, 'bd-muro', idEdit, newInput));
+
+// Funcion para mostar nombre de usuario en post
 export const userCollection = (uId, nameUser, photoUser) => {
-  //  console.log(title, description);
   setDoc(doc(db, 'db-user', uId), {
     id: uId,
     name: nameUser,
