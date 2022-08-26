@@ -4,7 +4,6 @@ import { login } from './component/login.js';
 import { muro } from './component/Muro.js';
 import { register } from './component/Register.js';
 
-const rootDiv = document.getElementById('root');
 const routes = {
   '/': login,
   '/register': register,
@@ -12,6 +11,7 @@ const routes = {
 };
 
 export const navigation = (pathname) => {
+  const rootDiv = document.getElementById('root');
   window.history.pushState({}, pathname, window.location.origin + pathname);
 
   while (rootDiv.firstChild) {
@@ -21,8 +21,12 @@ export const navigation = (pathname) => {
   rootDiv.appendChild(routes[pathname]());
 };
 
-rootDiv.appendChild(routes[window.location.pathname]());
+window.onload = () => {
+  const rootDiv = document.getElementById('root');
+  rootDiv.appendChild(routes[window.location.pathname]());
+};
 
 window.onpopstate = () => {
+  const rootDiv = document.getElementById('root');
   rootDiv.appendChild(routes[window.location.pathname]());
 };
