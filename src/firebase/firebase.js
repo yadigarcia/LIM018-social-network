@@ -77,7 +77,7 @@ export const onGetTasks = (callback) => onSnapshot(collection(db, 'bd-muro'), ca
 export const deleteTasks = (id) => deleteDoc(doc(db, 'bd-muro', id));
 
 // Funcion para editar posts de Firestore
-export const getTask = (idEdit) => getDoc(db, 'bd-muro', idEdit);
+export const getTask = (idEdit) => getDoc(doc(db, 'bd-muro', idEdit));
 
 export const updateTask = (idEdit, newInput) => updateDoc(doc(db, 'bd-muro', idEdit, newInput));
 
