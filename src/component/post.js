@@ -3,7 +3,7 @@
 /* eslint-disable no-use-before-define */
 // import { async } from 'regenerator-runtime';
 import {
-  savebdPost, onGetTasks, auth, signOut, deleteTasks, updateTask,
+  savebdPost, onGetTasks, auth, signOut, deleteTasks, updateTask, getTask,
 } from '../firebase/firebase.js';
 import { navigation } from '../main.js';
 import { mostrarPost } from './Muro.js';
@@ -22,9 +22,10 @@ export function deletePost(idpost) {
 }
 
 // 3. Editar post---------------------------------------------------------------------
-export function editPost(idEdit, newInput) {
+/* export function editPost(idEdit, newInput) {
   updateTask(idEdit, newInput);
-}
+  // console.log('EDIRT', newInput);
+} */
 // 4. funcion para mostrar todos los post ----------------------------------------------
 
 export function showPostFunt(containerMuro) {
@@ -74,7 +75,9 @@ export function callPost(containerMuro) {
     });
 
     // -----------evento para editar posts......................................
-    const btnEdit = containerPost.querySelectorAll('.btnEdit');
+    /* const btnEdit = containerPost.querySelectorAll('.btnEdit');
+    const modalEditPost = containerPost.querySelectorAll('.modalEditPost');
+    console.log('afuera', modalEditPost);
     // const posttext = containerPost.querySelectorAll('.posttext');// l
 
     // const modificationInput = () => {
@@ -87,12 +90,18 @@ export function callPost(containerMuro) {
       // const idEdit = btnE.id; // id del boton editar
       btnE.addEventListener('click', async (ee) => {
         ee.preventDefault();
-        // console.log('2sd', btnE.id);
-        // const doc = await getTask(btnE.id);
-        // console.log('xxx', doc.data());
-        // editPost(idEdit, newInput);
+        // const modalEditPost = containerPost.querySelector('.modalEditPost');
+        console.log('PmosL', modalEditPost);
+        // modalEditPost.style.display = 'block';
+
+        const doc = await getTask(btnE.id);
+        const postEdit = doc.data();
+        const inputEditPost1 = containerPost.querySelector('.inputEditPost');
+        inputRe[]value = 'gghhhh';
+        console.log('POST EDITAS', inputRe);
+        // editPost(idEdit, 'NUEVO POST');
       });
-    });
+    }); */
   });
 }
 // salir de la sesion---
