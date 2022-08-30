@@ -2,7 +2,9 @@ export function registerUser(email, password) {
   if (email === 'arkelly.perez.alayo@gmail.com' && password === '123456') {
     return Promise.resolve({
       user: {
-        uid: 'sdfghjkl',
+        uid: 'abc123',
+        username: 'arkelly perez alayo',
+        photoURL: '',
       },
     });
   }
@@ -10,6 +12,23 @@ export function registerUser(email, password) {
   return Promise.reject(new Error());
 }
 
+export function userCollection(id, name, photo) {
+  console.log('dentro del mock usercolection', id === 'abc123');
+  if (id === 'abc123' || name === 'arkelly perez alayo' || photo === '') {
+    console.log('dentro del mock usercolection', id === 'abc123');
+    return Promise.resolve({
+      user: {
+        id: 'abc123',
+        name: 'arkelly perez alayo',
+        photoURL: '',
+      },
+    });
+  }
+
+  return Promise.reject(new Error());
+}
+
+// export const userCollection = jest.fn();
 // ........................muro...........................
 
 // export const signUpWithEmail = jest.fn();
