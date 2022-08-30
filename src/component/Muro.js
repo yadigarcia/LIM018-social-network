@@ -1,5 +1,8 @@
 /* eslint-disable import/no-cycle */
-import { showPostFunt, exitPost } from './post.js';
+import {
+  showPostFunt,
+  exitPost,
+} from './post.js';
 
 // 1. HEADER DEL MURO, SE VA A MANTENER FIJO.............................
 export function muro() {
