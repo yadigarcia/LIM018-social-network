@@ -1,12 +1,11 @@
-export function onGetTasks(callback) {
-  return callback([{
-    uId: 'abc123',
-    userName: 'arkelly perez alayo',
-    postDescription: 'holi',
-  },
-  {
-    uId: 'abc124',
-    userName: 'Yadira Garvel',
-    postDescription: 'gatito',
-  }]);
+export function registerUser(email, password) {
+  if (email === 'jannerygmail.com' && password === '123456') {
+    return Promise.resolve({
+      user: {
+        uid: '',
+      },
+    });
+  }
+
+  return Promise.reject(new Error());
 }
