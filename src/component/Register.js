@@ -2,96 +2,72 @@
 /* eslint-disable import/no-cycle */
 import { navigation } from '../main.js';
 import {
-  auth, database, createUserWithEmailAndPassword, set, ref, userCollection,
+  database, registerUser, set, ref, userCollection,
 } from '../firebase/firebase.js';
 
 export const register = () => {
-  const windowRegister = document.createElement('div');
-  windowRegister.classList.add('windowRegister');
+  const viewRegister = `
+<div class="windowRegister">
+<form class="formRegister">
+     <div class="messageDiv"></div>
+     <div class="welcomeRegister">Regístrate en esta nueva aventura viajero!</div>
+     <div  class="registerDateDiv">
+        <input type="text" id="registerName" class ="inputs" placeholder="Escribe tu nombre">
+        <input type="text" id="registerLastName" class ="inputs" placeholder="Escribe tus apellidos">
+        <input type="email" id="registerEmail" class ="inputs" placeholder="Escribe tu Email">
+        <input type="password" id="registerPasword" class ="inputs" placeholder="Escribe tu contraseña">
+     </div>
+     <div class="btnsRegisterDiv">
+       <button id="buttonRegister" class="buttonStyle">Registarse</button>
+       <button id="buttonBackToLogin" class="buttonStyle">Iniciar sesion</button>
+     </div>
 
-  const formRegister = document.createElement('form');
-  formRegister.classList.add('formRegister');
+   </form>
+</div>
+`;
 
-  const welcomeRegister = document.createElement('div');
-  welcomeRegister.classList.add('welcomeRegister');
-  welcomeRegister.textContent = 'Regístrate en esta nueva aventura viajero!';
+  const containerViewRegister = document.createElement('div');
+  containerViewRegister.innerHTML = viewRegister;
 
-  const registerDateDiv = document.createElement('div');
-  registerDateDiv.classList.add('registerDateDiv');
-  const registerName = document.createElement('input');
-  registerName.setAttribute('placeholder', 'Escribe tu nombre');
-  registerName.classList.add('inputs');
-
-  const registerLastName = document.createElement('input');
-  registerLastName.setAttribute('placeholder', 'Escribe tus apellidos');
-  registerLastName.classList.add('inputs');
-
-  const registerEmail = document.createElement('input');
-  registerEmail.setAttribute('type', 'email');
-  registerEmail.setAttribute('placeholder', 'Escribe tu Email');
-  registerEmail.classList.add('inputs');
-
-  const registerPasword = document.createElement('input');
-  registerPasword.setAttribute('placeholder', 'Escribe tu contraseña');
-  registerPasword.setAttribute('type', 'password', 'required');
-  registerPasword.classList.add('inputs');
-
-  const btnsRegisterDiv = document.createElement('div');
-  const buttonRegister = document.createElement('button');
-  buttonRegister.setAttribute('type', 'submit');
-  buttonRegister.classList.add('buttonStyle');
-  btnsRegisterDiv.classList.add('btnsRegisterDiv');
-  buttonRegister.textContent = 'Registarse';
-
-  const buttonBackToLogin = document.createElement('button');
-  buttonBackToLogin.setAttribute('type', 'submit');
-  buttonBackToLogin.classList.add('buttonStyle');
-  buttonBackToLogin.textContent = 'Iniciar sesion';
-
-  windowRegister.appendChild(formRegister);
-
-  formRegister.appendChild(welcomeRegister);
-  formRegister.appendChild(registerDateDiv);
-
-  registerDateDiv.appendChild(registerName);
-  registerDateDiv.appendChild(registerLastName);
-  registerDateDiv.appendChild(registerEmail);
-  registerDateDiv.appendChild(registerPasword);
-
-  btnsRegisterDiv.appendChild(buttonRegister);
-  btnsRegisterDiv.appendChild(buttonBackToLogin);
-  formRegister.appendChild(btnsRegisterDiv);
+  const formRegister = containerViewRegister.querySelector('.formRegister');
+  const messageDiv = containerViewRegister.querySelector('.messageDiv');
+  const buttonRegister = containerViewRegister.querySelector('#buttonRegister');
+  const buttonBackToLogin = containerViewRegister.querySelector('#buttonBackToLogin');
+  const registerName = containerViewRegister.querySelector('#registerName');
+  const registerLastName = containerViewRegister.querySelector('#registerLastName');
+  const registerEmail = containerViewRegister.querySelector('#registerEmail');
+  const registerPasword = containerViewRegister.querySelector('#registerPasword');
 
   buttonBackToLogin.addEventListener('click', () => navigation('/'));
 
-  function createRegister() {
-    const username = registerName.value + registerLastName.value;
-    const email = registerEmail.value;
-    const password = registerPasword.value;
-
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        formRegister.reset(userCredential);
-        const user = userCredential.user;
-
-        set(ref(database, `user/${user.uid}`), { // Envia a Realtime los campos indicados
-          username,
-          email,
-        });
-        alert('Usuario Creado');
-        userCollection(user.uid, username, user.photoURL);
-      })
-      .catch((error) => {
-        const errorMessage = error.message;
-
-        alert(`${errorMessage}`);
-      });
-  }
-
   buttonRegister.addEventListener('click', (e) => {
     e.preventDefault();
-    createRegister();
+
+    if (registerEmail.value !== '' && registerPasword.value !== '' && registerName.value !== '' && registerLastName.value !== '') {
+      const username = registerName.value;
+      const email = registerEmail.value;
+      const password = registerPasword.value;
+
+      registerUser(email, password)
+        .then((userCredential) => {
+          formRegister.reset(userCredential);
+          const user = userCredential.user;
+
+          set(ref(database, `user/${user.uid}`), { // Envia a Realtime los campos indicados
+            username,
+            email,
+          });
+          messageDiv.innerHTML = 'Usuario creado';
+          userCollection(user.uid, username, user.photoURL);
+        })
+        .catch(() => {
+          //  const errorMessage = error.message;
+          messageDiv.innerHTML = 'errorMessage';
+        });
+    } else {
+      messageDiv.innerHTML = 'Por favor ingresar los datos solicitados';
+    }
   });
 
-  return windowRegister;
+  return containerViewRegister;
 };

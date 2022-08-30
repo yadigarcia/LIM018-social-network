@@ -25,7 +25,7 @@ import {
   onSnapshot, // Permite mostrar los datos cuando son enviados
   doc,
   setDoc,
-  getDoc,
+  // getDoc,
   updateDoc,
 } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-firestore.js';
 
@@ -39,7 +39,7 @@ const firebaseConfig = {
   measurementId: 'G-8Z6J1FH9JZ',
 };
 export {
-  createUserWithEmailAndPassword,
+  // createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   onAuthStateChanged,
   signOut,
@@ -61,7 +61,9 @@ export const providerf = new FacebookAuthProvider(app);
 // 3.  Inicializando FIRESTORE------------------------------------------------------------------
 
 const db = getFirestore(app);
-
+// Funcion para registrar usuarios
+// eslint-disable-next-line max-len
+export const registerUser = (email, password) => createUserWithEmailAndPassword(auth, email, password);
 // Funcion para enviar y almacenar datos en Firestore
 export const savebdPost = (uId, userName, postDescription) => {
   addDoc(collection(db, 'bd-muro'), { uId, userName, postDescription });
@@ -77,7 +79,7 @@ export const onGetTasks = (callback) => onSnapshot(collection(db, 'bd-muro'), ca
 export const deleteTasks = (id) => deleteDoc(doc(db, 'bd-muro', id));
 
 // Funcion para editar posts de Firestore
-export const getTask = (idEdit) => getDoc(doc(db, 'bd-muro', idEdit));
+// npexport const getTask = (idEdit) => getDoc(doc(db, 'bd-muro', idEdit));
 
 export const updateTask = (idEdit, newInput) => updateDoc(doc(db, 'bd-muro', idEdit, newInput));
 
