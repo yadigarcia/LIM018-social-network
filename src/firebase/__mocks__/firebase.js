@@ -12,6 +12,20 @@ export function registerUser(email, password) {
   return Promise.reject(new Error());
 }
 
+export function signEmail(email, password) {
+  if (email === 'arkelly.perez.alayo@gmail.com' && password === '123456') {
+    return Promise.resolve({
+      user: {
+        uid: 'abc123',
+        username: 'arkelly perez alayo',
+        photoURL: '',
+      },
+    });
+  }
+
+  return Promise.reject(new Error());
+}
+
 // export const userCollection = jest.fn();
 // ........................muro...........................
 
