@@ -62,12 +62,12 @@ export const register = () => {
           }); */
 
           // userCollection(user.uid, username, user.photoURL);
-        })
-        .catch(() => {
+        });
+      /* .catch(() => {
         //  console.log('dentro del catch');
         //  const errorMessage = error.message;
           messageDiv.innerHTML = 'errorMessage';
-        });
+        }); */
     } else {
       const messageDiv = containerViewRegister.querySelector('.messageDiv');
       messageDiv.textContent = 'Por favor ingresar los datos solicitados';

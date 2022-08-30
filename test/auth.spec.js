@@ -69,4 +69,17 @@ describe('regresar a la vista principal', () => {
 
     expect(buttonBackToLoginTest instanceof HTMLElement).toBe(true);
   });
+
+  it('regresar a la vista del login ', () => {
+    document.body.appendChild(register());
+    // const root = document.createElement('div');
+    // root.setAttribute('id', 'root');
+    // document.body.appendChild(root);
+
+    const buttonBackToLoginTest = document.querySelector('#buttonBackToLogin');
+    buttonBackToLoginTest.click();
+    // console.log(window.location.hash);
+    expect(window.location.hash).toBe('#/login');
+    // entrar a changeRoute y testear esa línea
+  });
 });
