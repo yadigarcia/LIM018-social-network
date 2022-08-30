@@ -32,7 +32,6 @@ export const register = () => {
   containerViewRegister.innerHTML = viewRegister;
 
   const formRegister = containerViewRegister.querySelector('.formRegister');
-
   const buttonRegister = containerViewRegister.querySelector('#buttonRegister');
   const buttonBackToLogin = containerViewRegister.querySelector('#buttonBackToLogin');
   const registerName = containerViewRegister.querySelector('#registerName');
