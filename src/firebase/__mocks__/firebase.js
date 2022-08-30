@@ -1,14 +1,15 @@
 export function registerUser(email, password) {
-  if (email === 'jannerygmail.com' && password === '123456') {
+  if (email === 'arkelly.perez.alayo@gmail.com' && password === '123456') {
     return Promise.resolve({
       user: {
-        uid: '',
+        uid: 'sdfghjkl',
       },
     });
   }
 
   return Promise.reject(new Error());
 }
+
 // ........................muro...........................
 
 // export const signUpWithEmail = jest.fn();
