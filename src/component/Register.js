@@ -8,9 +8,12 @@ import {
 export const register = () => {
   const windowRegister = document.createElement('div');
   windowRegister.classList.add('windowRegister');
+  const messageDiv = document.createElement('div');
+  messageDiv.classList.add('messageDiv');
 
   const formRegister = document.createElement('form');
   formRegister.classList.add('formRegister');
+  formRegister.appendChild(messageDiv);
 
   const welcomeRegister = document.createElement('div');
   welcomeRegister.classList.add('welcomeRegister');
@@ -64,7 +67,8 @@ export const register = () => {
 
   buttonBackToLogin.addEventListener('click', () => navigation('/'));
 
-  function createRegister() {
+  buttonRegister.addEventListener('click', (e) => {
+    e.preventDefault();
     const username = registerName.value + registerLastName.value;
     const email = registerEmail.value;
     const password = registerPasword.value;
@@ -78,19 +82,14 @@ export const register = () => {
           username,
           email,
         });
-        alert('Usuario Creado');
+        messageDiv.textContent = 'Usuario creado';
         userCollection(user.uid, username, user.photoURL);
       })
       .catch((error) => {
         const errorMessage = error.message;
 
-        alert(`${errorMessage}`);
+        messageDiv.textContent = errorMessage;
       });
-  }
-
-  buttonRegister.addEventListener('click', (e) => {
-    e.preventDefault();
-    createRegister();
   });
 
   return windowRegister;

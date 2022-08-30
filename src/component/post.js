@@ -3,7 +3,7 @@
 /* eslint-disable no-use-before-define */
 // import { async } from 'regenerator-runtime';
 import {
-  savebdPost, onGetTasks, auth, signOut, deleteTasks, updateTask, getTask,
+  savebdPost, onGetTasks, auth, signOut, deleteTasks, updateTask,
 } from '../firebase/firebase.js';
 import { navigation } from '../main.js';
 import { mostrarPost } from './Muro.js';
@@ -75,7 +75,7 @@ export function callPost(containerMuro) {
 
     // -----------evento para editar posts......................................
     const btnEdit = containerPost.querySelectorAll('.btnEdit');
-    const posttext = containerPost.querySelectorAll('.posttext');// l
+    // const posttext = containerPost.querySelectorAll('.posttext');// l
 
     // const modificationInput = () => {
     // posttext.removeAttribute('readonly');
@@ -84,12 +84,12 @@ export function callPost(containerMuro) {
     //  const newInput = n;
     // };
     btnEdit.forEach((btnE) => {
-      const idEdit = btnE.id; // id del boton editar
+      // const idEdit = btnE.id; // id del boton editar
       btnE.addEventListener('click', async (ee) => {
         ee.preventDefault();
-        console.log('2sd', btnE.id);
-        const doc = await getTask(btnE.id);
-        console.log('xxx', doc.data());
+        // console.log('2sd', btnE.id);
+        // const doc = await getTask(btnE.id);
+        // console.log('xxx', doc.data());
         // editPost(idEdit, newInput);
       });
     });
