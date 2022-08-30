@@ -2,7 +2,9 @@
 /* eslint-disable import/no-cycle */
 import { navigation } from '../main.js';
 import {
-  database, registerUser, set, ref, userCollection,
+  // database, registerUser, set, ref, userCollection,
+  registerUser,
+  // userCollection,
 } from '../firebase/firebase.js';
 
 export const register = () => {
@@ -30,7 +32,7 @@ export const register = () => {
   containerViewRegister.innerHTML = viewRegister;
 
   const formRegister = containerViewRegister.querySelector('.formRegister');
-  const messageDiv = containerViewRegister.querySelector('.messageDiv');
+
   const buttonRegister = containerViewRegister.querySelector('#buttonRegister');
   const buttonBackToLogin = containerViewRegister.querySelector('#buttonBackToLogin');
   const registerName = containerViewRegister.querySelector('#registerName');
@@ -44,28 +46,31 @@ export const register = () => {
     e.preventDefault();
 
     if (registerEmail.value !== '' && registerPasword.value !== '' && registerName.value !== '' && registerLastName.value !== '') {
-      const username = registerName.value;
+      // const username = registerName.value;
       const email = registerEmail.value;
       const password = registerPasword.value;
-
+      const messageDiv = containerViewRegister.querySelector('.messageDiv');
+      // messageDiv.innerHTML = 'fuera del then';
       registerUser(email, password)
-        .then((userCredential) => {
-          formRegister.reset(userCredential);
-          const user = userCredential.user;
-
-          set(ref(database, `user/${user.uid}`), { // Envia a Realtime los campos indicados
+        .then(() => {
+          messageDiv.textContent = 'Usuario creado';
+          formRegister.reset();
+          //  const user = userCredential.user;
+          /* set(ref(database, `user/${user.uid}`), { // Envia a Realtime los campos indicados
             username,
             email,
-          });
-          messageDiv.innerHTML = 'Usuario creado';
-          userCollection(user.uid, username, user.photoURL);
-        })
-        .catch(() => {
-          //  const errorMessage = error.message;
-          messageDiv.innerHTML = 'errorMessage';
+          }); */
+
+          // userCollection(user.uid, username, user.photoURL);
         });
+      /* .catch(() => {
+        //  console.log('dentro del catch');
+        //  const errorMessage = error.message;
+          messageDiv.innerHTML = 'errorMessage';
+        }); */
     } else {
-      messageDiv.innerHTML = 'Por favor ingresar los datos solicitados';
+      const messageDiv = containerViewRegister.querySelector('.messageDiv');
+      messageDiv.textContent = 'Por favor ingresar los datos solicitados';
     }
   });
 

@@ -1,26 +1,20 @@
 import { register } from '../src/component/Register.js';
 
 jest.mock('../src/firebase/firebase.js');
-/*
-const registerUserfn = jest.fn((registerUser) => { registerUser('sdds', 'Pasword'); });
-
-registerUserfn((t, s) => {
-  console.log(t, s);
-}); */
 
 describe('register es una funcion', () => {
-  it('', () => {
+  it('register es una funcion', () => {
     expect(typeof register).toBe('function');
   });
 
-  it('register, deberia registar un nuevo usuario', () => {
+  it('reconocimiento del boton Registrar', () => {
     document.body.appendChild(register());
     const buttonRegisterTest = document.querySelector('#buttonRegister');
 
     expect(buttonRegisterTest instanceof HTMLElement).toBe(true);
   });
 
-  it('Mensaje de error', () => {
+  it('Mensaje de error, por no ingresar los datos', () => {
     document.body.appendChild(register());
     const buttonRegisterTest = document.querySelector('#buttonRegister');
     const pasw = document.querySelector('#registerPasword');
@@ -31,14 +25,7 @@ describe('register es una funcion', () => {
     expect(messageDivTest.textContent).toEqual('Por favor ingresar los datos solicitados');
   });
 
-  it('buttonBackToLogin,deberia mostrar la vista del Login', () => {
-    document.body.appendChild(register());
-    const buttonBackToLoginTest = document.querySelector('#buttonBackToLogin');
-
-    expect(buttonBackToLoginTest instanceof HTMLElement).toBe(true);
-  });
-
-  it('debería mostrar error', () => {
+  it('debería mostrar mensaje de  error', () => {
     document.body.appendChild(register());
     const buttonRegisterTest = document.querySelector('#buttonRegister');
     const email = document.querySelector('#registerEmail');
@@ -65,6 +52,34 @@ describe('register es una funcion', () => {
 
     buttonRegisterTest.click();
     const messageDivTest = document.querySelector('.messageDiv');
-    expect(messageDivTest.textContent).toEqual('Usuario creado');
+    // expect(messageDivTest.textContent).toEqual('Usuario creado');
+
+    // magia negra
+    const p = new Promise(process.nextTick);
+    p.then(() => {
+      expect(messageDivTest.textContent).toEqual('Usuario creado');
+    });
+  });
+});
+
+describe('regresar a la vista principal', () => {
+  it('reconocimiento del buttonBackToLogin', () => {
+    document.body.appendChild(register());
+    const buttonBackToLoginTest = document.querySelector('#buttonBackToLogin');
+
+    expect(buttonBackToLoginTest instanceof HTMLElement).toBe(true);
+  });
+
+  it('regresar a la vista del login ', () => {
+    document.body.appendChild(register());
+    // const root = document.createElement('div');
+    // root.setAttribute('id', 'root');
+    // document.body.appendChild(root);
+
+    const buttonBackToLoginTest = document.querySelector('#buttonBackToLogin');
+    buttonBackToLoginTest.click();
+    // console.log(window.location.hash);
+    expect(window.location.hash).toBe('#/login');
+    // entrar a changeRoute y testear esa línea
   });
 });
