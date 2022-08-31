@@ -21,7 +21,7 @@ describe('LOGIN', () => {
     loginEmail.value = 'arkelly.perez.alayo@gmail.com';
     loginPasword.value = '123456';
 
-    // document.body.innerHTML = '<div id="root"></div>';
+  document.body.innerHTML = '<div id="root"></div>';
 
     const rootDiv = document.getElementById('root');
     rootDiv.appendChild(routes[pathname]());
