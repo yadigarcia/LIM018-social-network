@@ -25,7 +25,7 @@ import {
   onSnapshot, // Permite mostrar los datos cuando son enviados
   doc,
   setDoc,
-  // getDoc,
+  getDoc,
   updateDoc,
 } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-firestore.js';
 
@@ -61,27 +61,36 @@ export const providerf = new FacebookAuthProvider(app);
 // 3.  Inicializando FIRESTORE------------------------------------------------------------------
 
 const db = getFirestore(app);
+
 // Funcion para registrar usuarios
-// eslint-disable-next-line max-len
-export const registerUser = (email, password) => createUserWithEmailAndPassword(auth, email, password);
+
+export const registerUser = (email, password) => {
+  createUserWithEmailAndPassword(auth, email, password);
+};
+export const signEmail = (email, password) => signInWithEmailAndPassword(auth, email, password);
+
+export const signGoogle = () => signInWithPopup(auth, provider);
+
+export const signFacebook = () => signInWithPopup(auth, providerf);
+
 // Funcion para enviar y almacenar datos en Firestore
 export const savebdPost = (uId, userName, postDescription) => {
   addDoc(collection(db, 'bd-muro'), { uId, userName, postDescription });
 };
 
 // Funcion para obtener datos de Firestore
-export const getTasks = () => getDocs(collection(db, 'bd-muro'));
+export const getPosts = () => getDocs(collection(db, 'bd-muro'));
 
 // Funcion para cuando pase eso estará escuchando modificacion para mostrarlo
-export const onGetTasks = (callback) => onSnapshot(collection(db, 'bd-muro'), callback);
+export const onGetPosts = (callback) => onSnapshot(collection(db, 'bd-muro'), callback);
 
 // Funcion para eliminar posts de Firestore
-export const deleteTasks = (id) => deleteDoc(doc(db, 'bd-muro', id));
+export const deletePosts = (id) => deleteDoc(doc(db, 'bd-muro', id));
 
 // Funcion para editar posts de Firestore
-// npexport const getTask = (idEdit) => getDoc(doc(db, 'bd-muro', idEdit));
+export const getPost = (idEdit) => getDoc(doc(db, 'bd-muro', idEdit));
 
-export const updateTask = (idEdit, newInput) => updateDoc(doc(db, 'bd-muro', idEdit, newInput));
+export const updatePost = (idEdit, newFields) => updateDoc(doc(db, 'bd-muro', idEdit), newFields);
 
 // Funcion para mostar nombre de usuario en post
 export const userCollection = (uId, nameUser, photoUser) => {

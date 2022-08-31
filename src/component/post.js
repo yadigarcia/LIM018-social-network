@@ -3,7 +3,7 @@
 /* eslint-disable no-use-before-define */
 // import { async } from 'regenerator-runtime';
 import {
-  savebdPost, onGetTasks, auth, signOut, deleteTasks, updateTask,
+  savebdPost, onGetPosts, auth, signOut, deletePosts, updatePost, getPost,
 } from '../firebase/firebase.js';
 import { navigation } from '../main.js';
 import { mostrarPost } from './Muro.js';
@@ -18,12 +18,17 @@ export function sendNewPost(inputRe) {
 // 2. Eliminar post---------------------------------------------------------------------
 
 export function deletePost(idpost) {
-  deleteTasks(idpost);
+  deletePosts(idpost);
 }
 
 // 3. Editar post---------------------------------------------------------------------
-export function editPost(idEdit, newInput) {
-  updateTask(idEdit, newInput);
+export function editPost(idEdit, newInput, userId, username) {
+  updatePost(idEdit, {
+    postDescription: newInput,
+    uId: userId,
+    userName: username,
+  });
+  // console.log('EDIRT', newInput);
 }
 // 4. funcion para mostrar todos los post ----------------------------------------------
 
@@ -38,13 +43,13 @@ export function callPost(containerMuro) {
   const modalDelete = containerMuro.querySelector('.modalDelete');
   const buttonAceptDeletePost = containerMuro.querySelector('.buttonAceptDeletePost');
   const buttonCancelDeletePost = containerMuro.querySelector('.buttonCancelDeletePost');
-
+  const modalEditPosts = containerMuro.querySelector('.modalEditPost');
   buttonSharePost.addEventListener('click', (e) => {
     e.preventDefault();
     sendNewPost(inputRe);
   });
 
-  onGetTasks((querySnapshot) => {
+  onGetPosts((querySnapshot) => {
     let viewposts = '';
     querySnapshot.forEach((doc) => {
       viewposts += mostrarPost(doc);// constante q muestra los posts
@@ -53,15 +58,13 @@ export function callPost(containerMuro) {
     // -----------evento para borrar posts......................................
     containerPost.innerHTML = viewposts;// colocando los templates en el div del muro
     const btnDelete = containerPost.querySelectorAll('.btnDelete');
-
     btnDelete.forEach((btn) => {
       btn.addEventListener('click', (e) => {
         e.preventDefault();
         modalDelete.style.display = 'block';
-
+        // console.log('PmosL', containerMuro);
         buttonAceptDeletePost.addEventListener('click', (ef) => {
           ef.preventDefault();
-
           deletePost(btn.id);
           modalDelete.style.display = 'none';
         });
@@ -75,22 +78,36 @@ export function callPost(containerMuro) {
 
     // -----------evento para editar posts......................................
     const btnEdit = containerPost.querySelectorAll('.btnEdit');
-    // const posttext = containerPost.querySelectorAll('.posttext');// l
-
+    const inputEditPost = containerMuro.querySelector('.inputEditPost');
+    const buttonAceptEditPost = containerMuro.querySelector('.buttonAceptEditPost');
+    const buttonCancelEditPost = containerMuro.querySelector('.buttonCancelEditPost');
     // const modificationInput = () => {
     // posttext.removeAttribute('readonly');
 
     // const n.innerHTML = ' texto modificado';
     //  const newInput = n;
     // };
+    console.log('ANTEDES', btnEdit);
     btnEdit.forEach((btnE) => {
       // const idEdit = btnE.id; // id del boton editar
       btnE.addEventListener('click', async (ee) => {
         ee.preventDefault();
-        // console.log('2sd', btnE.id);
-        // const doc = await getTask(btnE.id);
-        // console.log('xxx', doc.data());
-        // editPost(idEdit, newInput);
+        modalEditPosts.style.display = 'block';
+        console.log('BOTOB', btnEdit);
+
+        const doc = await getPost(btnE.id);
+        const postEdit = doc.data();
+        inputEditPost.value = postEdit.postDescription;
+
+        buttonAceptEditPost.addEventListener('click', (ed) => {
+          ed.preventDefault();
+          editPost(btnE.id, inputEditPost.value, postEdit.uId, postEdit.userName);
+          modalEditPosts.style.display = 'none';
+        });
+        buttonCancelEditPost.addEventListener('click', (ec) => {
+          ec.preventDefault();
+          modalEditPosts.style.display = 'none';
+        });
       });
     });
   });

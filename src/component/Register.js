@@ -2,9 +2,9 @@
 /* eslint-disable import/no-cycle */
 import { navigation } from '../main.js';
 import {
-  // database, registerUser, set, ref, userCollection,
-  registerUser,
-  // userCollection,
+  database, registerUser, set, ref,
+  // registerUser,
+  userCollection,
 } from '../firebase/firebase.js';
 
 export const register = () => {
@@ -32,7 +32,6 @@ export const register = () => {
   containerViewRegister.innerHTML = viewRegister;
 
   const formRegister = containerViewRegister.querySelector('.formRegister');
-
   const buttonRegister = containerViewRegister.querySelector('#buttonRegister');
   const buttonBackToLogin = containerViewRegister.querySelector('#buttonBackToLogin');
   const registerName = containerViewRegister.querySelector('#registerName');
@@ -46,28 +45,23 @@ export const register = () => {
     e.preventDefault();
 
     if (registerEmail.value !== '' && registerPasword.value !== '' && registerName.value !== '' && registerLastName.value !== '') {
-      // const username = registerName.value;
+      const username = registerName.value;
       const email = registerEmail.value;
       const password = registerPasword.value;
       const messageDiv = containerViewRegister.querySelector('.messageDiv');
-      // messageDiv.innerHTML = 'fuera del then';
+
       registerUser(email, password)
-        .then(() => {
+        .then((userCredential) => {
           messageDiv.textContent = 'Usuario creado';
           formRegister.reset();
-          //  const user = userCredential.user;
-          /* set(ref(database, `user/${user.uid}`), { // Envia a Realtime los campos indicados
+          const user = userCredential.user;
+          set(ref(database, `user/${user.uid}`), { // Envia a Realtime los campos indicados
             username,
             email,
-          }); */
+          });
 
-          // userCollection(user.uid, username, user.photoURL);
+          userCollection(user.uid, username, user.photoURL);
         });
-      /* .catch(() => {
-        //  console.log('dentro del catch');
-        //  const errorMessage = error.message;
-          messageDiv.innerHTML = 'errorMessage';
-        }); */
     } else {
       const messageDiv = containerViewRegister.querySelector('.messageDiv');
       messageDiv.textContent = 'Por favor ingresar los datos solicitados';

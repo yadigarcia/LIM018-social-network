@@ -11,6 +11,8 @@ const routes = {
 };
 
 export const navigation = (pathname) => {
+  // console.log('pasa por aca');
+
   const rootDiv = document.getElementById('root');
   window.history.pushState({}, pathname, window.location.origin + pathname);
 

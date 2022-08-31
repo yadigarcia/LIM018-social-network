@@ -1,4 +1,5 @@
 import { register } from '../src/component/Register.js';
+import * as mainFunctions from '../src/main.js';
 
 jest.mock('../src/firebase/firebase.js');
 
@@ -52,7 +53,6 @@ describe('register es una funcion', () => {
 
     buttonRegisterTest.click();
     const messageDivTest = document.querySelector('.messageDiv');
-    // expect(messageDivTest.textContent).toEqual('Usuario creado');
 
     // magia negra
     const p = new Promise(process.nextTick);
@@ -62,7 +62,7 @@ describe('register es una funcion', () => {
   });
 });
 
-describe('regresar a la vista principal', () => {
+describe('regresar a la vista principal LOGIN', () => {
   it('reconocimiento del buttonBackToLogin', () => {
     document.body.appendChild(register());
     const buttonBackToLoginTest = document.querySelector('#buttonBackToLogin');
@@ -72,14 +72,10 @@ describe('regresar a la vista principal', () => {
 
   it('regresar a la vista del login ', () => {
     document.body.appendChild(register());
-    // const root = document.createElement('div');
-    // root.setAttribute('id', 'root');
-    // document.body.appendChild(root);
+    const spy = jest.spyOn(mainFunctions, 'navigation').mockImplementation(() => null);
 
     const buttonBackToLoginTest = document.querySelector('#buttonBackToLogin');
     buttonBackToLoginTest.click();
-    // console.log(window.location.hash);
-    expect(window.location.hash).toBe('#/login');
-    // entrar a changeRoute y testear esa línea
+    expect(spy).toHaveBeenCalledWith('/');
   });
 });
