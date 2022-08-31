@@ -79,18 +79,18 @@ export const savebdPost = (uId, userName, postDescription) => {
 };
 
 // Funcion para obtener datos de Firestore
-export const getTasks = () => getDocs(collection(db, 'bd-muro'));
+export const getPosts = () => getDocs(collection(db, 'bd-muro'));
 
 // Funcion para cuando pase eso estará escuchando modificacion para mostrarlo
-export const onGetTasks = (callback) => onSnapshot(collection(db, 'bd-muro'), callback);
+export const onGetPosts = (callback) => onSnapshot(collection(db, 'bd-muro'), callback);
 
 // Funcion para eliminar posts de Firestore
-export const deleteTasks = (id) => deleteDoc(doc(db, 'bd-muro', id));
+export const deletePosts = (id) => deleteDoc(doc(db, 'bd-muro', id));
 
 // Funcion para editar posts de Firestore
-export const getTask = (idEdit) => getDoc(doc(db, 'bd-muro', idEdit));
+export const getPost = (idEdit) => getDoc(doc(db, 'bd-muro', idEdit));
 
-export const updateTask = (idEdit, newFields) => updateDoc(doc(db, 'bd-muro', idEdit), newFields);
+export const updatePost = (idEdit, newFields) => updateDoc(doc(db, 'bd-muro', idEdit), newFields);
 
 // Funcion para mostar nombre de usuario en post
 export const userCollection = (uId, nameUser, photoUser) => {

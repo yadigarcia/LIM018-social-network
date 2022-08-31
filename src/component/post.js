@@ -3,7 +3,7 @@
 /* eslint-disable no-use-before-define */
 // import { async } from 'regenerator-runtime';
 import {
-  savebdPost, onGetTasks, auth, signOut, deleteTasks, updateTask, getTask,
+  savebdPost, onGetPosts, auth, signOut, deletePosts, updatePost, getPost,
 } from '../firebase/firebase.js';
 import { navigation } from '../main.js';
 import { mostrarPost } from './Muro.js';
@@ -18,12 +18,12 @@ export function sendNewPost(inputRe) {
 // 2. Eliminar post---------------------------------------------------------------------
 
 export function deletePost(idpost) {
-  deleteTasks(idpost);
+  deletePosts(idpost);
 }
 
 // 3. Editar post---------------------------------------------------------------------
 export function editPost(idEdit, newInput, userId, username) {
-  updateTask(idEdit, {
+  updatePost(idEdit, {
     postDescription: newInput,
     uId: userId,
     userName: username,
@@ -49,7 +49,7 @@ export function callPost(containerMuro) {
     sendNewPost(inputRe);
   });
 
-  onGetTasks((querySnapshot) => {
+  onGetPosts((querySnapshot) => {
     let viewposts = '';
     querySnapshot.forEach((doc) => {
       viewposts += mostrarPost(doc);// constante q muestra los posts
@@ -87,7 +87,7 @@ export function callPost(containerMuro) {
     // const n.innerHTML = ' texto modificado';
     //  const newInput = n;
     // };
-    console.log('ANTEDES DEL FEA');
+    console.log('ANTEDES', btnEdit);
     btnEdit.forEach((btnE) => {
       // const idEdit = btnE.id; // id del boton editar
       btnE.addEventListener('click', async (ee) => {
@@ -95,7 +95,7 @@ export function callPost(containerMuro) {
         modalEditPosts.style.display = 'block';
         console.log('BOTOB', btnEdit);
 
-        const doc = await getTask(btnE.id);
+        const doc = await getPost(btnE.id);
         const postEdit = doc.data();
         inputEditPost.value = postEdit.postDescription;
 
