@@ -16,6 +16,7 @@ import {
 export const login = () => {
   const viewLogin = `
 <div class="windowlogin">
+    <div class="messageDiv"></div>
     <form id='formLogin' class="formviewlogin">
         <div class="logoLogin">
           <img class="imgLogo" src="img/logo.JPG" alt="logo">
@@ -51,6 +52,7 @@ export const login = () => {
   const btnGoogle = containerViewlogin.querySelector('#btnGoogle');
   const btnFacebook = containerViewlogin.querySelector('#btnFacebook');
   const btnToRegister = containerViewlogin.querySelector('#btnToRegister');
+  const messageDiv = containerViewlogin.querySelector('.messageDiv');
 
   btnToRegister.addEventListener('click', () => navigation('/register'));
 
@@ -60,24 +62,23 @@ export const login = () => {
 
     const email = loginEmail.value;
     const password = loginPasword.value;
+    if (email !== '' && password !== '') {
+      signEmail(email, password)
+        .then((userCredential) => {
+          formLogin.reset(userCredential);
 
-    signEmail(email, password)
-      .then((userCredential) => {
-        formLogin.reset(userCredential);
+          const dt = new Date();
+          const user = userCredential.user;
 
-        const dt = new Date();
-        const user = userCredential.user;
+          update(ref(database, `user/${user.uid}`), {
+            last_Login: dt,
+          });
 
-        update(ref(database, `user/${user.uid}`), {
-          last_Login: dt,
+          navigation('/muro');
         });
-        navigation('/muro');
-      })
-      .catch((error) => {
-        const errorMessage = error.message;
-
-        alert(`${errorMessage}`);
-      });
+    } else {
+      messageDiv.textContent = 'Por favor ingresa tu email y password';
+    }
   });
 
   // Ingreso con google-------------------------------------
@@ -89,11 +90,10 @@ export const login = () => {
         const user = result.user;
         navigation('/muro');
         userCollection(user.uid, user.displayName, user.photoURL);
-      })
-      .catch((error) => {
-        const errorMessage = error.message;
-        alert(`${errorMessage}`);
       });
+    // .catch(() => {
+    //   messageDiv.textContent = 'Usuario no Registrado';
+    // });
   });
 
   // Ingreso con facebook-------------------------------------
@@ -106,11 +106,10 @@ export const login = () => {
         const user = result.user;
         navigation('/muro');
         userCollection(user.uid, user.displayName, user.photoURL);
-      })
-      .catch((error) => {
-        const errorMessage = error.message;
-        alert(`${errorMessage}`);
       });
+    // .catch(() => {
+    //   messageDiv.textContent = 'Usuario no Registrado';
+    // });
   });
 
   // observador------------------

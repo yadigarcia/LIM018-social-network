@@ -3,7 +3,6 @@ import * as mainFunctions from '../src/main.js';
 
 jest.mock('../src/firebase/firebase.js');
 
-
 describe('register es una funcion', () => {
   it('register es una funcion', () => {
     expect(typeof register).toBe('function');
