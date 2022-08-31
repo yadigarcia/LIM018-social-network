@@ -476,7 +476,7 @@ width: 100%;
  } 
 
  .modalEditPost{
-  background: rgba(75, 9, 86, 0.5);
+  background: rgba(75, 9, 86);
   color: #fff;
   display: flex;
   flex-flow: column wrap;
@@ -486,7 +486,7 @@ width: 100%;
   left: 50%;
   border-radius: 7px;
   height: 20%;
-  width: 20%;
-  transition: all .5s;
+  width: 35%;
+ transition: all .5s;
 
  }

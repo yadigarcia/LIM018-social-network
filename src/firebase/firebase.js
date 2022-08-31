@@ -88,7 +88,7 @@ export const deleteTasks = (id) => deleteDoc(doc(db, 'bd-muro', id));
 // Funcion para editar posts de Firestore
 export const getTask = (idEdit) => getDoc(doc(db, 'bd-muro', idEdit));
 
-export const updateTask = (idEdit, newInput) => updateDoc(doc(db, 'bd-muro', idEdit, newInput));
+export const updateTask = (idEdit, newFields) => updateDoc(doc(db, 'bd-muro', idEdit), newFields);
 
 // Funcion para mostar nombre de usuario en post
 export const userCollection = (uId, nameUser, photoUser) => {

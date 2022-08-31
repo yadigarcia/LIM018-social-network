@@ -36,14 +36,14 @@ export function muro() {
               <button class="buttonCancelDeletePost">Cancelar</button>
            </div>      
         </div>
-        <div class="modalEditPost" style="display:none">sdddddd
-        <div class="modalEditPost1">sdsdsd
-           <p> ¿Deseas editar este Post?</p>
-           <input class="inputEditPost">
-           <button class="buttonAceptEditPost">Aceptar</button>
-           <button class="buttonCancelEditPost">Cancelar</button>
-        </div>      
-     </div>
+        <div class="modalEditPost" style="display:none">
+           <div class="modalEditPost1">
+              <p> ¿Deseas editar este Post?</p>
+              <input class="inputEditPost">
+              <button class="buttonAceptEditPost">Aceptar</button>
+              <button class="buttonCancelEditPost">Cancelar</button>
+          </div>      
+        </div>
         
     </div>`;
 

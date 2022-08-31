@@ -22,10 +22,14 @@ export function deletePost(idpost) {
 }
 
 // 3. Editar post---------------------------------------------------------------------
-/* export function editPost(idEdit, newInput) {
-  updateTask(idEdit, newInput);
+export function editPost(idEdit, newInput, userId, username) {
+  updateTask(idEdit, {
+    postDescription: newInput,
+    uId: userId,
+    userName: username,
+  });
   // console.log('EDIRT', newInput);
-} */
+}
 // 4. funcion para mostrar todos los post ----------------------------------------------
 
 export function showPostFunt(containerMuro) {
@@ -39,7 +43,7 @@ export function callPost(containerMuro) {
   const modalDelete = containerMuro.querySelector('.modalDelete');
   const buttonAceptDeletePost = containerMuro.querySelector('.buttonAceptDeletePost');
   const buttonCancelDeletePost = containerMuro.querySelector('.buttonCancelDeletePost');
-
+  const modalEditPosts = containerMuro.querySelector('.modalEditPost');
   buttonSharePost.addEventListener('click', (e) => {
     e.preventDefault();
     sendNewPost(inputRe);
@@ -54,15 +58,13 @@ export function callPost(containerMuro) {
     // -----------evento para borrar posts......................................
     containerPost.innerHTML = viewposts;// colocando los templates en el div del muro
     const btnDelete = containerPost.querySelectorAll('.btnDelete');
-
     btnDelete.forEach((btn) => {
       btn.addEventListener('click', (e) => {
         e.preventDefault();
         modalDelete.style.display = 'block';
-
+        // console.log('PmosL', containerMuro);
         buttonAceptDeletePost.addEventListener('click', (ef) => {
           ef.preventDefault();
-
           deletePost(btn.id);
           modalDelete.style.display = 'none';
         });
@@ -75,33 +77,39 @@ export function callPost(containerMuro) {
     });
 
     // -----------evento para editar posts......................................
-    /* const btnEdit = containerPost.querySelectorAll('.btnEdit');
-    const modalEditPost = containerPost.querySelectorAll('.modalEditPost');
-    console.log('afuera', modalEditPost);
-    // const posttext = containerPost.querySelectorAll('.posttext');// l
-
+    const btnEdit = containerPost.querySelectorAll('.btnEdit');
+    const inputEditPost = containerMuro.querySelector('.inputEditPost');
+    const buttonAceptEditPost = containerMuro.querySelector('.buttonAceptEditPost');
+    const buttonCancelEditPost = containerMuro.querySelector('.buttonCancelEditPost');
     // const modificationInput = () => {
     // posttext.removeAttribute('readonly');
 
     // const n.innerHTML = ' texto modificado';
     //  const newInput = n;
     // };
+    console.log('ANTEDES DEL FEA');
     btnEdit.forEach((btnE) => {
       // const idEdit = btnE.id; // id del boton editar
       btnE.addEventListener('click', async (ee) => {
         ee.preventDefault();
-        // const modalEditPost = containerPost.querySelector('.modalEditPost');
-        console.log('PmosL', modalEditPost);
-        // modalEditPost.style.display = 'block';
+        modalEditPosts.style.display = 'block';
+        console.log('BOTOB', btnEdit);
 
         const doc = await getTask(btnE.id);
         const postEdit = doc.data();
-        const inputEditPost1 = containerPost.querySelector('.inputEditPost');
-        inputRe[]value = 'gghhhh';
-        console.log('POST EDITAS', inputRe);
-        // editPost(idEdit, 'NUEVO POST');
+        inputEditPost.value = postEdit.postDescription;
+
+        buttonAceptEditPost.addEventListener('click', (ed) => {
+          ed.preventDefault();
+          editPost(btnE.id, inputEditPost.value, postEdit.uId, postEdit.userName);
+          modalEditPosts.style.display = 'none';
+        });
+        buttonCancelEditPost.addEventListener('click', (ec) => {
+          ec.preventDefault();
+          modalEditPosts.style.display = 'none';
+        });
       });
-    }); */
+    });
   });
 }
 // salir de la sesion---
