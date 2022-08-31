@@ -12,7 +12,8 @@ const routes = {
 
 export const navigation = (pathname) => {
   const rootDiv = document.getElementById('root');
-  window.history.pushState({}, pathname, window.location.origin + pathname);
+  window.history.pushState({ hola: 'hola' }, pathname, window.location.origin + pathname);
+  // console.log('location', window.location.pathname);
 
   while (rootDiv.firstChild) {
     rootDiv.removeChild(rootDiv.firstChild);
