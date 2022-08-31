@@ -68,7 +68,9 @@ export const registerUser = (email, password) => {
   createUserWithEmailAndPassword(auth, email, password);
 };
 export const signEmail = (email, password) => signInWithEmailAndPassword(auth, email, password);
+
 export const signGoogle = () => signInWithPopup(auth, provider);
+
 export const signFacebook = () => signInWithPopup(auth, providerf);
 
 // Funcion para enviar y almacenar datos en Firestore

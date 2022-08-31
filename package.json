@@ -13,9 +13,9 @@
     "htmlhint": "htmlhint dist/*.html ",
     "eslint": "eslint --ext .js src/ test/",
     "stylelint": "stylelint --aei src/**/*.css",
-    "pretest0": "npm run htmlhint && npm run eslint && npm run stylelint",
-    "testo": "jest --coverage --env=jsdom",
-    "test": "jest --env=jsdom",
+    "pretest": "npm run htmlhint && npm run eslint && npm run stylelint",
+    "test": "jest --coverage --env=jsdom",
+    "testo": "jest --env=jsdom",
     "start": "serve -s src/"
   },
   "devDependencies": {
