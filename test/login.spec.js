@@ -13,25 +13,73 @@ describe('LOGIN', () => {
     expect(buttonLoginTest instanceof HTMLElement).toBe(true);
   });
 
-  it('deberia cambiar la vista al ingresar con email y pasword', (done) => {
-    document.body.appendChild(login());
+  it('deberia cambiar la vista al ingresar con email y pasword', () => {
+    document.body.innerHTML = '<div id="root"></div>';
+    const rootDiv = document.getElementById('root');
+
+    rootDiv.appendChild(login());
+
     const buttonLogin = document.querySelector('#buttonLogin');
     const loginEmail = document.querySelector('#loginEmail');
     const loginPasword = document.querySelector('#loginPasword');
+
     loginEmail.value = 'arkelly.perez.alayo@gmail.com';
     loginPasword.value = '123456';
 
-  document.body.innerHTML = '<div id="root"></div>';
+    buttonLogin.click();
 
-    const rootDiv = document.getElementById('root');
-    rootDiv.appendChild(routes[pathname]());
+    setTimeout(() => {
+      expect(window.location.pathname).toBe('/muro');
+    }, 1000);
+  });
+
+  it('no deberia ingresar porque no esta Registrado', () => {
+    document.body.appendChild(login());
+
+    const buttonLogin = document.querySelector('#buttonLogin');
+    const loginEmail = document.querySelector('#loginEmail');
+    const loginPasword = document.querySelector('#loginPasword');
+    const messageDiv = document.querySelector('.messageDiv');
+
+    loginEmail.value = '';
+    loginPasword.value = '';
 
     buttonLogin.click();
 
-    const view = new Promise(process.nextTick);
-    view.then(() => {
+    expect(messageDiv.textContent).toBe('Por favor ingresa tu email y password');
+  });
+});
+
+describe('click en boton google denberia llevarme al muro', () => {
+  it('deberia cambiar la vista al ingresar con google', () => {
+    document.body.innerHTML = '<div id="root"></div>';
+    const rootDiv = document.getElementById('root');
+
+    rootDiv.appendChild(login());
+
+    const btnGoogle = document.querySelector('#btnGoogle');
+
+    btnGoogle.click();
+
+    setTimeout(() => {
       expect(window.location.pathname).toBe('/muro');
-      done();
-    });
+    }, 1000);
+  });
+});
+
+describe('click en boton facebook denberia llevarme al muro', () => {
+  it('deberia cambiar la vista al ingresar con google', () => {
+    document.body.innerHTML = '<div id="root"></div>';
+    const rootDiv = document.getElementById('root');
+
+    rootDiv.appendChild(login());
+
+    const btnFacebook = document.querySelector('#btnFacebook');
+
+    btnFacebook.click();
+
+    setTimeout(() => {
+      expect(window.location.pathname).toBe('/muro');
+    }, 1000);
   });
 });
