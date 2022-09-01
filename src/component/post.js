@@ -22,11 +22,9 @@ export function deletePost(idpost) {
 }
 
 // 3. Editar post---------------------------------------------------------------------
-export function editPost(idEdit, newInput, userId, username) {
+export function editPost(idEdit, newInput) {
   updatePost(idEdit, {
     postDescription: newInput,
-    uId: userId,
-    userName: username,
   });
   // console.log('EDIRT', newInput);
 }
@@ -44,6 +42,10 @@ export function callPost(containerMuro) {
   const buttonAceptDeletePost = containerMuro.querySelector('.buttonAceptDeletePost');
   const buttonCancelDeletePost = containerMuro.querySelector('.buttonCancelDeletePost');
   const modalEditPosts = containerMuro.querySelector('.modalEditPost');
+  const inputEditPost = containerMuro.querySelector('.inputEditPost');
+  const btnAceptEditPost = containerMuro.querySelector('.buttonAceptEditPost');
+  const btnCancelEditPost = containerMuro.querySelector('.buttonCancelEditPost');
+
   buttonSharePost.addEventListener('click', (e) => {
     e.preventDefault();
     sendNewPost(inputRe);
@@ -57,62 +59,55 @@ export function callPost(containerMuro) {
 
     // -----------evento para borrar posts......................................
     containerPost.innerHTML = viewposts;// colocando los templates en el div del muro
-    const btnDelete = containerPost.querySelectorAll('.btnDelete');
-    btnDelete.forEach((btn) => {
+
+    const arrayBtnDelete = containerPost.querySelectorAll('.btnDelete');
+
+    arrayBtnDelete.forEach((btn) => {
       btn.addEventListener('click', (e) => {
         e.preventDefault();
         modalDelete.style.display = 'block';
-        // console.log('PmosL', containerMuro);
-        buttonAceptDeletePost.addEventListener('click', (ef) => {
-          ef.preventDefault();
+
+        buttonAceptDeletePost.addEventListener('click', () => {
           deletePost(btn.id);
           modalDelete.style.display = 'none';
         });
 
-        buttonCancelDeletePost.addEventListener('click', (ev) => {
-          ev.preventDefault();
+        buttonCancelDeletePost.addEventListener('click', () => {
           modalDelete.style.display = 'none';
         });
       });
     });
 
     // -----------evento para editar posts......................................
-    const btnEdit = containerPost.querySelectorAll('.btnEdit');
-    const inputEditPost = containerMuro.querySelector('.inputEditPost');
-    const buttonAceptEditPost = containerMuro.querySelector('.buttonAceptEditPost');
-    const buttonCancelEditPost = containerMuro.querySelector('.buttonCancelEditPost');
-    // const modificationInput = () => {
-    // posttext.removeAttribute('readonly');
+    const arrayBtnEdit = containerPost.querySelectorAll('.btnEdit');
 
-    // const n.innerHTML = ' texto modificado';
-    //  const newInput = n;
-    // };
-    console.log('ANTEDES', btnEdit);
-    btnEdit.forEach((btnE) => {
+    arrayBtnEdit.forEach((btnE) => {
       // const idEdit = btnE.id; // id del boton editar
-      btnE.addEventListener('click', async (ee) => {
-        ee.preventDefault();
+      btnE.addEventListener('click', async () => {
         modalEditPosts.style.display = 'block';
-        console.log('BOTOB', btnEdit);
 
         const doc = await getPost(btnE.id);
-        const postEdit = doc.data();
-        inputEditPost.value = postEdit.postDescription;
+        const postData = doc.data();
+        const x = postData.postDescription;
+        inputEditPost.innerHTML = x;
 
-        buttonAceptEditPost.addEventListener('click', (ed) => {
-          ed.preventDefault();
-          editPost(btnE.id, inputEditPost.value, postEdit.uId, postEdit.userName);
+        btnAceptEditPost.addEventListener('click', () => {
+          editPost(btnE.id, inputEditPost.value);
           modalEditPosts.style.display = 'none';
         });
-        buttonCancelEditPost.addEventListener('click', (ec) => {
-          ec.preventDefault();
+        btnCancelEditPost.addEventListener('click', () => {
           modalEditPosts.style.display = 'none';
         });
       });
     });
+
+    // -----------evento para dar LIKE-------------------
+    const like = containerPost.querySelector('#like');
+    
   });
 }
-// salir de la sesion---
+
+// salir de la sesion--------
 export const exitPost = () => {
   signOut(auth).then(() => {
     alert('Estás seguro que quieres salir');

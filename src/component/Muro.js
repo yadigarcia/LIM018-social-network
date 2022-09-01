@@ -29,6 +29,7 @@ export function muro() {
         <!--POST-->
 
         <div class="containerPost"> </div>
+
         <div class="modalDelete" style="display:none">
            <div class="modalDelete">
               <p> ¿Deseas borra este Post?</p>
@@ -37,12 +38,10 @@ export function muro() {
            </div>      
         </div>
         <div class="modalEditPost" style="display:none">
-           <div class="modalEditPost1">
-              <p> ¿Deseas editar este Post?</p>
-              <input class="inputEditPost">
-              <button class="buttonAceptEditPost">Aceptar</button>
-              <button class="buttonCancelEditPost">Cancelar</button>
-          </div>      
+          <p> ¿Deseas editar este Post?</p>
+          <input class="inputEditPost">
+          <button class="buttonAceptEditPost">Aceptar</button>
+          <button class="buttonCancelEditPost">Cancelar</button>  
         </div>
         
     </div>`;
@@ -75,7 +74,7 @@ export function mostrarPost(doc) {
               <textarea class="posttext" readonly > ${bdmuro.postDescription}</textarea>
           </div>
           <div class="postIcon ">
-              <i class="fa-regular fa-heart"></i>
+              <i id='like' class="fa-regular fa-heart"></i>
               <i class="fa-regular fa-comment-dots"></i>
           </div>
           <div class="postCommentsDiv ">
