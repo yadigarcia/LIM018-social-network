@@ -13,8 +13,14 @@
     "htmlhint": "htmlhint dist/*.html ",
     "eslint": "eslint --ext .js src/ test/",
     "stylelint": "stylelint --aei src/**/*.css",
+<<<<<<< HEAD
     "_pretest": "npm run htmlhint && npm run eslint && npm run stylelint",
     "test": "jest --coverage",
+=======
+    "pretest": "npm run htmlhint && npm run eslint && npm run stylelint",
+    "test": "jest --coverage --env=jsdom",
+    "testo": "jest --env=jsdom",
+>>>>>>> 2158cf55e19a1826a32a3e768500214a6c6ca023
     "start": "serve -s src/"
   },
   "devDependencies": {
@@ -25,7 +31,7 @@
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jest": "^25.3.0",
-    "htmlhint": "^1.0.0",
+    "htmlhint": "^1.1.4",
     "jest": "^27.0.1",
     "regenerator-runtime": "^0.13.1",
     "serve": "^13.0.2",

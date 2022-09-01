@@ -1,5 +1,5 @@
 # Creando una Red Social
-BORRE TODO :-)dsffdfdfdf
+BORRE TODO :-)dsffdfd
 ## Índice
 
 * [1. Preámbulo](#1-preámbulo)
