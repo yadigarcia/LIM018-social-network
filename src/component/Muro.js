@@ -23,7 +23,7 @@ export function muro() {
         <form class="newPostDiv">
             <i id="iconPhoto" class="fa-regular fa-image"></i>
             <input type="text" class="newPost" placeholder="Cuentanos tu aventura Traveller"></input>
-            <button class="publicar" ><i class="fa-solid fa-paper-plane"></i></button>     
+            <button class="publicar"><i class="fa-solid fa-paper-plane"></i></button>     
         </form>
 
         <!--POST-->
@@ -74,7 +74,8 @@ export function mostrarPost(doc) {
               <textarea class="posttext" readonly > ${bdmuro.postDescription}</textarea>
           </div>
           <div class="postIcon ">
-              <i id='like' class="fa-regular fa-heart"></i>
+              <button class="btnLike" id=${doc.id}><i id='like' class="fa-regular fa-heart"></i></button>
+              <div class='numberLike'>0</div>
               <i class="fa-regular fa-comment-dots"></i>
           </div>
           <div class="postCommentsDiv ">

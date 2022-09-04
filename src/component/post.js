@@ -101,9 +101,15 @@ export function callPost(containerMuro) {
       });
     });
 
-    // -----------evento para dar LIKE-------------------
-    const like = containerPost.querySelector('#like');
-    
+    // -----------evento para dar LIKE------------------
+    const btnLike = containerPost.querySelectorAll('.btnLike');
+
+    btnLike.forEach((btnL) => {
+      btnL.addEventListener('click', () => {
+        // const countLike = 0;
+        console.log('like');
+      });
+    });
   });
 }
 

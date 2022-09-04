@@ -28,6 +28,7 @@ import {
   getDoc,
   updateDoc,
 } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-firestore.js';
+// import { async } from 'regenerator-runtime';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyDBqQpWxgLbRQOupFwXsIOZfFUfRuKNfnk',
@@ -90,7 +91,7 @@ export const deletePosts = (id) => deleteDoc(doc(db, 'bd-muro', id));
 // Funcion para editar posts de Firestore
 export const getPost = (idEdit) => getDoc(doc(db, 'bd-muro', idEdit));
 
-export const updatePost = (idEdit, newFields) => updateDoc(doc(db, 'bd-muro', idEdit), newFields);
+export const updatePost = (idEdit, newDescription) => updateDoc(doc(db, 'bd-muro', idEdit), newDescription);
 
 // Funcion para mostar nombre de usuario en post
 export const userCollection = (uId, nameUser, photoUser) => {
@@ -100,3 +101,5 @@ export const userCollection = (uId, nameUser, photoUser) => {
     photo: photoUser,
   });
 };
+
+// contador de like-----
