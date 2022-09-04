@@ -23,12 +23,13 @@ export function muro() {
         <form class="newPostDiv">
             <i id="iconPhoto" class="fa-regular fa-image"></i>
             <input type="text" class="newPost" placeholder="Cuentanos tu aventura Traveller"></input>
-            <button class="publicar" ><i class="fa-solid fa-paper-plane"></i></button>     
+            <button class="publicar"><i class="fa-solid fa-paper-plane"></i></button>     
         </form>
 
         <!--POST-->
 
         <div class="containerPost"> </div>
+
         <div class="modalDelete" style="display:none">
            <div class="modalDelete">
               <p> ¿Deseas borra este Post?</p>
@@ -37,12 +38,10 @@ export function muro() {
            </div>      
         </div>
         <div class="modalEditPost" style="display:none">
-           <div class="modalEditPost1">
-              <p> ¿Deseas editar este Post?</p>
-              <input class="inputEditPost">
-              <button class="buttonAceptEditPost">Aceptar</button>
-              <button class="buttonCancelEditPost">Cancelar</button>
-          </div>      
+          <p> ¿Deseas editar este Post?</p>
+          <input class="inputEditPost">
+          <button class="buttonAceptEditPost">Aceptar</button>
+          <button class="buttonCancelEditPost">Cancelar</button>  
         </div>
         
     </div>`;
@@ -75,7 +74,8 @@ export function mostrarPost(doc) {
               <textarea class="posttext" readonly > ${bdmuro.postDescription}</textarea>
           </div>
           <div class="postIcon ">
-              <i class="fa-regular fa-heart"></i>
+              <button class="btnLike" id=${doc.id}><i id='like' class="fa-regular fa-heart"></i></button>
+              <div class='numberLike'>0</div>
               <i class="fa-regular fa-comment-dots"></i>
           </div>
           <div class="postCommentsDiv ">
