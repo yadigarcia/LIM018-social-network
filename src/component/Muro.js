@@ -23,12 +23,13 @@ export function muro() {
         <form class="newPostDiv">
             <i id="iconPhoto" class="fa-regular fa-image"></i>
             <input type="text" class="newPost" placeholder="Cuentanos tu aventura Traveller"></input>
-            <button class="publicar" ><i class="fa-solid fa-paper-plane"></i></button>     
+            <button class="publicar"><i class="fa-solid fa-paper-plane"></i></button>     
         </form>
 
         <!--POST-->
 
         <div class="containerPost"> </div>
+
         <div class="modalDelete" style="display:none">
            <div class="modalDelete">
               <p> ¿Deseas borra este Post?</p>
@@ -36,16 +37,15 @@ export function muro() {
               <button class="buttonCancelDeletePost">Cancelar</button>
            </div>      
         </div>
-        <div class="modalEditPost" style="display:none">
-           <div class="modalEditPost1">
-              <p> ¿Deseas editar este Post?</p>
-              <input class="inputEditPost">
-              <button class="buttonAceptEditPost">Aceptar</button>
-              <button class="buttonCancelEditPost">Cancelar</button>
-          </div>      
-        </div>
+        <form id='modalEditPos' class="modalEditPost" style="display:none">
+
+          <p> ¿Deseas editar este Post?</p>
+          <input class="inputEditPost">
+          <button class="buttonAceptEditPost">Aceptar</button>
+          <button class="buttonCancelEditPost">Cancelar</button>  
+        </>
         
-    </div>`;
+    </form>`;
 
   const containerViewMuro = document.createElement('div');
   containerViewMuro.innerHTML = viewMuro;
@@ -64,18 +64,19 @@ export function mostrarPost(doc) {
           <img class=" postUsePhoto">
           <p class="postUserName">${bdmuro.userName}</p>
        </div>
-       <div class="iconsEditDeletePostContainer">
+       <form class="iconsEditDeletePostContainer">
           
           <button class="btnEdit" id=${doc.id} ><i id="btnEdit" class="fa-solid fa-pencil"></i></button>
           <button class="btnDelete" id=${doc.id} ><i class="fa-solid fa-trash-can"></i></button>
-       </div>
+       </form>
     </div>
     <div class="post">
           <div class="postTextDiv ">
               <textarea class="posttext" readonly > ${bdmuro.postDescription}</textarea>
           </div>
           <div class="postIcon ">
-              <i class="fa-regular fa-heart"></i>
+              <button class="btnLike" id=${doc.id}><i id='like' class="fa-regular fa-heart"></i></button>
+              <div class='numberLike'>0</div>
               <i class="fa-regular fa-comment-dots"></i>
           </div>
           <div class="postCommentsDiv ">
