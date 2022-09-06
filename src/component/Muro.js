@@ -38,13 +38,7 @@ export function muro() {
            </div>      
         </div>
         <form id='modalEditPos' class="modalEditPost" style="display:none">
-
-          <p> ¿Deseas editar este Post?</p>
-          <input class="inputEditPost">
-          <button class="buttonAceptEditPost">Aceptar</button>
-          <button class="buttonCancelEditPost">Cancelar</button>  
-        </>
-        
+        </form>
     </form>`;
 
   const containerViewMuro = document.createElement('div');

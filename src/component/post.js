@@ -1,13 +1,13 @@
 /* eslint-disable no-alert */
 /* eslint-disable import/no-cycle */
 /* eslint-disable no-use-before-define */
-// import { async } from 'regenerator-runtime';
+
 import {
-  savebdPost, onGetPosts, auth, signOut, deletePosts, updatePost, getPost,
+  savebdPost, onGetPosts, auth, signOut, deletePosts, getPost,
 } from '../firebase/firebase.js';
 import { navigation } from '../main.js';
 import { mostrarPost } from './Muro.js';
-
+import { editarPost } from './modalEditarPost.js';
 // 1.enviar y almacenar datos nuevos-------------------------------------------------------------
 
 export function sendNewPost(inputRe) {
@@ -21,51 +21,6 @@ export function deletePost(idpost) {
   deletePosts(idpost);
 }
 
-// 3. Editar post---------------------------------------------------------------------
-/* export function editPost(idEdit, newInput) {
-
-  updatePost(idEdit, {
-    postDescription: newInput,
-  });
-*/
-export function editPost(btnE, containerMuro) {
-  const modalEditPosts = containerMuro.querySelector('.modalEditPost');
-  const inputEditPost = containerMuro.querySelector('.inputEditPost');
-  const btnAceptEditPost = containerMuro.querySelector('.buttonAceptEditPost');
-  const btnCancelEditPost = containerMuro.querySelector('.buttonCancelEditPost');
-
-  // console.log('editar funcion');
-  // btnE.addEventListener('click', async () => {
-  btnE.addEventListener('click', async (ez) => {
-    ez.preventDefault();
-    modalEditPosts.style.display = 'block';
-
-    const doc = await getPost(btnE.id);
-
-    const postData = doc.data();
-    const x = postData.postDescription;
-    console.log('btne dentro de editar', btnE);
-    inputEditPost.innerHTML = x;
-
-    btnAceptEditPost.addEventListener('click', (ea) => {
-    //  editPost(btnE.id, inputEditPost.value);
-      console.log(btnCancelEditPost);
-      ea.preventDefault();
-
-      updatePost(btnE.id, {
-        postDescription: inputEditPost.value,
-      });
-
-      modalEditPosts.style.display = 'none';
-    });
-    btnCancelEditPost.addEventListener('click', (es) => {
-      es.preventDefault();
-      modalEditPosts.style.display = 'none';
-    });
-  });
-
-  // console.log('EDIRT', newInput);
-}
 // 4. funcion para mostrar todos los post ----------------------------------------------
 
 export function showPostFunt(containerMuro) {
@@ -73,17 +28,14 @@ export function showPostFunt(containerMuro) {
 }
 
 export function callPost(containerMuro) {
-  const btnEditDelete = containerMuro.querySelector('.iconsEditDeletePostContainer');
+  // const btnEditDelete = containerMuro.querySelector('.iconsEditDeletePostContainer');
   const containerPost = containerMuro.querySelector('.containerPost');
   const buttonSharePost = containerMuro.querySelector('.publicar');
   const inputRe = containerMuro.querySelector('.newPost');
   const modalDelete = containerMuro.querySelector('.modalDelete');
   const buttonAceptDeletePost = containerMuro.querySelector('.buttonAceptDeletePost');
   const buttonCancelDeletePost = containerMuro.querySelector('.buttonCancelDeletePost');
-  // const modalEditPosts = containerMuro.querySelector('.modalEditPost');
-  // const inputEditPost = containerMuro.querySelector('.inputEditPost');
-  // const btnAceptEditPost = containerMuro.querySelector('.buttonAceptEditPost');
-  // const btnCancelEditPost = containerMuro.querySelector('.buttonCancelEditPost');
+  const modalEditPosts = containerMuro.querySelector('.modalEditPost');
 
   buttonSharePost.addEventListener('click', (e) => {
     e.preventDefault();
@@ -102,7 +54,8 @@ export function callPost(containerMuro) {
     const arrayBtnDelete = containerPost.querySelectorAll('.btnDelete');
 
     arrayBtnDelete.forEach((btn) => {
-      btn.addEventListener('click', () => {
+      btn.addEventListener('click', (c) => {
+        c.preventDefault();
         modalDelete.style.display = 'block';
 
         buttonAceptDeletePost.addEventListener('click', (ea) => {
@@ -122,8 +75,14 @@ export function callPost(containerMuro) {
     const arrayBtnEdit = containerPost.querySelectorAll('.btnEdit');
 
     arrayBtnEdit.forEach((btnE) => {
-      editPost(btnE, containerMuro);
-      // btnEditDelete.reset();
+      btnE.addEventListener('click', async (ez) => {
+        ez.preventDefault();
+        modalEditPosts.style.display = 'block';
+        const doc = await getPost(btnE.id);
+        const postData = doc.data();
+        const postDescription = postData.postDescription;
+        editarPost(doc.id, postDescription, containerMuro);
+      });
     });
 
     // -----------evento para dar LIKE------------------
