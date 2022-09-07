@@ -1,18 +1,30 @@
+/* eslint-disable no-shadow */
+/* eslint-disable no-undef */
 /* eslint-disable no-alert */
 /* eslint-disable import/no-cycle */
 /* eslint-disable no-use-before-define */
 
 import {
-  savebdPost, onGetPosts, auth, signOut, deletePosts, getPost,
+  savebdPost,
+  onGetPosts,
+  auth,
+  signOut,
+  deletePosts,
+  updatePost,
+  getPost,
+  arrayUnion,
+  arrayRemove,
+  // likePost,
 } from '../firebase/firebase.js';
 import { navigation } from '../main.js';
 import { mostrarPost } from './Muro.js';
 import { editarPost } from './modalEditarPost.js';
+
 // 1.enviar y almacenar datos nuevos-------------------------------------------------------------
 
 export function sendNewPost(inputRe) {
   const currentUser = auth.currentUser;
-  savebdPost(currentUser.uid, currentUser.displayName, inputRe.value);
+  savebdPost(currentUser.uid, currentUser.displayName, inputRe.value, currentUser.photoURL, []);
 }
 
 // 2. Eliminar post---------------------------------------------------------------------
@@ -85,18 +97,40 @@ export function callPost(containerMuro) {
       });
     });
 
-    // -----------evento para dar LIKE------------------
-    const btnLike = containerPost.querySelectorAll('.btnLike');
+    const arrayBtnLike = containerPost.querySelectorAll('.btnLike');
+    const idUser = auth.currentUser.reloadUserInfo.localId;
 
-    btnLike.forEach((btnL) => {
+    arrayBtnLike.forEach((btnL) => {
       btnL.addEventListener('click', () => {
-        // const countLike = 0;
-        console.log('like');
+        likes(idUser, btnL.id); // id del usuario y del boton funcionando
       });
     });
   });
 }
 
+// -----------evento para dar LIKE------------------
+function likes(idUser, btnLi) {
+  getPost(btnLi).then((post) => {
+    let dataPost;
+    const x = post.data(); // post y sus parametros
+    console.log('x', x);
+
+    const idUser = x.uId; // id del usuario
+    console.log('id', idUser);
+
+    if (x.likes.includes(idUser)) {
+      console.log('hola');
+      dataPost = { likes: arrayRemove(idUser) };
+      // btnId.style.color = '#000000';
+      console.log(btnId);
+    } else {
+      console.log('chau');
+      dataPost = { likes: arrayUnion(idUser) };
+    // btnId.style.color = '#7c1097';
+    }
+    updatePost(idUser, dataPost);
+  });
+}
 // salir de la sesion--------
 export const exitPost = () => {
   signOut(auth).then(() => {

@@ -20,14 +20,20 @@ import {
   getFirestore, // getFirestore nos permite conectarnos con firestore
   collection, // collection nos permite creae una tabla o coleccion de datos en firestore
   addDoc, // Nos permite indicar a FireStre que es lo que quiero hacer (guardar, actualizar,etc)
-  getDocs, // Permite traer datos de Firestore
+  // getDocs, // Permite traer datos de Firestore
   deleteDoc, // Permite eliminar datos de Firestore
   onSnapshot, // Permite mostrar los datos cuando son enviados
   doc,
   setDoc,
   getDoc,
   updateDoc,
+  // serverTimestamp,
+  // query,
+  // orderBy,
+  arrayUnion,
+  arrayRemove,
 } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-firestore.js';
+
 // import { async } from 'regenerator-runtime';
 
 const firebaseConfig = {
@@ -39,6 +45,7 @@ const firebaseConfig = {
   appId: '1:928230572150:web:4030d235fab2ba0663df57',
   measurementId: 'G-8Z6J1FH9JZ',
 };
+
 export {
   // createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -49,7 +56,9 @@ export {
   FacebookAuthProvider,
 };
 
-export { set, ref, update };
+export {
+  set, ref, update, arrayUnion, arrayRemove,
+};
 
 // 2.  Inicializando AUTENTICACION ---------------------------------------------------------------
 
@@ -74,32 +83,60 @@ export const signGoogle = () => signInWithPopup(auth, provider);
 
 export const signFacebook = () => signInWithPopup(auth, providerf);
 
-// Funcion para enviar y almacenar datos en Firestore
-export const savebdPost = (uId, userName, postDescription) => {
-  addDoc(collection(db, 'bd-muro'), { uId, userName, postDescription });
-};
-
-// Funcion para obtener datos de Firestore
-export const getPosts = () => getDocs(collection(db, 'bd-muro'));
-
-// Funcion para cuando pase eso estará escuchando modificacion para mostrarlo
-export const onGetPosts = (callback) => onSnapshot(collection(db, 'bd-muro'), callback);
-
-// Funcion para eliminar posts de Firestore
-export const deletePosts = (id) => deleteDoc(doc(db, 'bd-muro', id));
-
-// Funcion para editar posts de Firestore
-export const getPost = (idEdit) => getDoc(doc(db, 'bd-muro', idEdit));
-
-export const updatePost = (idEdit, newDescription) => updateDoc(doc(db, 'bd-muro', idEdit), newDescription);
-
-// Funcion para mostar nombre de usuario en post
-export const userCollection = (uId, nameUser, photoUser) => {
+// Funcion para crear collecion de usuarios
+export const userCollection = (uId, nameUser, photoUser, likes) => {
   setDoc(doc(db, 'db-user', uId), {
     id: uId,
     name: nameUser,
     photo: photoUser,
+    countLike: likes,
   });
 };
 
-// contador de like-----
+// Funcion para enviar y almacenar datos en Firestore
+export const savebdPost = (uId, userName, postDescription, photoUser, likes) => {
+  addDoc(collection(db, 'bd-muro'), {
+    uId,
+    userName,
+    postDescription,
+    photoUser,
+    likes,
+  });
+};
+
+// Funcion para actualizar el post, escucha los cambios realizados
+// export const onGetPosts = (callback) => {
+//   const queryPost = query(collection(db, 'bd-muro'), orderBy('datePost', 'descendente'));
+//   onSnapshot(queryPost, callback);
+// };
+
+export const onGetPosts = (callback) => {
+  onSnapshot(collection(db, 'bd-muro'), callback);
+};
+
+// Funcion para eliminar posts de Firestore
+export const deletePosts = (id) => deleteDoc(doc(db, 'bd-muro', id));
+
+// Funcion para obtener todos datos de Firestore
+// export const getPosts = () => getDocs(collection(db, 'bd-muro'));
+
+// Funcion para editar Post
+
+export const updatePost = (idEdit, dataPost) => updateDoc(doc(db, 'bd-muro', idEdit), dataPost);
+
+// Funcion para obtener el id del  posts de Firestore
+export const getPost = (idPost) => getDoc(doc(db, 'bd-muro', idPost));
+
+// contador de like
+// export const likePost = (idPost, likes) => {
+//   updateDoc(doc(db, 'db-user', idPost), {
+//     dataLike: likes,
+//   });
+// };
+
+// export const likePost = (uId, like) => {
+//   setDoc(doc(db, 'db-user', uId), {
+//     id: uId,
+//     like,
+//   });
+// };

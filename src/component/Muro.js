@@ -2,6 +2,7 @@
 import {
   showPostFunt,
   exitPost,
+  //  likes,
 } from './post.js';
 
 // 1. HEADER DEL MURO, SE VA A MANTENER FIJO.............................
@@ -21,7 +22,6 @@ export function muro() {
         </nav>
 
         <form class="newPostDiv">
-            <i id="iconPhoto" class="fa-regular fa-image"></i>
             <input type="text" class="newPost" placeholder="Cuentanos tu aventura Traveller"></input>
             <button class="publicar"><i class="fa-solid fa-paper-plane"></i></button>     
         </form>
@@ -37,9 +37,11 @@ export function muro() {
               <button class="buttonCancelDeletePost">Cancelar</button>
            </div>      
         </div>
+
         <form id='modalEditPos' class="modalEditPost" style="display:none">
         </form>
     </form>`;
+
 
   const containerViewMuro = document.createElement('div');
   containerViewMuro.innerHTML = viewMuro;
@@ -51,12 +53,13 @@ export function muro() {
 }
 
 export function mostrarPost(doc) {
-  const bdmuro = doc.data();
+  const post = doc.data();
+  // console.log('muro', post);
   const viewpost = `<div class="postsContainerDiv">
     <div class="headerPostContainer">
        <div class="userPostContainer">
-          <img class=" postUsePhoto">
-          <p class="postUserName">${bdmuro.userName}</p>
+          <img class=" postUsePhoto src="${post.photoUser} >
+          <p class="postUserName">${post.userName}</p>
        </div>
        <form class="iconsEditDeletePostContainer">
           
@@ -66,11 +69,11 @@ export function mostrarPost(doc) {
     </div>
     <div class="post">
           <div class="postTextDiv ">
-              <textarea class="posttext" readonly > ${bdmuro.postDescription}</textarea>
+              <textarea class="posttext" readonly > ${post.postDescription}</textarea>
           </div>
           <div class="postIcon ">
               <button class="btnLike" id=${doc.id}><i id='like' class="fa-regular fa-heart"></i></button>
-              <div class='numberLike'>0</div>
+              <p class='numberLike'>${post.likes.length}</p>
               <i class="fa-regular fa-comment-dots"></i>
           </div>
           <div class="postCommentsDiv ">
@@ -79,5 +82,6 @@ export function mostrarPost(doc) {
     </div>
   </div>
   `;
+  // likes(post.uId, post);
   return viewpost;
 }
