@@ -1,18 +1,31 @@
+/* eslint-disable no-shadow */
+/* eslint-disable no-undef */
 /* eslint-disable no-alert */
 /* eslint-disable import/no-cycle */
 /* eslint-disable no-use-before-define */
 // import { async } from 'regenerator-runtime';
 import {
-  savebdPost, onGetPosts, auth, signOut, deletePosts, updatePost, getPost,
+  savebdPost,
+  onGetPosts,
+  auth,
+  signOut,
+  deletePosts,
+  updatePost,
+  getPost,
+  arrayUnion,
+  arrayRemove,
+  // likePost,
+
 } from '../firebase/firebase.js';
 import { navigation } from '../main.js';
 import { mostrarPost } from './Muro.js';
+import { editarPost } from './modalEditarPost.js';
 
 // 1.enviar y almacenar datos nuevos-------------------------------------------------------------
 
 export function sendNewPost(inputRe) {
   const currentUser = auth.currentUser;
-  savebdPost(currentUser.uid, currentUser.displayName, inputRe.value);
+  savebdPost(currentUser.uid, currentUser.displayName, inputRe.value, currentUser.photoURL, []);
 }
 
 // 2. Eliminar post---------------------------------------------------------------------
@@ -42,9 +55,6 @@ export function callPost(containerMuro) {
   const buttonAceptDeletePost = containerMuro.querySelector('.buttonAceptDeletePost');
   const buttonCancelDeletePost = containerMuro.querySelector('.buttonCancelDeletePost');
   const modalEditPosts = containerMuro.querySelector('.modalEditPost');
-  const inputEditPost = containerMuro.querySelector('.inputEditPost');
-  const btnAceptEditPost = containerMuro.querySelector('.buttonAceptEditPost');
-  const btnCancelEditPost = containerMuro.querySelector('.buttonCancelEditPost');
 
   buttonSharePost.addEventListener('click', (e) => {
     e.preventDefault();
@@ -82,37 +92,50 @@ export function callPost(containerMuro) {
     const arrayBtnEdit = containerPost.querySelectorAll('.btnEdit');
 
     arrayBtnEdit.forEach((btnE) => {
-      // const idEdit = btnE.id; // id del boton editar
-      btnE.addEventListener('click', async () => {
+      btnE.addEventListener('click', async (ez) => {
+        ez.preventDefault();
         modalEditPosts.style.display = 'block';
-
         const doc = await getPost(btnE.id);
         const postData = doc.data();
-        const x = postData.postDescription;
-        inputEditPost.innerHTML = x;
-
-        btnAceptEditPost.addEventListener('click', () => {
-          editPost(btnE.id, inputEditPost.value);
-          modalEditPosts.style.display = 'none';
-        });
-        btnCancelEditPost.addEventListener('click', () => {
-          modalEditPosts.style.display = 'none';
-        });
+        const postDescription = postData.postDescription;
+        editarPost(doc.id, postDescription, containerMuro);
       });
     });
 
-    // -----------evento para dar LIKE------------------
-    const btnLike = containerPost.querySelectorAll('.btnLike');
+    const arrayBtnLike = containerPost.querySelectorAll('.btnLike');
+    const idUser = auth.currentUser.reloadUserInfo.localId;
 
-    btnLike.forEach((btnL) => {
+    arrayBtnLike.forEach((btnL) => {
       btnL.addEventListener('click', () => {
-        // const countLike = 0;
-        console.log('like');
+        likes(idUser, btnL.id); // id del usuario y del boton funcionando
       });
     });
   });
 }
 
+// -----------evento para dar LIKE------------------
+function likes(idUser, btnLi) {
+  getPost(btnLi).then((post) => {
+    let dataPost;
+    const x = post.data(); // post y sus parametros
+    console.log('x', x);
+
+    const idUser = x.uId; // id del usuario
+    console.log('id', idUser);
+
+    if (x.likes.includes(idUser)) {
+      console.log('hola');
+      dataPost = { likes: arrayRemove(idUser) };
+      // btnId.style.color = '#000000';
+      console.log(btnId);
+    } else {
+      console.log('chau');
+      dataPost = { likes: arrayUnion(idUser) };
+    // btnId.style.color = '#7c1097';
+    }
+    updatePost(idUser, dataPost);
+  });
+}
 // salir de la sesion--------
 export const exitPost = () => {
   signOut(auth).then(() => {
