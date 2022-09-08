@@ -72,7 +72,7 @@ export function mostrarPost(doc) {
           </div>
           <div class="postIcon ">
               <button class="btnLike" id=${doc.id}><i id='like' class="fa-regular fa-heart"></i></button>
-              <p class='numberLike'>${post.likes.length}</p>
+              <p class='numberLike'></p>
               <i class="fa-regular fa-comment-dots"></i>
           </div>
           <div class="postCommentsDiv ">
