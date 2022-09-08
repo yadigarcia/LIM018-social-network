@@ -11,7 +11,7 @@ export const register = () => {
   const viewRegister = `
 <div class="windowRegister">
 <form class="formRegister">
-     <div class="messageDiv"></div>
+     <div class="messageDiv" class="messageDiv"></div>
      <div class="welcomeRegister">Regístrate en esta nueva aventura viajero!</div>
      <div  class="registerDateDiv">
         <input type="text" id="registerName" class ="inputs" placeholder="Escribe tu nombre">
@@ -55,6 +55,7 @@ export const register = () => {
           messageDiv.textContent = 'Usuario creado';
           formRegister.reset();
           const user = userCredential.user;
+
           set(ref(database, `user/${user.uid}`), { // Envia a Realtime los campos indicados
             username,
             email,

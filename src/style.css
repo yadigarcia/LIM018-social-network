@@ -14,36 +14,25 @@
   color: #f1f6f0;
   border-radius: 8px;
   margin-top:5%;
-  padding: 10px;
-  font-size: 45%;
-  display: flex;
-  width: 100%;
-  justify-content: space-around;
+  padding: 2%;
+  font-size: 40%;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
   border: none;
   }
 
 .buttonStyle:hover {
-  background: rgb(212, 34, 87);
+  background: rgb(48, 158, 75);
 }
 
-.btnsRegister{
- margin: 1%;
-padding: 0%;
-}
-.buttonStyleLogin{
-width: 55%;
-display: flex;
-flex-wrap: wrap;
-margin-bottom: 5%;
-}
 /* STYLE LOGIN */
 .windowlogin{
   background:url('img/loros.jpg'); 
-
   background-size:cover;
   background-repeat: no-repeat;
   background-position: center;
-  height: 98vh;
+  height: 100vh;
   font-size: 30px;
   display: flex;
   align-items: center;
@@ -51,47 +40,44 @@ margin-bottom: 5%;
   padding-top: 2%;
   padding-bottom: 2%;
 }
+
 .logoLogin{
-margin: 0;
-padding: 0;
 display: flex;
 flex-direction: column;
 flex-wrap: nowrap;
 align-items: center;
-margin-bottom: 10%;
-margin-top: 5%;
+margin-top: 2%;
+margin-bottom: 2%;
 }
 
 .imgLogo{
-  margin: 0;
-  padding: 0;
+  margin-top: 20%;
   border:#7f00b2;
   background:url('img/logo.JPG'); 
   border-radius: 50%;
   background-size: 100%;
   background-repeat: no-repeat;
-  width: 80px;
-  height:80px;
+  width: 100px;
+  height:100px;
 }
 .nameLogo{
-  font-size: 80%;
- /* color: #186b05;*/
-  color: #7c1097;
+  font-size: 70%;
+   color: #7c1097;
   font-weight: bold;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .formviewlogin{
- background: rgba(191, 167, 191, 0.5);
+ background: rgba(241, 228, 241, 0.5);
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  padding: 5%;
-  width: 80%;
+  width: 70%;
   border-radius: 10px;
-  height: 80%; 
-}
+  padding-bottom: 4%;
+  margin-bottom: 3%;
+  }
+ 
 
 .loginImputDiv{
 width: 100%;
@@ -103,9 +89,9 @@ text-align-last: center;
 .inputs{
   background: rgb(234 225 249);
   border-radius: 8px;
-  padding: 3% ;
+  padding: 2% ;
   border: none;
-  margin: 3% 10%; 
+  margin: 4% 10%; 
 }
 
 .loginQuestionDiv{ 
@@ -115,38 +101,36 @@ margin-right: auto;
 
 .questionAboutCount{
 color:rgb(6, 68, 52);
-font-size: 40%;
+font-size: 30%;
 }
 
 .lineLogin{
 color:rgb(6, 68, 52);
-font-size: 50%;
+font-size: 40%;
 font-weight: bolder;
 margin-left: auto;
 margin-right: auto;
-margin-top: 5%;
+margin-top: 4%;
 }
 
 .btnLoginDiv{
   display: flex;
   flex-direction: column;
-  width: 80%;
+  width: 70%;
  
 }
 
 .googleFacebook{
    display: flex;
    justify-content: space-around;
-   margin-top:5%;
+   margin-top:3%;
    padding:0;
    width: 100%;
-   margin-bottom: 10%;
+   margin: 0%;
+   margin-bottom: 2%;
 }
 
 .imgGoogle{
-  margin: 0;
-  padding: 0;
-  /* background:url('img/google.png');  */
   border-radius: 50%;
   background-size: 100%;
   width: 30px;
@@ -155,10 +139,7 @@ margin-top: 5%;
 }
 
 .imgFacebook{
-  margin: 0;
-  padding: 0;
-  /* background:url('img/facebook.png');  */
-  border-radius: 50%;
+   border-radius: 50%;
   background-size: 100%;
   width: 30px;
   height:30px;  
@@ -172,97 +153,101 @@ background:url('https://www.lumen-colombia.com/blog/wp-content/uploads/2017/01/b
 background-size:cover;
 background-repeat: no-repeat;
 background-position: center;
-height: 91vh;
+height: 90vh;
 font-size: 30px;
 font-weight: bolder;
 z-index: 1;
 padding-top: 10%;
 padding-bottom: 10%;
 display: flex;
-align-items: center;  
+flex-direction: column-reverse;
 }
 
 .formRegister{
   background: rgba(248, 250, 241, 0.5);
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  border-radius: 10px;
+  background-size:cover; 
   margin-left: auto;
   margin-right: auto;
-  padding: 5%;
-  width: 80%;
-}  
-
+  width: 70%;
+  border-radius: 10px;
+  padding-top: 10%;
+  padding-bottom: 10%;
+  }  
+ 
 .welcomeRegister{
 color:#415c3b;
 font-size: 55%;
-margin:5%;
-padding: 0;
+margin-bottom: 7%;
 font-style: oblique;
 font-weight: bolder ;
 text-align: center;
 }
+
 .registerDateDiv{
-width: 80%;
+width: 70%;
 display: flex;
 flex-direction: column;
-margin:0;
 text-align-last: center;
-/* margin:0% 300%; */
+margin-bottom: 5%;
+
+}
+.messageDiv{
+  font-size: 50%;
+  font-weight: bolder;
+  color:#b42d4f;
+  text-align: center;
 }
 
 .btnsRegisterDiv{
-width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 55%;
+  height: 30%;
 }
 
 /*STYLE MURO------------------------------------------------------- */
 
 .muroDiv{
 background: #fcfcfc;
-/*color: rgb(36, 134, 34);*/
  height: 120vh;
 }
 
 /* style HEADER */
 .headerContent{
- /*  background:  rgb(1, 70, 49); #4d8eab;*/
  background-color:#7f00b2;
-  padding: 10px;
-  height:6%;
+  padding: 2% 3%;
   width:100%;
-  color:rgb(110, 196, 166);/*  color de los elementos hijos*/
-  
-display: flex;
-justify-content: space-between;
+  height: 6%;
+  color:rgb(110, 196, 166);
+  display: flex;
+  flex-direction: row; 
+ justify-content: space-between;
 }
 
 .logoContent{
-width: 30%;
-background-size: auto;
+width: 80%;
 display: flex;
 flex-direction:row;
-border: none;
+border: none; 
 }
 
 .logo{
-  margin: 0;
-  padding: 0;
-  background:url('img/logo1.png'); 
   border: none;
   border-radius: 120%; 
-  background-size: 100%;
   background-repeat: no-repeat;
-  width: 40px;
-  height:50px;
+  width: 30px;
+  height:40px;
   filter:saturate(150%);
   border-color: none;
 }
 
 .logoName{
-  font-size: 150%;
-  color: #30063a;
+  font-size: 70%;
+  color: #196938;
   filter:saturate(500%);
   font-weight: bold;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -270,28 +255,16 @@ border: none;
 
 .iconsContent{
 margin:1% 5%;
-width: 20%;
+width: 8%;
 display: flex;
 justify-content: space-between;
 }
 
-.icon{
-  height: 20%;
-  color: #f20e0e;
-}
 /* Imput para publicaciones */
 .newPostDiv{
   display: flex;
   flex-wrap: nowrap;
-  margin-top: 2%;
-}
-
-.iconphoto{  
- color:#1b83dd; 
- margin-left: 4%;
- font-size: 30px;
- display: flex;
- align-items: center;
+  margin: 2% 10%;
 }
 
 .newPost{
@@ -299,7 +272,7 @@ justify-content: space-between;
   margin-left: 1%;
   padding: 1.5%;
   height:fit-content;
-  width: 75%;
+  width: 90%;
   border-radius: 10px;
   text-align: center;
   border: none;
@@ -324,28 +297,23 @@ justify-content: space-between;
   margin: 3% 10%;
   border-radius: 4%; 
   box-shadow: 2px 2px 2px rgb(151 177 151);
- /* box-shadow: 6px 6px 10px;
-
- color: #caf4d7;
-   background: rgb(106, 104, 104);s
-box-shadow: 12px 1px 2px; */
-
+  width: 80%;
  }
+
  /* style del HEADER POST */
  .headerPostContainer{
- /* background:  rgb(1, 70, 49);*/
   background:  rgb(164 121 188);
   border: none;
   display: flex;
   justify-content: space-between;
-  border-radius: 4px;
+  border-radius: 4px 4px 0 0;
   box-shadow: 2px 2px 2px rgb(151 177 151);
  }
 
  .userPostContainer{
   display: flex;
   flex-wrap: nowrap;
-  width: 50%;
+  width: 70%;
   align-items: center;
   color: #f7fcf7;
   font-size: 10px;
@@ -364,30 +332,28 @@ box-shadow: 12px 1px 2px; */
 .postUserName{
 color:whitesmoke;
 font-size: 100%;
-width: 30%;
+width: 50%;
 font-family:cursive;
 }
 
 .iconsEditDeletePostContainer{
-/*  background:  rgb(1, 70, 49);*/
-  background:  rgb(164 121 188);
-margin:1% 4%;
+background:  rgb(164 121 188);
+margin:2% 4%;
 display: flex;
 flex-wrap: nowrap;
 justify-content: space-between;
-width: 8%;
-color: #051702;
-font-size: 12px;
+width: 10%;
+font-size: 5px;
 }
+
 .btnEdit{
- /* background:  rgb(1, 70, 49);*/
+ 
   background:  rgb(164 121 188);
   border: none;
   color: #7be097;
 }
 
 .btnDelete{
-  /* background:  rgb(1, 70, 49);*/
   background:  rgb(164 121 188);
   border: none;
   color: #7be097;
@@ -396,74 +362,78 @@ font-size: 12px;
 
 /* style del POST----------------- */
 
-.postsContainer{
-  background: rgb(248, 219, 253);
-  margin-bottom: 2%;
-  border-radius: 50%;
- 
-}
-
 .postTextDiv{
 display: inline-block;
 width: 100%;
-
-
 }
 
 .posttext{
- /* background-color: rgb(251, 251, 251);*/
-  background-color: rgb(216 246 222);
- color: #11270e;
+background-color: rgb(216 246 222);
+color: #11270e;
 width: 96%;
-height:30%;
+height:50%;
 padding: 1% 2%;
 border: none;
-box-shadow: 3px 3px 5px rgb(199, 203, 199);
-border-radius: 8px;
 }
+
 .postIcon{
-width: 20%;
+width: 10%;
 display:flex;
 flex-wrap: nowrap;
 justify-content: space-between;
-margin: 1% 1.5%;
-color: #0aad2a;
+margin: 0.5% 5%;
+color: #0aad2a; 
 }
+
+.btnLike{
+border: none;
+background-color: white;
+color: #b42d4f;
+}
+
 .postCommentsDiv{
 display: inline-block;
 width: 100%;
 }
-.postComments{
-  background:rgb(255, 255, 254);
-  padding: 2% 3%;
-  border-radius: 8px;
-  height:35%;
-  width:94%;
-  /*width:93.5%;*/
-  border: #15cd15;
-  box-shadow: 1px 1px 1px 1px rgb(195, 195, 195);
-}
+
+
 .modalDelete{
   background: rgba(75, 9, 86, 0.5);
   color: #fff;
+  font-size: 80%;
+  text-align: center;
   display: flex;
-  flex-flow: column wrap;
+  flex-direction: column;
   justify-content: center;
-  position: fixed;
+  position: fixed; 
   top: 50%;
   left: 50%;
   border-radius: 7px;
-  height: 20%;
+  height: 12%;
   width: 20%;
   transition: all .5s;
 
  }
+.buttonAceptDeletePost{
+  width: 80%;
+  margin: 2% auto 3% auto;
+  }
 
- .buttonDeletePost{
+.buttonCancelDeletePost{
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+ }
+ .buttonAceptDeletePost:hover{
+  background: rgb(48, 158, 75);
+ }
+
+ /* .buttonDeletePost{
   background-color: rgb(11, 99, 37);
   padding: 4px;
   border-radius: 7px;
- }
+ 
+ } */
  .b{
   background-color:black;
   background-image:url('img/like.JPG'); 
@@ -471,22 +441,29 @@ width: 100%;
   height:15px;
   width:15px;
   background-size: 100%;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; 
 
- } 
+ }  
 
  .modalEditPost{
-  background: rgba(75, 9, 86);
+  background: rgba(75, 9, 86, 0.5);
   color: #fff;
+  font-size: 80%;
+  text-align: center;
   display: flex;
-  flex-flow: column wrap;
+  flex-direction: column;
   justify-content: center;
-  position: fixed;
+  position: fixed; 
   top: 50%;
   left: 50%;
   border-radius: 7px;
-  height: 20%;
-  width: 35%;
- transition: all .5s;
-
+  height: 12%;
+  width: 30%;
+  transition: all .5s;
+  margin: 3% 3%;
  }
+
+.inputEditPost{
+width: 90%;
+padding: 2%;
+}
