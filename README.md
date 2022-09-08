@@ -1,5 +1,14 @@
+# RED SOCIAL TRAVELERS
+Esta red social ha sido desarrollada con la finalidad de que sirva a las personas que les encanta viajar por el mundo para que puedan compartir sus experiencias y vivencias.
+
+# Diseño de alta fidelidad
+
+ + ![Pagina](diseño-alta-fidelidad)
+
+
 # Creando una Red Social
-BORRE TODO :-)dsffdfd
+
+
 ## Índice
 
 * [1. Preámbulo](#1-preámbulo)

@@ -42,7 +42,6 @@ export function muro() {
         </form>
     </form>`;
 
-
   const containerViewMuro = document.createElement('div');
   containerViewMuro.innerHTML = viewMuro;
   showPostFunt(containerViewMuro);
