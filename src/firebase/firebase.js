@@ -27,9 +27,6 @@ import {
   setDoc,
   getDoc,
   updateDoc,
-  // serverTimestamp,
-  // query,
-  // orderBy,
   arrayUnion,
   arrayRemove,
 } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-firestore.js';
@@ -122,17 +119,17 @@ export const deletePosts = (id) => deleteDoc(doc(db, 'bd-muro', id));
 
 // Funcion para editar Post
 
-export const updatePost = (idEdit, dataPost) => updateDoc(doc(db, 'bd-muro', idEdit), dataPost);
+export const updatePost = (idEdit, newdate) => updateDoc(doc(db, 'bd-muro', idEdit), newdate);
 
 // Funcion para obtener el id del  posts de Firestore
 export const getPost = (idPost) => getDoc(doc(db, 'bd-muro', idPost));
 
 // contador de like
-// export const likePost = (idPost, likes) => {
-//   updateDoc(doc(db, 'db-user', idPost), {
-//     dataLike: likes,
-//   });
-// };
+export const likePost = (idUser, likes) => {
+  updateDoc(doc(db, 'db-user', idUser), {
+    likes,
+  });
+};
 
 // export const likePost = (uId, like) => {
 //   setDoc(doc(db, 'db-user', uId), {

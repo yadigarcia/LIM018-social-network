@@ -14,6 +14,7 @@ import {
   getPost,
   arrayUnion,
   arrayRemove,
+  likePost,
   // likePost,
 } from '../firebase/firebase.js';
 import { navigation } from '../main.js';
@@ -102,6 +103,7 @@ export function callPost(containerMuro) {
 
     arrayBtnLike.forEach((btnL) => {
       btnL.addEventListener('click', () => {
+        //  e.push(likes(idUser, btnL.id));
         likes(idUser, btnL.id); // id del usuario y del boton funcionando
       });
     });
@@ -111,7 +113,7 @@ export function callPost(containerMuro) {
 // -----------evento para dar LIKE------------------
 function likes(idUser, btnLi) {
   getPost(btnLi).then((post) => {
-    let dataPost;
+    let newLike;
     const x = post.data(); // post y sus parametros
     console.log('x', x);
 
@@ -120,15 +122,16 @@ function likes(idUser, btnLi) {
 
     if (x.likes.includes(idUser)) {
       console.log('hola');
-      dataPost = { likes: arrayRemove(idUser) };
+      newLike = { likes: arrayRemove(idUser) };
       // btnId.style.color = '#000000';
       console.log(btnId);
     } else {
       console.log('chau');
-      dataPost = { likes: arrayUnion(idUser) };
+      newLike = { likes: arrayUnion(idUser) };
     // btnId.style.color = '#7c1097';
     }
-    updatePost(idUser, dataPost);
+    likePost(idUser, newLike);
+    console.log(idUser, newLike);
   });
 }
 // salir de la sesion--------
