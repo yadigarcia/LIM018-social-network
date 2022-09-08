@@ -44,7 +44,7 @@ const firebaseConfig = {
 };
 
 export {
-  // createUserWithEmailAndPassword,
+  createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   onAuthStateChanged,
   signOut,
@@ -62,6 +62,8 @@ export {
 export const app = initializeApp(firebaseConfig);
 export const database = getDatabase(app);
 export const auth = getAuth(app);
+console.log(auth);
+console.log(getAuth);
 export const provider = new GoogleAuthProvider(app);
 export const providerf = new FacebookAuthProvider(app);
 
@@ -81,12 +83,11 @@ export const signGoogle = () => signInWithPopup(auth, provider);
 export const signFacebook = () => signInWithPopup(auth, providerf);
 
 // Funcion para crear collecion de usuarios
-export const userCollection = (uId, nameUser, photoUser, likes) => {
+export const userCollection = (uId, nameUser, photoUser) => {
   setDoc(doc(db, 'db-user', uId), {
     id: uId,
     name: nameUser,
     photo: photoUser,
-    countLike: likes,
   });
 };
 
@@ -126,9 +127,7 @@ export const getPost = (idPost) => getDoc(doc(db, 'bd-muro', idPost));
 
 // contador de like
 export const likePost = (idUser, likes) => {
-  updateDoc(doc(db, 'db-user', idUser), {
-    likes,
-  });
+  updateDoc(doc(db, 'bd-muro', idUser), likes);
 };
 
 // export const likePost = (uId, like) => {

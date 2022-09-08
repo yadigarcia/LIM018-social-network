@@ -2,7 +2,7 @@
 import {
   showPostFunt,
   exitPost,
-  //  likes,
+  // likes,
 } from './post.js';
 
 // 1. HEADER DEL MURO, SE VA A MANTENER FIJO.............................
@@ -11,12 +11,11 @@ export function muro() {
     <div id="muroDiv" class="muroDiv">
         <nav class="headerContent">
             <div class="'logoContent">
-            <img class="logo" src="img/logo1.png" alt="logo"> </img>
-            <p class="logoName">Travelers</p>
+              <img class="logo" src="img/logo1.png" alt="logo"> </img>
+              <p class="logoName">Travelers</p>
             </div>
-            <div class="iconsContent">
-                <i id="icon" class="fa-solid fa-magnifying-glass"> </i>
-                <i id="icon" class="fa-solid fa-envelope"></i>
+           
+            <div class="iconsContent">            
                 <i id="iconExit"class="fa-solid fa-arrow-right-from-bracket"></i>
             </div>
         </nav>
@@ -68,16 +67,12 @@ export function mostrarPost(doc) {
     </div>
     <div class="post">
           <div class="postTextDiv ">
-              <textarea class="posttext" readonly > ${post.postDescription}</textarea>
+              <textarea class="posttext"  > ${post.postDescription}</textarea>
           </div>
           <div class="postIcon ">
               <button class="btnLike" id=${doc.id}><i id='like' class="fa-regular fa-heart"></i></button>
-              <p class='numberLike'></p>
-              <i class="fa-regular fa-comment-dots"></i>
+              <p class='numberLike'> ${post.likes.length} </p>
           </div>
-          <div class="postCommentsDiv ">
-              <div class="postComments"> postComments</div>
-         </div>
     </div>
   </div>
   `;
