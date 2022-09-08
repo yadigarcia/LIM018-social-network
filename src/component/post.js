@@ -111,7 +111,7 @@ export function callPost(containerMuro) {
 }
 
 // -----------evento para dar LIKE------------------
-function likes(idUser, btnLi) {
+export function likes(idUser, btnLi) {
   getPost(btnLi).then((post) => {
     let newLike;
     const x = post.data(); // post y sus parametros
