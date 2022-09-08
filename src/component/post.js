@@ -3,7 +3,7 @@
 /* eslint-disable no-alert */
 /* eslint-disable import/no-cycle */
 /* eslint-disable no-use-before-define */
-// import { async } from 'regenerator-runtime';
+
 import {
   savebdPost,
   onGetPosts,
@@ -16,7 +16,6 @@ import {
   arrayRemove,
   likePost,
   // likePost,
-
 } from '../firebase/firebase.js';
 import { navigation } from '../main.js';
 import { mostrarPost } from './Muro.js';
@@ -35,13 +34,6 @@ export function deletePost(idpost) {
   deletePosts(idpost);
 }
 
-// 3. Editar post---------------------------------------------------------------------
-export function editPost(idEdit, newInput) {
-  updatePost(idEdit, {
-    postDescription: newInput,
-  });
-  // console.log('EDIRT', newInput);
-}
 // 4. funcion para mostrar todos los post ----------------------------------------------
 
 export function showPostFunt(containerMuro) {
@@ -49,6 +41,7 @@ export function showPostFunt(containerMuro) {
 }
 
 export function callPost(containerMuro) {
+  // const btnEditDelete = containerMuro.querySelector('.iconsEditDeletePostContainer');
   const containerPost = containerMuro.querySelector('.containerPost');
   const buttonSharePost = containerMuro.querySelector('.publicar');
   const inputRe = containerMuro.querySelector('.newPost');
@@ -74,16 +67,18 @@ export function callPost(containerMuro) {
     const arrayBtnDelete = containerPost.querySelectorAll('.btnDelete');
 
     arrayBtnDelete.forEach((btn) => {
-      btn.addEventListener('click', (e) => {
-        e.preventDefault();
+      btn.addEventListener('click', (c) => {
+        c.preventDefault();
         modalDelete.style.display = 'block';
 
-        buttonAceptDeletePost.addEventListener('click', () => {
+        buttonAceptDeletePost.addEventListener('click', (ea) => {
+          ea.preventDefault();
           deletePost(btn.id);
           modalDelete.style.display = 'none';
         });
 
-        buttonCancelDeletePost.addEventListener('click', () => {
+        buttonCancelDeletePost.addEventListener('click', (ec) => {
+          ec.preventDefault();
           modalDelete.style.display = 'none';
         });
       });

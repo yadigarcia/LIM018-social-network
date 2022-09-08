@@ -2,9 +2,9 @@
 
 /* -------background the view SPA-------- */
 *{
-    margin: 0;
-    padding: 0;
-    font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
 }
 
 /* STYLE BUTTON */
@@ -22,21 +22,21 @@
   border: none;
   }
 
-  .buttonStyle:hover {
-    background: rgb(212, 34, 87);
-  }
+.buttonStyle:hover {
+  background: rgb(212, 34, 87);
+}
 
 .btnsRegister{
-   margin: 1%;
-  padding: 0%;
-  }
- .buttonStyleLogin{
-  width: 55%;
-  display: flex;
-  flex-wrap: wrap;
-  margin-bottom: 5%;
-  }
- /* STYLE LOGIN */
+ margin: 1%;
+padding: 0%;
+}
+.buttonStyleLogin{
+width: 55%;
+display: flex;
+flex-wrap: wrap;
+margin-bottom: 5%;
+}
+/* STYLE LOGIN */
 .windowlogin{
   background:url('img/loros.jpg'); 
 
@@ -94,11 +94,11 @@ margin-top: 5%;
 }
 
 .loginImputDiv{
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  margin:0;
-  text-align-last: center;
+width: 100%;
+display: flex;
+flex-direction: column;
+margin:0;
+text-align-last: center;
 }
 .inputs{
   background: rgb(234 225 249);
@@ -109,22 +109,22 @@ margin-top: 5%;
 }
 
 .loginQuestionDiv{ 
-  margin-left: auto;
-  margin-right: auto;
+margin-left: auto;
+margin-right: auto;
 }
 
 .questionAboutCount{
-  color:rgb(6, 68, 52);
-  font-size: 40%;
+color:rgb(6, 68, 52);
+font-size: 40%;
 }
 
 .lineLogin{
-  color:rgb(6, 68, 52);
-  font-size: 50%;
- font-weight: bolder;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 5%;
+color:rgb(6, 68, 52);
+font-size: 50%;
+font-weight: bolder;
+margin-left: auto;
+margin-right: auto;
+margin-top: 5%;
 }
 
 .btnLoginDiv{
@@ -168,18 +168,18 @@ margin-top: 5%;
 
 /*  STYLE REGISTER */
 .windowRegister {
-  background:url('https://www.lumen-colombia.com/blog/wp-content/uploads/2017/01/bavaria-1617529_1920-683x1024.jpg'); 
-  background-size:cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  height: 91vh;
-  font-size: 30px;
-  font-weight: bolder;
-  z-index: 1;
-  padding-top: 10%;
-  padding-bottom: 10%;
-  display: flex;
-  align-items: center;  
+background:url('https://www.lumen-colombia.com/blog/wp-content/uploads/2017/01/bavaria-1617529_1920-683x1024.jpg'); 
+background-size:cover;
+background-repeat: no-repeat;
+background-position: center;
+height: 91vh;
+font-size: 30px;
+font-weight: bolder;
+z-index: 1;
+padding-top: 10%;
+padding-bottom: 10%;
+display: flex;
+align-items: center;  
 }
 
 .formRegister{
@@ -196,25 +196,25 @@ margin-top: 5%;
 }  
 
 .welcomeRegister{
-  color:#415c3b;
-  font-size: 55%;
-  margin:5%;
-  padding: 0;
-  font-style: oblique;
-  font-weight: bolder ;
-  text-align: center;
+color:#415c3b;
+font-size: 55%;
+margin:5%;
+padding: 0;
+font-style: oblique;
+font-weight: bolder ;
+text-align: center;
 }
 .registerDateDiv{
-  width: 80%;
-  display: flex;
-  flex-direction: column;
-  margin:0;
-  text-align-last: center;
-  /* margin:0% 300%; */
+width: 80%;
+display: flex;
+flex-direction: column;
+margin:0;
+text-align-last: center;
+/* margin:0% 300%; */
 }
 
 .btnsRegisterDiv{
-  width: 50%;
+width: 50%;
 }
 
 /*STYLE MURO------------------------------------------------------- */
@@ -225,7 +225,7 @@ background: #fcfcfc;
  height: 120vh;
 }
 
- /* style HEADER */
+/* style HEADER */
 .headerContent{
  /*  background:  rgb(1, 70, 49); #4d8eab;*/
  background-color:#7f00b2;
@@ -269,10 +269,10 @@ border: none;
 } 
 
 .iconsContent{
-  margin:1% 5%;
-  width: 20%;
-  display: flex;
-  justify-content: space-between;
+margin:1% 5%;
+width: 20%;
+display: flex;
+justify-content: space-between;
 }
 
 .icon{
@@ -351,15 +351,15 @@ box-shadow: 12px 1px 2px; */
   font-size: 10px;
  }
 
- .postUsePhoto{
-   background:url('img/userlogo.PNG'); 
-   background-size:contain; 
-   background-repeat: no-repeat;
-   border-radius: 50%;
-   width: 40px;
-   height: 40px;
-   margin:3%
- }
+.postUsePhoto{
+ background:url('img/userlogo.PNG'); 
+ background-size:contain; 
+ background-repeat: no-repeat;
+ border-radius: 50%;
+ width: 40px;
+ height: 40px;
+ margin:3%
+}
 
 .postUserName{
 color:whitesmoke;

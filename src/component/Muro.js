@@ -37,10 +37,11 @@ export function muro() {
               <button class="buttonCancelDeletePost">Cancelar</button>
            </div>      
         </div>
-        
-        <form class="modalEditPost" style="display:none"></form>      
-        
-    </div>`;
+
+        <form id='modalEditPos' class="modalEditPost" style="display:none">
+        </form>
+    </form>`;
+
 
   const containerViewMuro = document.createElement('div');
   containerViewMuro.innerHTML = viewMuro;
@@ -60,11 +61,11 @@ export function mostrarPost(doc) {
           <img class=" postUsePhoto src="${post.photoUser} >
           <p class="postUserName">${post.userName}</p>
        </div>
-       <div class="iconsEditDeletePostContainer">
+       <form class="iconsEditDeletePostContainer">
           
           <button class="btnEdit" id=${doc.id} ><i id="btnEdit" class="fa-solid fa-pencil"></i></button>
           <button class="btnDelete" id=${doc.id} ><i class="fa-solid fa-trash-can"></i></button>
-       </div>
+       </form>
     </div>
     <div class="post">
           <div class="postTextDiv ">

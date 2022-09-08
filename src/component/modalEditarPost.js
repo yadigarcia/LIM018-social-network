@@ -7,11 +7,13 @@ import {
 
 export function editarPost(btnEid, postDescription1, containerMuro) {
   const modal = ` <div id='modalEditPos' class="modalEditPost2" style="display:block">
+
         <p> ¿Deseas editar este Post?</p>
         <input class="inputEditPost">
         <button id=${btnEid}  class="buttonAceptEditPost">Aceptar</button>
         <button class="buttonCancelEditPost">Cancelar</button>
         </div>`;
+
   const modalEditPosts = containerMuro.querySelector('.modalEditPost');
   modalEditPosts.innerHTML = modal;
   const btnAceptEditPost = modalEditPosts.querySelector('.buttonAceptEditPost');
