@@ -6,7 +6,7 @@ import {
 } from './post.js';
 
 // 1. HEADER DEL MURO, SE VA A MANTENER FIJO.............................
-export function muro(doc) {
+export function muro() {
   const viewMuro = `
     <div id="muroDiv" class="muroDiv">
         <nav class="headerContent">
