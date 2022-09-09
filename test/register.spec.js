@@ -40,6 +40,10 @@ describe('register es una funcion', () => {
   });
 
   it('debería mostrar mensaje de usuario creado', () => {
+    const root = document.createElement('div');
+    root.id = 'root';
+    document.body.appendChild(root);
+
     document.body.appendChild(register());
     const buttonRegisterTest = document.querySelector('#buttonRegister');
     const email = document.querySelector('#registerEmail');
@@ -56,7 +60,7 @@ describe('register es una funcion', () => {
 
     // magia negra
     const p = new Promise(process.nextTick);
-    p.then(() => {
+    return p.then(() => {
       expect(messageDivTest.textContent).toEqual('Usuario creado');
     });
   });

@@ -52,7 +52,6 @@ export function muro() {
 
 export function mostrarPost(doc) {
   const post = doc.data();
-  // console.log('muro', post);
   const viewpost = `<div class="postsContainerDiv">
     <div class="headerPostContainer">
        <div class="userPostContainer">

@@ -16,8 +16,8 @@ import {
 export const login = () => {
   const viewLogin = `
 <div class="windowlogin">
-    <div class="messageDiv"></div>
-    <form id='formLogin' class="formviewlogin">
+        <form id='formLogin' class="formviewlogin">
+        <div class="messageDiv"></div>
         <div class="logoLogin">
           <img class="imgLogo" src="img/logo.JPG" alt="logo">
           <p class="nameLogo">TRAVELLERS</p>
