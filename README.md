@@ -41,7 +41,7 @@ Definición de terminado:
 
 * Que pase los tests unitarios
 * Que pase se suba a GitHub 
-* Que se despligue en GitHub Page
+* Que se despligue en GitHub Page.
 
 # Historia de usuario 2:login de usuario
 Yo como usuario quiero iniciar sesion antes de ingresar a la red social para acceder a mi perfil
@@ -50,61 +50,61 @@ Criterios de aceptación:
 * Tener campos para ingresar email y contraseña
 * Tener el botón de login con Google  o Facebook 
 * Solo ingresar cuando el login se haya realizado correctamente
-* Que valide si el correo ingresado ua está registrado 
+* Que valide si el correo ingresado ua está registrado.
 
 Definición de terminado:
 
-*Que pase los tests unitarios
-*Que se suba a GitHub 
-*Que se despligue en GitHub Page
+* Que pase los tests unitarios
+* Que se suba a GitHub 
+* Que se despligue en GitHub Page.
 
 # Historia de usuario 3 : Crear Posts
 Yo como usuario quiero poder crear posts en la red social para compartirla con mis amigos.
 
 Criterios de aceptación:
 
-Que haya un campo de texto para ingresar un text nuevo
-Que haya un botón que me permita publicar el post
-Que el post se guarde en una coleccion en Firebase.
+* Que haya un campo de texto para ingresar un text nuevo
+* Que haya un botón que me permita publicar el post
+* Que el post se guarde en una coleccion en Firebase.
 
 Definición de terminado:
 
-*Que pase los tests unitarios
-*Que se suba a GitHub 
-*Que se despligue en GitHub Page
+* Que pase los tests unitarios
+* Que se suba a GitHub 
+* Que se despligue en GitHub Page.
 
 # Historia de usuario 4 : Editar Posts
 Yo como usuario quiero poder editar post en la red social para compartirla con mis amigos.
 
 Criterios de aceptación:
 
-Que haya una sección donde se muestren los posts publicados
-Que haya un botón que me permita editar el post
-Que haya un botón para guardar el post editado
-Que haya un botón para cancelar la edición del post
-Que el post editado se actualice en Firebase.
+* Que haya una sección donde se muestren los posts publicados
+* Que haya un botón que me permita editar el post
+* Que haya un botón para guardar el post editado
+* Que haya un botón para cancelar la edición del post
+* Que el post editado se actualice en Firebase.
 
 Definición de terminado:
 
-*Que pase los tests unitarios
-*Que se suba a GitHub 
-*Que se despligue en GitHub Page
+* Que pase los tests unitarios
+* Que se suba a GitHub 
+* Que se despligue en GitHub Page
 
 # Historia de usuario 5 : borrar Posts
 Yo como usuario quiero poder borrar un post en la red social para que ya no se muestre en la red social.
 
 Criterios de aceptación:
 
-Que haya un botón que me permita borrar un post
-Que haya un botón para aceptar el borrado del post
-Que haya un botón para cancelar el borrado del post
-Que el post se borre también de Firebase.
+* Que haya un botón que me permita borrar un post
+* Que haya un botón para aceptar el borrado del post
+* Que haya un botón para cancelar el borrado del post
+* Que el post se borre también de Firebase.
 
 Definición de terminado:
 
-*Que pase los tests unitarios
-*Que se suba a GitHub 
-*Que se despligue en GitHub Page
+* Que pase los tests unitarios
+* Que se suba a GitHub 
+* Que se despligue en GitHub Page.
 
 
 # Historia de usuario 6 : Dar like a los posts
@@ -112,15 +112,15 @@ Yo como usuario quiero poder dar like a un post en la red social para que se evi
 
 Criterios de aceptación:
 
-Que haya un botón que me permita dar like a un post
-Que cada like de un post se guarde en una campo dentro de Firebase.
-Que la cantidad de likes se incremente según los likes registrados.
+* Que haya un botón que me permita dar like a un post
+* Que cada like de un post se guarde en una campo dentro de Firebase
+* Que la cantidad de likes se incremente según los likes registrados.
 
 Definición de terminado:
 
-*Que pase los tests unitarios
-*Que se suba a GitHub 
-*Que se despligue en GitHub Page
+* Que pase los tests unitarios
+* Que se suba a GitHub 
+* Que se despligue en GitHub Page.
 
 
 
