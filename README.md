@@ -3,10 +3,10 @@ Esta red social ha sido desarrollada con la finalidad de que sirva a las persona
 
 # Diseño inicial de alta fidelidad
 
- + ![Pagina](diseño-alta-fidelidad.jpg)
+ + ![Pagina](src/img/diseño-alta-fidelidad.JPG)
 
 # Diseño final
- + ![Pagina](diseño-final.jpg)
+ + ![Pagina](src/img/diseño-final.JPG)
 
 
 # Quiénes son los principales usuarios .
