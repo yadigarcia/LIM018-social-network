@@ -62,8 +62,7 @@ export {
 export const app = initializeApp(firebaseConfig);
 export const database = getDatabase(app);
 export const auth = getAuth(app);
-console.log(auth);
-console.log(getAuth);
+
 export const provider = new GoogleAuthProvider(app);
 export const providerf = new FacebookAuthProvider(app);
 
@@ -76,6 +75,7 @@ const db = getFirestore(app);
 export const registerUser = (email, password) => {
   createUserWithEmailAndPassword(auth, email, password);
 };
+
 export const signEmail = (email, password) => signInWithEmailAndPassword(auth, email, password);
 
 export const signGoogle = () => signInWithPopup(auth, provider);
@@ -102,21 +102,12 @@ export const savebdPost = (uId, userName, postDescription, photoUser, likes) => 
   });
 };
 
-// Funcion para actualizar el post, escucha los cambios realizados
-// export const onGetPosts = (callback) => {
-//   const queryPost = query(collection(db, 'bd-muro'), orderBy('datePost', 'descendente'));
-//   onSnapshot(queryPost, callback);
-// };
-
 export const onGetPosts = (callback) => {
   onSnapshot(collection(db, 'bd-muro'), callback);
 };
 
 // Funcion para eliminar posts de Firestore
 export const deletePosts = (id) => deleteDoc(doc(db, 'bd-muro', id));
-
-// Funcion para obtener todos datos de Firestore
-// export const getPosts = () => getDocs(collection(db, 'bd-muro'));
 
 // Funcion para editar Post
 
@@ -126,13 +117,9 @@ export const updatePost = (idEdit, newdate) => updateDoc(doc(db, 'bd-muro', idEd
 export const getPost = (idPost) => getDoc(doc(db, 'bd-muro', idPost));
 
 // contador de like
-export const likePost = (idUser, likes) => {
-  updateDoc(doc(db, 'bd-muro', idUser), likes);
+export const likePost = (idUser, idPost) => {
+  updateDoc(doc(db, 'bd-muro', idPost), { likes: arrayUnion(idUser) });
 };
-
-// export const likePost = (uId, like) => {
-//   setDoc(doc(db, 'db-user', uId), {
-//     id: uId,
-//     like,
-//   });
-// };
+export const unLikePost = (idUser, idPost) => {
+  updateDoc(doc(db, 'bd-muro', idPost), { likes: arrayRemove(idUser) });
+};
