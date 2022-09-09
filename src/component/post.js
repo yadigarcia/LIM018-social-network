@@ -12,8 +12,14 @@ import {
   deletePosts,
   // updatePost,
   getPost,
+<<<<<<< HEAD
   likePost,
   unLikePost,
+=======
+  // arrayUnion,
+  // arrayRemove,
+//  likePost,
+>>>>>>> b562ff936683d6340c2a3d644465c0266c84f6c6
   // likePost,
 } from '../firebase/firebase.js';
 import { navigation } from '../main.js';
@@ -97,19 +103,25 @@ export function callPost(containerMuro) {
       });
     });
 
+<<<<<<< HEAD
     // -----------evento para dar LIKE------------------
     const arrayBtnLike = containerPost.querySelectorAll('.btnLike');
     const idUser = auth.currentUser.reloadUserInfo.localId;
+=======
+    // const arrayBtnLike = containerPost.querySelectorAll('.btnLike');
+    // const idUser = auth.currentUser.reloadUserInfo.localId;
+>>>>>>> b562ff936683d6340c2a3d644465c0266c84f6c6
 
-    arrayBtnLike.forEach((btnL) => {
-      btnL.addEventListener('click', () => {
-        //  e.push(likes(idUser, btnL.id));
-        likes(idUser, btnL.id); // id del usuario y del boton funcionando
-      });
-    });
+    // arrayBtnLike.forEach((btnL) => {
+    //   btnL.addEventListener('click', () => {
+    //     //  e.push(likes(idUser, btnL.id));
+    //     likes(idUser, btnL.id); // id del usuario y del boton funcionando
+    //   });
+    // });
   });
 }
 
+<<<<<<< HEAD
 export function likes(idUser, btnLi) {
   getPost(btnLi).then((post) => {
     // let newLike;
@@ -129,6 +141,32 @@ export function likes(idUser, btnLi) {
   });
 }
 
+=======
+// // -----------evento para dar LIKE------------------
+// function likes(idUser, btnLi) {
+//   getPost(btnLi).then((post) => {
+//     let newLike;
+//     const x = post.data(); // post y sus parametros
+//     console.log('x', x);
+
+//     const idUser = x.uId; // id del usuario
+//     console.log('id', idUser);
+
+//     if (x.likes.includes(idUser)) {
+//       console.log('hola');
+//       newLike = { likes: arrayRemove(idUser) };
+//       // btnId.style.color = '#000000';
+//       console.log(btnId);
+//     } else {
+//       console.log('chau');
+//       newLike = { likes: arrayUnion(idUser) };
+//     // btnId.style.color = '#7c1097';
+//     }
+//     likePost(idUser, newLike);
+//     console.log(idUser, newLike);
+//   });
+// }
+>>>>>>> b562ff936683d6340c2a3d644465c0266c84f6c6
 // salir de la sesion--------
 export const exitPost = () => {
   signOut(auth).then(() => {
