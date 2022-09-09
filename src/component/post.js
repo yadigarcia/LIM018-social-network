@@ -10,11 +10,11 @@ import {
   auth,
   signOut,
   deletePosts,
-  updatePost,
+  // updatePost,
   getPost,
-  arrayUnion,
-  arrayRemove,
-  likePost,
+  // arrayUnion,
+  // arrayRemove,
+//  likePost,
   // likePost,
 } from '../firebase/firebase.js';
 import { navigation } from '../main.js';

@@ -51,7 +51,7 @@ export const ref = jest.fn();
 
 export const database = {};
 
-export const onGetTasks = jest.fn();
+export const onGetPosts = jest.fn();
 
 export const provider = jest.fn();
 
